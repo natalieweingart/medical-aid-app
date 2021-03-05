@@ -1,0 +1,12 @@
+{
+  "name": "MedicalAid",
+  "displayName": "MedicalAid",
+  "expo": {
+    "name": "MedicalAid",
+    "slug": "MedicalAid",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
