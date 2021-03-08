@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
       alignItems: 'center',
       justifyContent: 'center',
     },
-    txtMain: {
+    txtTitle: {
       fontSize: 40,
       textAlign: 'center',
       color: 'black',
@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
       height: 300,
       marginTop: '5%',
     },
-    btnCont: {
+    btnGreen: {
       marginTop: '5%',
       borderRadius: 10,
       paddingVertical: 10,
@@ -26,7 +26,32 @@ const styles = StyleSheet.create({
       backgroundColor: '#77A8AB',
       width: 170,
       height: 45,
+      shadowColor: "#000",
+      shadowOffset: {
+	      width: 0,
+	      height: 2,
       },
+      shadowOpacity: 0.25,
+      shadowRadius: 3.84,
+      elevation: 5,
+      },
+    btnWhite: {
+      marginTop: '5%',
+      borderRadius: 10,
+      paddingVertical: 10,
+      paddingHorizontal: 12,
+      backgroundColor: 'white',
+      width: 185,
+      height: 45,
+      shadowColor: "#000",
+      shadowOffset: {
+	      width: 0,
+	      height: 2,
+      },
+      shadowOpacity: 0.25,
+      shadowRadius: 3.84,
+      elevation: 5,
+    },
     btnTxt: {
       fontSize: 18,
       fontWeight: 'bold',
