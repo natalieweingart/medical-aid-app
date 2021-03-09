@@ -12,6 +12,7 @@ const styles = StyleSheet.create({
       textAlign: 'center',
       color: 'black',
       fontWeight: 'bold',
+      marginTop: '5%',
     },
     imgMain: {
       width: 300,
@@ -20,7 +21,7 @@ const styles = StyleSheet.create({
     },
     btnGreen: {
       marginTop: '5%',
-      borderRadius: 10,
+      borderRadius: 20,
       paddingVertical: 10,
       paddingHorizontal: 12,
       backgroundColor: '#77A8AB',
@@ -37,7 +38,7 @@ const styles = StyleSheet.create({
       },
     btnWhite: {
       marginTop: '5%',
-      borderRadius: 10,
+      borderRadius: 20,
       paddingVertical: 10,
       paddingHorizontal: 12,
       backgroundColor: 'white',
