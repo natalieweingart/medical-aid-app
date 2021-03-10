@@ -31,11 +31,15 @@ const loginStyles = StyleSheet.create ({
       width: 300,
       padding: 10,
       marginTop: 15,
-      justifyContent:"center",
+      justifyContent:'center',
     },
     txtInput: {
         height:50,
-        // color: '',
+    },
+    txtForgot: {
+        fontSize: 15,
+        color: '#77A8AB',
+        marginTop: '5%',
     },
     btnLogin: {
         marginTop: '5%',

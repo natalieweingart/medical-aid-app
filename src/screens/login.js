@@ -17,16 +17,22 @@ function login ({ navigation }) {
       <View style={loginStyles.viewInput}>
       <TextInput style={loginStyles.txtInput}
         placeholder='Username'
-        placeholderTextColor='grey'/> 
+        placeholderTextColor='black'/> 
       </View>
       <View style={loginStyles.viewInput}>
       <TextInput style={loginStyles.txtInput}
         placeholder='Password'
-        placeholderTextColor='grey'/> 
+        placeholderTextColor='black'/> 
       </View>
-      <TouchableOpacity style={loginStyles.btnLogin}>
-        <Text style={loginStyles.btnTxt}
-          onPress={()=>console.log('LOGIN')}>
+      <TouchableOpacity
+      onPress={()=>console.log('FORGOT')}>
+        <Text style={loginStyles.txtForgot}>
+          Forgot Password?
+        </Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={loginStyles.btnLogin}
+      onPress={()=>console.log('LOGIN')}>
+        <Text style={loginStyles.btnTxt}>
           Log In
         </Text>
       </TouchableOpacity>
