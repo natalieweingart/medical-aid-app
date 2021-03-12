@@ -19,7 +19,7 @@ function startApp ({ navigation }){
         </TouchableOpacity>
         <TouchableOpacity 
           style={styles.btnWhite}
-          onPress={()=> navigation.navigate('CreateAcc')}> 
+          onPress={()=> navigation.navigate('ChooseAcc')}> 
           <Text style={styles.btnTxt}>  
             Create an account
           </Text>

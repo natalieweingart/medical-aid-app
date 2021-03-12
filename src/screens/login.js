@@ -8,10 +8,10 @@ function login ({ navigation }) {
       <Text style={loginStyles.txtTitle}>
         Log In
         </Text>
-      <TouchableOpacity onPress={()=>navigation.navigate('CreateAcc')}>
+      <TouchableOpacity onPress={()=>navigation.navigate('ChooseAcc')}>
         <Text style={loginStyles.txtCreate}>
           <Text style={loginStyles.txtNewUser}>
-            New User? </Text> Create An Account 
+            New user? </Text> Create an account 
         </Text>
       </TouchableOpacity>
       <View style={loginStyles.viewInput}>

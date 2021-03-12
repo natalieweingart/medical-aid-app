@@ -1,53 +1,34 @@
 import {StyleSheet} from 'react-native';
 
-const loginStyles = StyleSheet.create ({
+const chooseStyles = StyleSheet.create ({
     container: {
-        alignItems: 'center',
         backgroundColor: 'white',
+        alignItems: 'center',
         height: 600,
     },
     txtTitle: {
-      fontSize: 40,
-      textAlign: 'center',
-      color: 'black',
-      fontWeight: 'bold',
-      marginTop: '25%',
+        fontSize: 40,
+        color: 'black',
+        fontWeight: 'bold',
+        marginTop: '25%',
     },
-    txtNewUser: {
+    txtAlready: {
         fontSize: 15,
         color: 'black',
         letterSpacing: -1,
     },
-    txtCreate: {
+    txtSign: {
         fontSize: 15,
         color: '#77A8AB',
         letterSpacing: -1,
     },
-    viewInput: {
-      fontSize: 18,
-      backgroundColor: '#F2F4F8',
-      borderRadius: 25,
-      height: 50,
-      width: 300,
-      padding: 10,
-      marginTop: 15,
-      justifyContent:'center',
-    },
-    txtInput: {
-        height:50,
-    },
-    txtForgot: {
-        fontSize: 15,
-        color: '#77A8AB',
-        marginTop: '5%',
-    },
-    btnLogin: {
+    btn: {
         marginTop: '5%',
         borderRadius: 20,
         paddingVertical: 10,
         paddingHorizontal: 12,
         backgroundColor: '#77A8AB',
-        width: 170,
+        width: 250,
         height: 45,
         shadowColor: "#000",
         shadowOffset: {
@@ -58,12 +39,12 @@ const loginStyles = StyleSheet.create ({
         shadowRadius: 3.84,
         elevation: 5,
     },
-    btnTxt: {
+    txtBtn: {
         fontSize: 18,
         fontWeight: 'bold',
         color: 'black',
         alignSelf: 'center',
-      }
+    },
 })
 
-export default loginStyles
+export default chooseStyles

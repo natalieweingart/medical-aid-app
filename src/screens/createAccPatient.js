@@ -1,14 +1,14 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, Image } from 'react-native'
 
-function createAcc ({ navigation }){
+function createAccPatient ({ navigation }){
     return (
         <View>
             <Text>
-                Create An Account
+                Create An Account As A Patient
             </Text>
         </View>
     );
 }
 
-export default createAcc;
+export default createAccPatient;
