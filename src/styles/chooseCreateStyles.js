@@ -1,16 +1,14 @@
-import {StyleSheet} from 'react-native';
-
-const chooseStyles = StyleSheet.create ({
+const chooseStyles = ({
     container: {
-        backgroundColor: 'white',
+        flex: 1,
         alignItems: 'center',
-        height: 600,
     },
     txtTitle: {
         fontSize: 40,
         color: 'black',
         fontWeight: 'bold',
         marginTop: '25%',
+        alignItems: 'center',
     },
     txtAlready: {
         fontSize: 15,
@@ -21,6 +19,19 @@ const chooseStyles = StyleSheet.create ({
         fontSize: 15,
         color: '#77A8AB',
         letterSpacing: -1,
+    },
+    viewInput: {
+        fontSize: 18,
+        backgroundColor: 'white',
+        borderRadius: 25,
+        height: 50,
+        width: 300,
+        padding: 10,
+        marginTop: 15,
+        justifyContent: 'center',
+    },
+    txtInput: {
+        height: 50,
     },
     btn: {
         marginTop: '5%',

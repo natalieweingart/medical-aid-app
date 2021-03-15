@@ -1,37 +1,43 @@
 import React from 'react';
-import { Text, View, TouchableOpacity, TextInput } from 'react-native';
+import { Text, View, TouchableOpacity, TextInput, Alert } from 'react-native';
 import loginStyles from '../styles/LoginStyles';
 
-function login ({ navigation }) {
+function login({ navigation }) {
+  // const [usernamer, setUsername] = React.useState('');
+  // const [password, setPassword] = React.useState('');
+
+  // const { signIn } = React.useContext(AuthContext);
+
   return (
     <View style={loginStyles.container}>
       <Text style={loginStyles.txtTitle}>
         Log In
         </Text>
-      <TouchableOpacity onPress={()=>navigation.navigate('ChooseAcc')}>
+      <TouchableOpacity onPress={() => navigation.navigate('ChooseAcc')}>
         <Text style={loginStyles.txtCreate}>
           <Text style={loginStyles.txtNewUser}>
-            New user? </Text> Create an account 
+            New user? </Text> Create an account
         </Text>
       </TouchableOpacity>
       <View style={loginStyles.viewInput}>
-      <TextInput style={loginStyles.txtInput}
-        placeholder='Username'
-        placeholderTextColor='black'/> 
+        <TextInput style={loginStyles.txtInput}
+          placeholder='Email'
+          placeholderTextColor='black' />
       </View>
       <View style={loginStyles.viewInput}>
-      <TextInput style={loginStyles.txtInput}
-        placeholder='Password'
-        placeholderTextColor='black'/> 
+        <TextInput style={loginStyles.txtInput}
+          secureTextEntry
+          placeholder='Password'
+          placeholderTextColor='black' />
       </View>
       <TouchableOpacity
-      onPress={()=>console.log('FORGOT')}>
+        onPress={() => Alert.alert('FORGOT!')}>
         <Text style={loginStyles.txtForgot}>
           Forgot Password?
         </Text>
       </TouchableOpacity>
       <TouchableOpacity style={loginStyles.btnLogin}
-      onPress={()=>console.log('LOGIN')}>
+        onPress={() => Alert.alert('LOGIN!')}>
         <Text style={loginStyles.btnTxt}>
           Log In
         </Text>

@@ -1,10 +1,7 @@
-import {StyleSheet} from 'react-native';
-
-const loginStyles = StyleSheet.create ({
+const loginStyles = ({
     container: {
         alignItems: 'center',
-        backgroundColor: 'white',
-        height: 600,
+        justifyContent: 'center',
     },
     txtTitle: {
       fontSize: 40,
@@ -25,7 +22,7 @@ const loginStyles = StyleSheet.create ({
     },
     viewInput: {
       fontSize: 18,
-      backgroundColor: '#F2F4F8',
+      backgroundColor: 'white',
       borderRadius: 25,
       height: 50,
       width: 300,
