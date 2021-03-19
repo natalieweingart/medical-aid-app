@@ -2,7 +2,7 @@ import * as React from 'react';
 import { AppNavigator } from './routes/NavigateStart';
 
 function App() {
-  // IF logged in 
+  // if logged in 
   //    if the account is Patient
   //        go to the Patient route
   //    else if the acc is CT
