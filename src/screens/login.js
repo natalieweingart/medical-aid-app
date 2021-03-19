@@ -3,11 +3,6 @@ import { Text, View, TouchableOpacity, TextInput, Alert } from 'react-native';
 import loginStyles from '../styles/LoginStyles';
 
 function login({ navigation }) {
-  // const [usernamer, setUsername] = React.useState('');
-  // const [password, setPassword] = React.useState('');
-
-  // const { signIn } = React.useContext(AuthContext);
-
   return (
     <View style={loginStyles.container}>
       <Text style={loginStyles.txtTitle}>
