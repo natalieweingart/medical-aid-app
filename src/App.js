@@ -1,7 +1,13 @@
 import * as React from 'react';
+
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
+
 import { AppNavigator } from './routes/NavigateStart';
 
-function App() {
+const Stack = createStackNavigator();
+
+const App = () => {
   // if logged in 
   //    if the account is Patient
   //        go to the Patient route

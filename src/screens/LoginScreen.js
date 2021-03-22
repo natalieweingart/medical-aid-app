@@ -1,7 +1,7 @@
 import React from 'react';
-import { Text, View, TouchableOpacity, TextInput, Alert } from 'react-native';
+import { Text, View, TouchableOpacity, TextInput, StyleSheet } from 'react-native';
 
-function login({ navigation }) {
+function LoginScreen({ navigation }) {
   return (
     <View style={styles.container}>
       <Text style={styles.txtTitle}>
@@ -25,13 +25,13 @@ function login({ navigation }) {
           placeholderTextColor='black' />
       </View>
       <TouchableOpacity
-        onPress={() => Alert.alert('FORGOT!')}>
+        onPress={() => console.log('FORGOT!')}>
         <Text style={styles.txtForgot}>
           Forgot Password?
         </Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.btnLogin}
-        onPress={() => Alert.alert('LOGIN!')}>
+        onPress={() => console.log('LOGIN!')}>
         <Text style={styles.btnTxt}>
           Log In
         </Text>
@@ -40,10 +40,10 @@ function login({ navigation }) {
   );
 }
 
-export default login;
+export default LoginScreen;
 
 
-const styles = ({
+const styles = StyleSheet.create({
   container: {
       alignItems: 'center',
       justifyContent: 'center',

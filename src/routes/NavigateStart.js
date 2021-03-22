@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import login from '../screens/login';
+import login from '../screens/LoginScreen';
 import chooseAcc from '../screens/createAccount/chooseCreate';
 import startApp from '../screens/newStartApp';
 
