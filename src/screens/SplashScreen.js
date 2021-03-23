@@ -1,55 +1,92 @@
-import React, { useState, useEffect } from 'react';
-import { ActivityIndicator, View, StyleSheet, Image } from 'react-native';
+import * as React from 'react';
+import { View, Text, TouchableOpacity, Image } from 'react-native';
 
-import AsyncStorage from '@react-native-community/async-storage';
-
-//will be used to check if the user is logged in or not
 const SplashScreen = ({ navigation }) => {
+  // const { colors } = useTheme();
+  
+  return (
+    <View style={styles.container}>
+      <Text style={styles.txtTitle}>Welcome to the Medical Aid App</Text>
+      <Image
+        style={styles.imgMain}
+        source={require('../image/Logo.png')} />
+      <TouchableOpacity
+        style={styles.btnGreen}
+        onPress={() => navigation.navigate('Login')}>
+        <Text style={styles.btnTxt}>
+          Log In
+          </Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.btnWhite}
+        onPress={() => navigation.navigate('ChooseAcc')}>
+        <Text style={styles.btnTxt}>
+          Create an account
+          </Text>
+      </TouchableOpacity>
+    </View>
+  )
 };
-//   //State for ActivityIndicator animation
-//   const [animating, setAnimating] = useState(true);
 
-//   useEffect(() => {
-//     setTimeout(() => {
-//       setAnimating(false);
-//       //Check if user_id is set or not
-//       //If not then send for Authentication
-//       //else send to Home Screen
-//       AsyncStorage.getItem('user_id').then((value) =>
-//         navigation.replace(
-//           value === null ? 'Auth' : 'DrawerNavigationRoutes'
-//         ),
-//       );
-//     }, 5000);
-//   }, []);
+export default SplashScreen;
 
-//   return (
-//     <View style={styles.container}>
-//       <Image
-//         source={require('../Image/aboutreact.png')}
-//         style={{width: '90%', resizeMode: 'contain', margin: 30}}
-//       />
-//       <ActivityIndicator
-//         animating={animating}
-//         color="#FFFFFF"
-//         size="large"
-//         style={styles.activityIndicator}
-//       />
-//     </View>
-//   );
-// };
-
-// export default SplashScreen;
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//     backgroundColor: '#307ecc',
-//   },
-//   activityIndicator: {
-//     alignItems: 'center',
-//     height: 80,
-//   },
-// });
+const styles = ({
+  container: {
+    flex: 1,
+    backgroundColor: 'white',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  txtTitle: {
+    fontSize: 40,
+    textAlign: 'center',
+    color: 'black',
+    fontWeight: 'bold',
+    marginTop: '5%',
+  },
+  imgMain: {
+    width: 300,
+    height: 300,
+    marginTop: '5%',
+  },
+  btnGreen: {
+    marginTop: '5%',
+    borderRadius: 20,
+    paddingVertical: 10,
+    paddingHorizontal: 12,
+    backgroundColor: '#77A8AB',
+    width: 170,
+    height: 45,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+  },
+  btnWhite: {
+    marginTop: '5%',
+    borderRadius: 20,
+    paddingVertical: 10,
+    paddingHorizontal: 12,
+    backgroundColor: 'white',
+    width: 185,
+    height: 45,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+  },
+  btnTxt: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: 'black',
+    alignSelf: 'center',
+  }
+});

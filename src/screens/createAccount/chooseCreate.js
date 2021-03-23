@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, Image } from 'react-native'
 
-function chooseAcc({ navigation }) {
+const chooseAcc = ({ navigation }) => {
     return (
         <View style={styles.container}>
             <Text style={styles.txtTitle}>
@@ -27,7 +27,7 @@ function chooseAcc({ navigation }) {
             </TouchableOpacity>
         </View>
     );
-}
+};
 
 export default chooseAcc;
 
