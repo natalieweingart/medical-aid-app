@@ -2,16 +2,21 @@ import * as React from 'react';
 import { Button, View } from 'react-native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
-import { HomeScreen } from '../screens/HomeScreen';
+import HomeScreen from '../screens/HomeScreen';
 
 const Drawer = createDrawerNavigator();
 
-const MenuDrawer = () => {
+export function DrawerContent(props) {
+
+    const { signIn, signUp } = useContext(AuthContext);
+
     return (
-        <Drawer.Navigator>
-            <Drawer.Screen name="HomeDrawer" component={HomeScreen} />
-        </Drawer.Navigator>
+        <View>
+            <Text>
+                HELLO
+            </Text>
+        </View>
     );
 };
 
-export default MenuDrawer;
+export default DrawerContent;

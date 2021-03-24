@@ -1,38 +1,59 @@
-import React from 'react';
+import React, { useEffect, useState, useContext } from 'react';
+import { validateAll } from 'indicative/validator';
+
 import { Text, View, TouchableOpacity, TextInput, StyleSheet } from 'react-native';
-import Feather from 'react-native-vector-icons/Feather';
+
+import { AuthContext } from '../../components/context';
 
 const LoginScreen = ({ navigation }) => {
 
-  const [data, setData] = React.useState({
-    email: '',
-    password: '',
-    check_textInputChange: false,
-    secureTextEntry: true
-  });
+  const [emailAddress, setemailAddress] = useState('');
+  const [password, setPassword] = useState('');
+  const [SignUpErrors, setSignUpErrors] = useState({});
 
-  const textInputChange = (val) => {
-    if (val.lenght != 0) {
-      setData({
-        ...data,
-        email: val,
-        check_textInputChange: true
-      });
-    } else {
-      setData({
-        ...data,
-        email: val,
-        check_textInputChange: false
-      });
+  const { signIn, signUp } = useContext(AuthContext);
+
+  const handleSignIn = () => {
+    // https://indicative.adonisjs.com
+    const rules = {
+      email: 'required|email',
+      password: 'required|string|min:8|max:40'
     };
-  }
+
+    const data = {
+      email: emailAddress,
+      password: password
+    };
+
+    const messages = {
+      required: field => `${field} is required`,
+      'username.alpha': 'Username contains unallowed characters',
+      'email.email': 'Please enter a valid email address',
+      'password.min': 'Wrong Password?'
+    };
+
+    validateAll(data, rules, messages)
+      .then(() => {
+        console.log('success sign in');
+        signIn({ emailAddress, password });
+      })
+      .catch(err => {
+        const formatError = {};
+        err.forEach(err => {
+          formatError[err.field] = err.message;
+        });
+        setSignUpErrors(formatError);
+      });
+  };
+
 
   return (
     <View style={styles.container}>
       <Text style={styles.txtTitle}>
         Log In
         </Text>
-      <TouchableOpacity onPress={() => navigation.navigate('ChooseAcc')}>
+      <TouchableOpacity 
+        onPress={() => signUp()}>
         <Text style={styles.txtCreate}>
           <Text style={styles.txtNewUser}>
             New user? </Text> Create an account
@@ -40,40 +61,28 @@ const LoginScreen = ({ navigation }) => {
       </TouchableOpacity>
       <View style={styles.viewInput}>
         <TextInput style={styles.txtInput}
+          label={'Email'}
           placeholder='Email'
           placeholderTextColor='black'
-        // onChangeText={(val) => textInputChange(val)} //only use if you want an icon to appear
-        />
-        {/* {data.check_textInputChange ? //insert one thing : otherwise }  */}
-        <Feather 
-          name ="checkcircleo"
-          color="green"
-          size={20}
+          value={emailAddress}
+          onChangeText={setemailAddress}
+          errorMessage={SignUpErrors ? SignUpErrors.email : null}
         />
       </View>
       <View style={styles.viewInput}>
         <TextInput style={styles.txtInput}
           secureTextEntry
           placeholder='Password'
-          placeholderTextColor='black' />
-
+          placeholderTextColor='black'
+          value={password}
+          onChangeText={setPassword}
+          errorMessage={SignUpErrors ? SignUpErrors.password : null}
+        />
       </View>
-      <TouchableOpacity
-        onPress={() => console.log('FORGOT!')}>
-        <Text style={styles.txtForgot}>
-          Forgot Password?
-        </Text>
-      </TouchableOpacity>
       <TouchableOpacity style={styles.btnLogin}
-        onPress={() => console.log('LOGIN!')}>
+        onPress={() => handleSignIn()}>
         <Text style={styles.btnTxt}>
           Log In
-        </Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.btnLogin}
-        onPress={() => navigation.navigate('Home')}>
-        <Text style={styles.btnTxt}>
-          Testing Home
         </Text>
       </TouchableOpacity>
     </View>
@@ -97,12 +106,10 @@ const styles = StyleSheet.create({
   txtNewUser: {
     fontSize: 15,
     color: 'black',
-    letterSpacing: -1,
   },
   txtCreate: {
     fontSize: 15,
     color: '#77A8AB',
-    letterSpacing: -1,
   },
   viewInput: {
     fontSize: 18,

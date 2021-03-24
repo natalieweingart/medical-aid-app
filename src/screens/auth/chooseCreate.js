@@ -1,26 +1,31 @@
-import React from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { View, Text, TouchableOpacity, Image } from 'react-native'
+import { AuthContext } from '../../components/context';
+// import signUpScreenCT from '../SignUp';
 
 const chooseAcc = ({ navigation }) => {
+
+    const { signIn, signUp } = useContext(AuthContext);
+
     return (
         <View style={styles.container}>
             <Text style={styles.txtTitle}>
                 Create An Account
             </Text>
             <TouchableOpacity
-                onPress={() => navigation.navigate('Login')}>
+                onPress={() => signIn}>
                 <Text style={styles.txtAlready}>
                     Already a user? <Text style={styles.txtSign}> Sign in </Text>
                 </Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.btn}
-                onPress={() => console.log('PATIENT')}>
+                onPress={() => signUp() }>
                 <Text style={styles.txtBtn}>
                     Patient
                 </Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.btn}
-                onPress={() => console.log('CARETAKER')}>
+                onPress={() => signUp()}>
                 <Text style={styles.txtBtn}>
                     Caretaker
                 </Text>
@@ -46,12 +51,10 @@ const styles = ({
     txtAlready: {
         fontSize: 15,
         color: 'black',
-        letterSpacing: -1,
     },
     txtSign: {
         fontSize: 15,
         color: '#77A8AB',
-        letterSpacing: -1,
     },
     viewInput: {
         fontSize: 18,
