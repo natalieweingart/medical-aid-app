@@ -98,7 +98,7 @@ const App = ({ navigation }) => {
 
     switch (navigateTo) {
       case 'LOAD_APP':
-        arr.push(<Stack.Screen name="Splash" component={SplashScreen} />);
+        arr.push(<Stack.Screen name="Splash" component={SplashScreen} options={{ headerShown: false }} />);
         break;
 
       case 'LOAD_HOME':
@@ -127,18 +127,11 @@ const App = ({ navigation }) => {
       <NavigationContainer>
         <Stack.Navigator>
           {chooseScreen(state)}
+          {/* <Stack.Screen name="Splash" component={SplashScreen} options={{ headerShown: false }} /> */}
         </Stack.Navigator>
       </NavigationContainer>
     </AuthContext.Provider>
   );
 };
-
-
-// if logged in 
-//    if the account is Patient
-//        go to the Patient route
-//    else if the acc is CT
-//        go to Caretaker Route
-// else splash screen 
 
 export default App;
