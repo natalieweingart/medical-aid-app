@@ -2,13 +2,13 @@ import React from 'react';
 
 import { View, Text, StyleSheet, SafeAreaView } from 'react-native';
 
-const HomeScreen = () => {
+const MedicationScreen = () => {
     return (
         <SafeAreaView style={{ flex: 1 }}>
             <View style={styles.container}>
                 <View style={styles.header}>
                     <Text style={styles.txtSentence}>
-                        This is the Home
+                        This is the Medication
                     </Text>
                 </View>
             </View>
@@ -16,7 +16,7 @@ const HomeScreen = () => {
     );
 }
 
-export default HomeScreen;
+export default MedicationScreen;
 
 const styles = StyleSheet.create({
     container: {

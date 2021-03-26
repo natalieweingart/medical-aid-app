@@ -11,7 +11,7 @@ import SignUpScreen from './screens/auth/SignUpScreen';
 import chooseAcc from './screens/auth/chooseCreate';
 import SplashScreen from './screens/SplashScreen';
 import StartSelection from './screens/Selection';
-import HomeScreen from './screens/HomeScreen';
+import DrawerNavigate from './routes/DrawerNavigate';
 
 import AsyncStorage from '@react-native-community/async-storage';
 import { stateConditionString } from './components/helpers';
@@ -27,7 +27,7 @@ const createHomeStack = () => {
     <Stack.Navigator>
       <Stack.Screen
         name="Home Screen"
-        component={HomeScreen}
+        component={DrawerNavigate}
         initialParams={{ singOut: signOut }}
         options={{ headerShown: false }}
       />
@@ -83,9 +83,9 @@ const App = ({ navigation }) => {
         data.emailAddress !== undefined &&
         data.password !== undefined
       ) {
-        dispatch({type: 'SIGN_UP', token: 'dummy-auth-token'});
+        dispatch({ type: 'SIGN_UP', token: 'dummy-auth-token' });
       } else {
-        dispatch({type: 'TO_SIGN_UP'});
+        dispatch({ type: 'TO_SIGN_UP' });
       }
     },
   }),
@@ -102,7 +102,7 @@ const App = ({ navigation }) => {
         break;
 
       case 'LOAD_HOME':
-        arr.push(<Stack.Screen name="Home" component={createHomeStack} />);
+        arr.push(<Stack.Screen name="Home" component={createHomeStack} options={{ headerShown: false }} />);
         break;
 
       case 'LOAD_SIGNIN':
@@ -110,9 +110,10 @@ const App = ({ navigation }) => {
         break;
 
       case 'LOAD_SIGNUP':
-        arr.push(<Stack.Screen name="SignUp" component={SignUpScreen} options={{ 
-          headerShown: false, 
-          animationTypeForReplace: state.isSignout ? 'pop' : 'push', }} />);
+        arr.push(<Stack.Screen name="SignUp" component={SignUpScreen} options={{
+          headerShown: false,
+          animationTypeForReplace: state.isSignout ? 'pop' : 'push',
+        }} />);
         break;
 
       default:
@@ -128,8 +129,7 @@ const App = ({ navigation }) => {
         <Stack.Navigator>
           {/* {chooseScreen(state)} */}
           {/* <Stack.Screen name="Splash" component={SplashScreen} options={{ headerShown: false }} /> */}
-          <Stack.Screen name="HomPage" component={HomeScreen} options={{ headerShown: false }} />
-
+          <Stack.Screen name="HomPage" component={DrawerNavigate} options={{ headerShown: false }} />
         </Stack.Navigator>
       </NavigationContainer>
     </AuthContext.Provider>

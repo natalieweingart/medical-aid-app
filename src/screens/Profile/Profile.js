@@ -2,13 +2,13 @@ import React from 'react';
 
 import { View, Text, StyleSheet, SafeAreaView } from 'react-native';
 
-const FirstPage = () => {
+const ProfileScreen = () => {
     return (
         <SafeAreaView style={{ flex: 1 }}>
             <View style={styles.container}>
                 <View style={styles.header}>
                     <Text style={styles.txtSentence}>
-                        This is the First Page under First Page Option
+                        This is the Profile
                     </Text>
                 </View>
             </View>
@@ -16,7 +16,7 @@ const FirstPage = () => {
     );
 }
 
-export default FirstPage;
+export default ProfileScreen;
 
 const styles = StyleSheet.create({
     container: {
