@@ -1,16 +1,17 @@
 import * as React from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 
 import Feather from 'react-native-vector-icons/Feather';
 
-import { DrawerActions, NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 
-import ProfileScreen from '../screens/Profile/Profile';
+import ProfileScreen from '../screens/Profile/ProfileScreen';
 import MedicationScreen from '../screens/Medication/MedicationScreen';
 import HomeScreen from '../screens/HomeScreen';
-import SecondPage from '../screens/SecondPg';
+import SymptomScreen from '../screens/SymptomLog/SymptomScreen';
+import AppointScreen from '../screens/Appt/AppointScreen';
+
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -25,13 +26,14 @@ const NavgationDrawerStructure = (props) => {
             <View style={styles.menuIcon}>
                 <Feather.Button
                     name='menu'
-                    size={30}
+                    size={40}
                     color='black'
-                    backgroundColor='#77A8AB'
-                    // backgroundColor='transparent'
-                    // alignItems='center'
+                    // backgroundColor='#77A8AB'
+                    backgroundColor='transparent'
                     borderRadius={15}
                     onPress={() => toggleDrawer()}
+                    // underlayColor='#77A8AB'
+                    underlayColor='transparent'
                     width={100}
                 />
             </View>
@@ -39,14 +41,25 @@ const NavgationDrawerStructure = (props) => {
     );
 }
 
+const CustomDrawerContentComponent = (props) => {
+    return (
+        <SafeAreaView style={{ flex: 1 }}>
+            <View>
+                
+            </View>
+        </SafeAreaView>
+    )
+};
+
 function homePageStack({ navigation }) {
     return (
-        <Stack.Navigator initialRouteName='First'>
-            <Stack.Screen name='Home' component={HomeScreen} options={{
+        <Stack.Navigator initialRouteName='HomeScreen'>
+            <Stack.Screen name='HomeScreen' component={HomeScreen} options={{
                 title: null,
                 headerLeft: () =>
                     <NavgationDrawerStructure navigationProps={navigation} />,
-                headerStyle: { backgroundColor: 'transparent' }, //set header text color
+                headerStyle: null, //set header text color
+                headerTransparent: true
             }} />
         </Stack.Navigator>
     );
@@ -54,39 +67,55 @@ function homePageStack({ navigation }) {
 
 function profilePageStack({ navigation }) {
     return (
-        <Stack.Navigator initialRouteName='Profile'>
-            <Stack.Screen name='Profile' component={ProfileScreen} options={{
+        <Stack.Navigator initialRouteName='ProfileScreen'>
+            <Stack.Screen name='ProfileScreen' component={ProfileScreen} options={{
                 title: null,
                 headerLeft: () =>
                     <NavgationDrawerStructure navigationProps={navigation} />,
-                headerStyle: { backgroundColor: 'transparent' }, //set header text color
-            }} />
-        </Stack.Navigator>
-    );
-}
-function medicationPageStack({ navigation }) {
-    return (
-        <Stack.Navigator initialRouteName='Medication'>
-            <Stack.Screen name='Medication' component={MedicationScreen} options={{
-                title: null,
-                headerLeft: () =>
-                    <NavgationDrawerStructure navigationProps={navigation} />,
-                headerStyle: { backgroundColor: 'transparent' }, //set header text color
+                headerStyle: false, //set header text color
+                headerTransparent: true
             }} />
         </Stack.Navigator>
     );
 }
 
-function secondPageStack({ navigation }) {
+function medicationPageStack({ navigation }) {
     return (
-        <Stack.Navigator>
-            <Stack.Screen name='Second' component={SecondPage} options={{
-                title: 'Second PAGE',
+        <Stack.Navigator initialRouteName='MedicationScreen'>
+            <Stack.Screen name='MedicationScreen' component={MedicationScreen} options={{
+                title: null,
                 headerLeft: () =>
                     <NavgationDrawerStructure navigationProps={navigation} />,
-                headerStyle: { backgroundColor: 'red' }, //set header text color
-                headerTintColor: 'yellow', //Text color
-                headerTitleStyle: 'bold',
+                headerStyle: { backgroundColor: 'transparent' }, //set header text color
+                headerTransparent: true
+            }} />
+        </Stack.Navigator>
+    );
+}
+
+function symptomPageStack({ navigation }) {
+    return (
+        <Stack.Navigator initialRouteName='SymptomScreen'>
+            <Stack.Screen name='SymptomScreen' component={SymptomScreen} options={{
+                title: null,
+                headerLeft: () =>
+                    <NavgationDrawerStructure navigationProps={navigation} />,
+                headerStyle: { backgroundColor: 'transparent' }, //set header text color
+                headerTransparent: true
+            }} />
+        </Stack.Navigator>
+    );
+}
+
+function appointPageStack({ navigation }) {
+    return (
+        <Stack.Navigator initialRouteName='AppointScreen'>
+            <Stack.Screen name='AppointScreen' component={AppointScreen} options={{
+                title: null,
+                headerLeft: () =>
+                    <NavgationDrawerStructure navigationProps={navigation} />,
+                headerStyle: { backgroundColor: 'transparent' }, //set header text color
+                headerTransparent: true
             }} />
         </Stack.Navigator>
     );
@@ -94,15 +123,70 @@ function secondPageStack({ navigation }) {
 
 const DrawerNavigate = () => {
     return (
-        <Drawer.Navigator drawerContentOptions={{ activeTintColor: '#77A8AB', itemStyle: { marginVertical: 5 } }}>
-            {/* <Drawer.Screen name='FirtsPg' options={{ drawerLabel: 'Home' }} component={homePageStack} /> */}
-            {/* <Drawer.Screen name='SecondPg' options={{ drawerLabel: 'Second Page Option' }} component={secondPageStack} /> */}
-            <Drawer.Screen name='Home' options={{ drawerLabel: 'Home Page Option' }} component={homePageStack} />
-            <Drawer.Screen name='Profile' options={{ drawerLabel: 'Profile Page Option' }} component={profilePageStack} />
-            <Drawer.Screen name='Medication' options={{ drawerLabel: 'Medication Page Option' }} component={medicationPageStack} />
-
-
-
+        <Drawer.Navigator
+            drawerContentOptions={{
+                activeTintColor: 'black',
+                inactiveTintColor: 'white',
+                itemStyle: { marginVertical: 5 },
+                backgroundColor: '#77A8AB',
+                labelStyle: { fontSize: 25, fontWeight: 'bold' },
+                contentComponent: CustomDrawerContentComponent,
+            }}>
+            <Drawer.Screen name='Home' component={homePageStack}
+                options={{
+                    drawerLabel: 'Home',
+                    drawerIcon: ({ focused, size }) => (
+                        <Feather
+                            name="home"
+                            size={size}
+                            color={focused ? 'black' : 'white'} //if the color is focused or not
+                        />
+                    ),
+                }} />
+            <Drawer.Screen name='Profile' component={profilePageStack}
+                options={{
+                    drawerLabel: 'Profile',
+                    drawerIcon: ({ focused, size }) => (
+                        <Feather
+                            name="user"
+                            size={size}
+                            color={focused ? 'black' : 'white'} //if the color is focused or not
+                        />
+                    ),
+                }} />
+            <Drawer.Screen name='Medication' component={medicationPageStack}
+                options={{
+                    drawerLabel: 'Medication',
+                    drawerIcon: ({ focused, size }) => (
+                        <Feather
+                            name="file-plus"
+                            size={size}
+                            color={focused ? 'black' : 'white'} //if the color is focused or not
+                        />
+                    ),
+                }} />
+            <Drawer.Screen name='Symptom' component={symptomPageStack}
+                options={{
+                    drawerLabel: 'Symptom',
+                    drawerIcon: ({ focused, size }) => (
+                        <Feather
+                            name="plus-circle"
+                            size={size}
+                            color={focused ? 'black' : 'white'} //if the color is focused or not
+                        />
+                    ),
+                }} />
+            <Drawer.Screen name='Appointment' component={appointPageStack}
+                options={{
+                    drawerLabel: 'Appointment',
+                    drawerIcon: ({ focused, size }) => (
+                        <Feather
+                            name="calendar"
+                            size={size}
+                            color={focused ? 'black' : 'white'} //if the color is focused or not
+                        />
+                    ),
+                }} />
         </Drawer.Navigator>
     )
 };
@@ -117,7 +201,7 @@ const styles = StyleSheet.create({
     menuIcon: {
         top: 5,
         left: 5,
-        width: 55,
+        width: 60,
         paddingTop: 2,
         paddingStart: 1,
         position: 'absolute',

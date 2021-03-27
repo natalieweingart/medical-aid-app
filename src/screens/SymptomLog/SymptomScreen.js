@@ -2,13 +2,13 @@ import React from 'react';
 
 import { View, Text, StyleSheet, SafeAreaView } from 'react-native';
 
-const ProfileScreen = () => {
+const SymptomScreen = () => {
     return (
         <SafeAreaView style={{ flex: 1 }}>
             <View style={styles.container}>
                 <View style={styles.header}>
-                    <Text style={styles.txtSentence}>
-                        This is the Profile
+                    <Text style={styles.txtHeader}>
+                        SYMPTOM
                     </Text>
                 </View>
             </View>
@@ -16,7 +16,7 @@ const ProfileScreen = () => {
     );
 }
 
-export default ProfileScreen;
+export default SymptomScreen;
 
 const styles = StyleSheet.create({
     container: {
@@ -29,21 +29,11 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
-    txtSentence: {
+    txtHeader: {
         fontSize: 25,
         textAlign: 'center',
         marginBottom: 16,
+        color: 'black',
     },
-    menuIcon: {
-        // flex: 1,
-        top: 5,
-        left: 5,
-        // height: 50,
-        width: 55,
-        paddingTop: 2,
-        paddingStart: 1,
-        // alignItems: 'center',
-        position: 'absolute',
-        // backgroundColor: 'blue'
-    },
+
 })

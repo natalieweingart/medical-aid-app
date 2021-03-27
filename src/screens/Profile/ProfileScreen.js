@@ -2,13 +2,13 @@ import React from 'react';
 
 import { View, Text, StyleSheet, SafeAreaView } from 'react-native';
 
-const HomeScreen = () => {
+const ProfileScreen = () => {
     return (
         <SafeAreaView style={{ flex: 1 }}>
             <View style={styles.container}>
                 <View style={styles.header}>
                     <Text style={styles.txtHeader}>
-                        HOME
+                        PROFILE
                     </Text>
                 </View>
             </View>
@@ -16,7 +16,7 @@ const HomeScreen = () => {
     );
 }
 
-export default HomeScreen;
+export default ProfileScreen;
 
 const styles = StyleSheet.create({
     container: {

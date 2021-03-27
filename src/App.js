@@ -18,6 +18,8 @@ import { stateConditionString } from './components/helpers';
 import { AuthContext } from './components/context';
 import { initialState, reducer } from './components/reducer';
 
+// This file will read rather or not the account is logged in
+
 const Stack = createStackNavigator();
 
 const createHomeStack = () => {
