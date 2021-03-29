@@ -4,7 +4,7 @@ import { AuthContext } from '../components/context';
 
 const StartSelection = ({ navigation }) => {
 
-  const { signIn, signUp } = useContext(AuthContext); 
+  const { signIn, signUp } = useContext(AuthContext);
 
   return (
     <View style={styles.container}>

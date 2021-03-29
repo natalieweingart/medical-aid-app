@@ -6,11 +6,12 @@ import Feather from 'react-native-vector-icons/Feather';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 
-import ProfileScreen from '../screens/Profile/ProfileScreen';
-import MedicationScreen from '../screens/Medication/MedicationScreen';
+import ProfileStack from '../screens/Profile/ProfileStack';
+
+import MedicationStack from '../screens/Medication/MedicationStack';
 import HomeScreen from '../screens/HomeScreen';
-import SymptomScreen from '../screens/SymptomLog/SymptomScreen';
-import AppointScreen from '../screens/Appt/AppointScreen';
+import SymptomStack from '../screens/SymptomLog/SymptomStack';
+import ApptStack from '../screens/Appt/ApptStack';
 
 
 const Stack = createStackNavigator();
@@ -25,11 +26,9 @@ const NavgationDrawerStructure = (props) => {
         <View style={{ flexDirection: 'row' }}>
             <View style={styles.menuIcon}>
                 <Feather.Button
-                    name='menu'
-                    size={40}
-                    color='black'
-                    // backgroundColor='#77A8AB'
-                    backgroundColor='transparent'
+                    name='menu' size={40}
+                    color='black' backgroundColor='#77A8AB'
+                    // backgroundColor='transparent'
                     borderRadius={15}
                     onPress={() => toggleDrawer()}
                     // underlayColor='#77A8AB'
@@ -40,16 +39,6 @@ const NavgationDrawerStructure = (props) => {
         </View>
     );
 }
-
-const CustomDrawerContentComponent = (props) => {
-    return (
-        <SafeAreaView style={{ flex: 1 }}>
-            <View>
-                
-            </View>
-        </SafeAreaView>
-    )
-};
 
 function homePageStack({ navigation }) {
     return (
@@ -67,8 +56,8 @@ function homePageStack({ navigation }) {
 
 function profilePageStack({ navigation }) {
     return (
-        <Stack.Navigator initialRouteName='ProfileScreen'>
-            <Stack.Screen name='ProfileScreen' component={ProfileScreen} options={{
+        <Stack.Navigator initialRouteName='ProfileStack'>
+            <Stack.Screen name='ProfileStack' component={ProfileStack} options={{
                 title: null,
                 headerLeft: () =>
                     <NavgationDrawerStructure navigationProps={navigation} />,
@@ -81,8 +70,8 @@ function profilePageStack({ navigation }) {
 
 function medicationPageStack({ navigation }) {
     return (
-        <Stack.Navigator initialRouteName='MedicationScreen'>
-            <Stack.Screen name='MedicationScreen' component={MedicationScreen} options={{
+        <Stack.Navigator initialRouteName='MedicationStack'>
+            <Stack.Screen name='MedicationStack' component={MedicationStack} options={{
                 title: null,
                 headerLeft: () =>
                     <NavgationDrawerStructure navigationProps={navigation} />,
@@ -95,8 +84,8 @@ function medicationPageStack({ navigation }) {
 
 function symptomPageStack({ navigation }) {
     return (
-        <Stack.Navigator initialRouteName='SymptomScreen'>
-            <Stack.Screen name='SymptomScreen' component={SymptomScreen} options={{
+        <Stack.Navigator initialRouteName='SymptomStack'>
+            <Stack.Screen name='SymptomStack' component={SymptomStack} options={{
                 title: null,
                 headerLeft: () =>
                     <NavgationDrawerStructure navigationProps={navigation} />,
@@ -109,8 +98,8 @@ function symptomPageStack({ navigation }) {
 
 function appointPageStack({ navigation }) {
     return (
-        <Stack.Navigator initialRouteName='AppointScreen'>
-            <Stack.Screen name='AppointScreen' component={AppointScreen} options={{
+        <Stack.Navigator initialRouteName='AppointStack'>
+            <Stack.Screen name='AppointStack' component={ApptStack} options={{
                 title: null,
                 headerLeft: () =>
                     <NavgationDrawerStructure navigationProps={navigation} />,
@@ -130,7 +119,7 @@ const DrawerNavigate = () => {
                 itemStyle: { marginVertical: 5 },
                 backgroundColor: '#77A8AB',
                 labelStyle: { fontSize: 25, fontWeight: 'bold' },
-                contentComponent: CustomDrawerContentComponent,
+                // contentComponent: CustomDrawerContentComponent,
             }}>
             <Drawer.Screen name='Home' component={homePageStack}
                 options={{

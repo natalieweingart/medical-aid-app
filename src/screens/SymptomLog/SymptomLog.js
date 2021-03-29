@@ -1,15 +1,14 @@
 import React, { useState } from 'react';
 import {
-    Text, View, StyleSheet, TouchableOpacity, ScrollView,
+    Text, TextInput, View, StyleSheet, TouchableOpacity, ScrollView,
     Button, Modal, TouchableWithoutFeedback, Keyboard, FlatList,
 } from 'react-native';
 import { Calendar, CalendarList, Agenda } from 'react-native-calendars';
 import Icon from 'react-native-vector-icons/Feather';
 import { Card, Title, Paragraph, Subheading } from 'react-native-paper';
 import SympForm from './SymptomForm';
-import { SafeAreaView } from 'react-native';
 
-const SymptomScreen = ({ navigation }) => {
+const SymptomLog = ({ navigation }) => {
     const [modalOpen, setModalOpen] = useState(false);
 
     const [btn, setBtn] = useState(false);
@@ -78,81 +77,76 @@ const SymptomScreen = ({ navigation }) => {
     );
 
     return (
-        <SafeAreaView style={{ flex: 1 }} >
-            <ScrollView style={{ marginHorizontal: 10 }} >
+        <View style={styles.container}>
+            <TouchableOpacity
+                style={styles.saveButton}
+                onPress={() => setModalOpen(true)}>
+                <Text>Log New Symptom</Text>
+            </TouchableOpacity>
 
-                <View style={styles.header}>
-                    <Text style={[styles.txt, { fontSize: 30 }]} >
-                        Symptom Log
-                    </Text>
-                </View>
+            <Modal visible={modalOpen} animationType="slide">
+                <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+                    <View style={styles.modalContent}>
+                        <Icon
+                            name="x"
+                            style={styles.close}
+                            size={25}
+                            color="#77A8AB"
+                            onPress={() => setModalOpen(false)}
+                        />
+                        <SympForm addSymptom={addSymptom}></SympForm>
+                    </View>
+                </TouchableWithoutFeedback>
+            </Modal>
 
-                <FlatList
-                    data={symptom}
-                    renderItem={renderItem}
-                    keyExtractor={(item) => item.id}
-                />
-
-                <TouchableOpacity style={styles.addBtn} onPress={() => setModalOpen(true)}>
-                    <Text style={styles.txt}>
-                        Add New Symptom
-                </Text>
-                </TouchableOpacity>
-                <Modal visible={modalOpen} animationType="slide">
-                    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-                        <View style={styles.modalContent}>
-                            <Icon
-                                name="x" style={styles.close}
-                                size={25} color="#77A8AB"
-                                onPress={() => setModalOpen(false)}
-                            />
-                            <SympForm addSymptom={addSymptom}></SympForm>
-                        </View>
-                    </TouchableWithoutFeedback>
-                </Modal>
-            </ScrollView>
-        </SafeAreaView>
+            <FlatList
+                data={symptom}
+                renderItem={renderItem}
+                keyExtractor={(item) => item.id}
+            />
+        </View>
     );
 };
 
-export default SymptomScreen;
+export default SymptomLog;
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        // alignItems: 'center'
+        backgroundColor: 'white',
+        justifyContent: 'center',
+        padding: 5,
     },
 
-    modalContent: {
-        paddingVertical: '5%'
-    },
-    header: {
-        // flexDirection: 'row',
-        // justifyContent: 'flex-end',
-        // justifyContent: 'space-between',
-        // justifyContent: 'center',
-        marginTop: '5%',
-        marginBottom: '3%',
-        marginHorizontal: 16,
-        // backgroundColor: 'purple',
-        alignItems: 'center',
-    },
-    mainTxt: {
-        alignItems: 'center',
-        marginTop: 20,
-        // backgroundColor: 'purple',
-    },
-    txt: {
-        color: 'black',
-        fontWeight: 'bold',
-    },
-    btnTxt: {
-        fontSize: 18,
-        fontWeight: 'bold',
-        color: 'black',
+    heading: {
+        fontSize: 25,
         alignSelf: 'center',
+        paddingVertical: 10,
+        fontWeight: 'bold',
     },
-    addBtn: {
+
+    inputBox: {
+        borderWidth: 1,
+        padding: 10,
+        margin: 10,
+    },
+
+    descriptionBox: {
+        borderWidth: 1,
+        paddingHorizontal: 7,
+        paddingTop: 7,
+        paddingBottom: 50,
+        margin: 10,
+    },
+
+    submitButton: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-evenly',
+        padding: 10,
+    },
+
+    saveButton: {
         borderRadius: 20,
         margin: 20,
         padding: 10,
@@ -168,6 +162,51 @@ const styles = StyleSheet.create({
         elevation: 5
     },
 
+    cancelButton: {
+        borderRadius: 20,
+        paddingHorizontal: 30,
+        paddingVertical: 10,
+        backgroundColor: '#F2F4F8',
+        alignItems: 'center',
+        shadowColor: '#000',
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        elevation: 5,
+    },
+
+    title: {
+        fontSize: 30,
+        textAlign: 'center',
+        color: 'black',
+        fontWeight: 'bold',
+        marginTop: '5%',
+    },
+
+    buttonText: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        color: 'black',
+        alignSelf: 'center',
+    },
+
+    listHeading: {
+        fontSize: 18,
+        fontWeight: 'bold',
+    },
+
+    listText: {
+        fontSize: 16,
+        marginBottom: 5,
+    },
+
+    modalContent: {
+        paddingVertical: '5%'
+    },
+
     close: {
         alignSelf: 'center',
         padding: '2%'
@@ -180,4 +219,12 @@ const styles = StyleSheet.create({
     itemCard: {
         paddingHorizontal: '10%',
     },
-})
+
+    errorText: {
+        color: 'red',
+        fontWeight: 'bold',
+        marginLeft: '4%',
+        marginBottom: '2%'
+    },
+});
+

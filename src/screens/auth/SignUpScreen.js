@@ -174,5 +174,5 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: 'black',
     alignSelf: 'center',
-  }
+  },
 });

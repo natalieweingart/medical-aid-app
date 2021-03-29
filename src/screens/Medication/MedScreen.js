@@ -1,64 +1,57 @@
-import React, { useState } from 'react';
+import React, { useState, Component } from 'react';
 import {
     Text, View, StyleSheet, TouchableOpacity, ScrollView,
-    Button, Modal, TouchableWithoutFeedback, Keyboard, FlatList,
+    Modal, TouchableWithoutFeedback, Keyboard, FlatList,
+    SafeAreaView
 } from 'react-native';
-import { Calendar, CalendarList, Agenda } from 'react-native-calendars';
 import Icon from 'react-native-vector-icons/Feather';
 import { Card, Title, Paragraph, Subheading } from 'react-native-paper';
-import SympForm from './SymptomForm';
-import { SafeAreaView } from 'react-native';
+import MedForm from './MedForm';
+import Feather from 'react-native-vector-icons/Feather';
 
-const SymptomScreen = ({ navigation }) => {
+
+const MedicationTracker = ({ navigation }) => {
     const [modalOpen, setModalOpen] = useState(false);
-
-    const [btn, setBtn] = useState(false);
-    const [currentDate, setCurrentDate] = useState('');
-    const [symptom, setSymptom] = useState([
+    const [medication, setMedication] = useState([
         {
             id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-            date: 'June 5',
-            time: '12:32pm',
-            title: 'Back Pain',
-            description: 'Dull pain in lumbars.',
-            painScale: '3',
+            time: '9am',
+            name: 'Simvastatin',
+            dosage: '300mg',
+            instructions: 'Take with water on an empty stomach.',
         },
         {
             id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
-            date: 'May 4',
-            time: '14:23pm',
-            title: 'Nausea',
-            description: 'Sudden bout of nausea and dizziness.',
-            painScale: '0',
+            time: '9:30am',
+            name: 'Lisinopril',
+            dosage: '150mg',
+            instructions: 'Take with food and water.',
         },
         {
             id: '58694a0f-3da1-471f-bd96-145571e29d72',
-            date: 'Aug 10',
-            time: '10:42am',
-            title: 'Headache',
-            description: 'Sharp headache in the temporal area of the head.',
-            painScale: '5',
+            time: '9pm',
+            name: 'Levothyroxine',
+            dosage: '50mg',
+            instructions: 'Do not eat at least an hour after taking medication.',
         },
     ]);
 
-    const addSymptom = (symptom) => {
-        setSymptom((currentSymptom) => {
-            return [symptom, ...currentSymptom];
+    const addMedication = (medication) => {
+        setMedication((currentMedication) => {
+            return [medication, ...currentMedication];
         });
         setModalOpen(false);
     };
 
-    const Item = ({ title, description, date, time, painScale }) => (
+    const Medication = ({ name, instructions, time, dosage }) => (
         <View style={styles.cardList}>
             <Card style={styles.itemCard}>
                 <Card.Content>
-                    <Title>{title}</Title>
+                    <Title>{name}</Title>
                     <Subheading>
-                        {description}
+                        {instructions}
                         {'\n'}
-                        {date} at {time}
-                        {'\n'}
-            Pain Level: {painScale}
+                        {dosage} at {time}
                     </Subheading>
                 </Card.Content>
             </Card>
@@ -66,56 +59,57 @@ const SymptomScreen = ({ navigation }) => {
     );
 
     const renderItem = ({ item }) => (
-        <TouchableOpacity onPress={() => navigation.navigate('View Symptom', item)}>
-            <Item
-                title={item.title}
-                description={item.description}
-                date={item.date}
-                time={item.time}
-                painScale={item.painScale}
+        <TouchableOpacity
+            onPress={() => navigation.navigate('View Medication', item)}>
+            <Medication
+                name={item.name} instructions={item.instructions}
+                time={item.time} dosage={item.dosage}
             />
         </TouchableOpacity>
     );
 
     return (
-        <SafeAreaView style={{ flex: 1 }} >
+        <SafeAreaView style={{ flex: 1 }}>
             <ScrollView style={{ marginHorizontal: 10 }} >
+                {/* <View style={styles.container}> */}
 
                 <View style={styles.header}>
                     <Text style={[styles.txt, { fontSize: 30 }]} >
-                        Symptom Log
+                        Medications
                     </Text>
                 </View>
 
                 <FlatList
-                    data={symptom}
+                    data={medication}
                     renderItem={renderItem}
                     keyExtractor={(item) => item.id}
                 />
 
-                <TouchableOpacity style={styles.addBtn} onPress={() => setModalOpen(true)}>
-                    <Text style={styles.txt}>
-                        Add New Symptom
-                </Text>
+                <TouchableOpacity
+                    style={styles.btn}
+                    onPress={() => setModalOpen(true)}>
+                    <Text style={styles.btnTxt}>Add New Medication</Text>
                 </TouchableOpacity>
+
                 <Modal visible={modalOpen} animationType="slide">
                     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
                         <View style={styles.modalContent}>
-                            <Icon
-                                name="x" style={styles.close}
+                            <Icon name="x" style={styles.close}
                                 size={25} color="#77A8AB"
                                 onPress={() => setModalOpen(false)}
                             />
-                            <SympForm addSymptom={addSymptom}></SympForm>
+                            <MedForm addMedication={addMedication}></MedForm>
                         </View>
                     </TouchableWithoutFeedback>
                 </Modal>
+                {/* </View> */}
             </ScrollView>
         </SafeAreaView>
     );
 };
 
-export default SymptomScreen;
+export default MedicationTracker;
+
 
 const styles = StyleSheet.create({
     container: {
@@ -152,12 +146,16 @@ const styles = StyleSheet.create({
         color: 'black',
         alignSelf: 'center',
     },
-    addBtn: {
+    
+    btn: {
+        margin: '10%',
+        marginTop: '5%',
         borderRadius: 20,
-        margin: 20,
-        padding: 10,
+        paddingVertical: 10,
+        paddingHorizontal: 12,
         backgroundColor: '#77A8AB',
-        alignItems: 'center',
+        // width: 250,
+        // height: 45,
         shadowColor: "#000",
         shadowOffset: {
             width: 0,
@@ -165,7 +163,7 @@ const styles = StyleSheet.create({
         },
         shadowOpacity: 0.25,
         shadowRadius: 3.84,
-        elevation: 5
+        elevation: 5,
     },
 
     close: {
