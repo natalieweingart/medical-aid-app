@@ -146,7 +146,7 @@ const styles = StyleSheet.create({
         color: 'black',
         alignSelf: 'center',
     },
-    
+
     btn: {
         margin: '10%',
         marginTop: '5%',

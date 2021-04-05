@@ -12,6 +12,7 @@ import MedicationStack from '../screens/Medication/MedicationStack';
 import HomeScreen from '../screens/HomeScreen';
 import SymptomStack from '../screens/SymptomLog/SymptomStack';
 import ApptStack from '../screens/Appt/ApptStack';
+import CallStack from '../screens/NurseCall/CallStack';
 
 
 const Stack = createStackNavigator();
@@ -27,8 +28,9 @@ const NavgationDrawerStructure = (props) => {
             <View style={styles.menuIcon}>
                 <Feather.Button
                     name='menu' size={40}
-                    color='black' backgroundColor='#77A8AB'
-                    // backgroundColor='transparent'
+                    color='black' 
+                    // backgroundColor='#77A8AB'
+                    backgroundColor='transparent'
                     borderRadius={15}
                     onPress={() => toggleDrawer()}
                     // underlayColor='#77A8AB'
@@ -110,6 +112,20 @@ function appointPageStack({ navigation }) {
     );
 }
 
+function nursePageStack({ navigation }) {
+    return (
+        <Stack.Navigator initialRouteName='CallStack'>
+            <Stack.Screen name='CallStack' component={CallStack} options={{
+                title: null,
+                headerLeft: () =>
+                    <NavgationDrawerStructure navigationProps={navigation} />,
+                headerStyle: { backgroundColor: 'transparent' }, //set header text color
+                headerTransparent: true
+            }} />
+        </Stack.Navigator>
+    );
+}
+
 const DrawerNavigate = () => {
     return (
         <Drawer.Navigator
@@ -138,6 +154,17 @@ const DrawerNavigate = () => {
                     drawerIcon: ({ focused, size }) => (
                         <Feather
                             name="user"
+                            size={size}
+                            color={focused ? 'black' : 'white'} //if the color is focused or not
+                        />
+                    ),
+                }} />
+                <Drawer.Screen name='NurseCall' component={nursePageStack}
+                options={{
+                    drawerLabel: 'Nurse Call',
+                    drawerIcon: ({ focused, size }) => (
+                        <Feather
+                            name="phone-call"
                             size={size}
                             color={focused ? 'black' : 'white'} //if the color is focused or not
                         />

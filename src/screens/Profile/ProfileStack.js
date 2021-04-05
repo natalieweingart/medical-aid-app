@@ -4,6 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import ProfileScreen from './ProfileScreen';
 import EditProfile from './EditProfile';
+// import StartSelection from '.'
 
 const Stack = createStackNavigator();
 

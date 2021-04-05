@@ -1,19 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 
 import { NavigationContainer } from '@react-navigation/native';
 
 import {
     View, Text, StyleSheet, SafeAreaView, Image, TouchableOpacity,
-    Modal, TouchableWithoutFeedback, FlatList
+    Modal, TouchableWithoutFeedback, FlatList, Keyboard, Alert
 } from 'react-native';
 import { Card, Title, Paragraph, Subheading } from 'react-native-paper';
 import Feather from 'react-native-vector-icons/Feather';
 import EditProfile from './EditProfile';
-import { ScrollView } from 'react-native';
-import { Keyboard } from 'react-native';
-import { ListViewBase } from 'react-native';
+import App from '../../App';
 
 const ProfileScreen = ({ navigation }) => {
+
+
 
     const [modalOpen, setModalOpen] = useState(false);
     const [profile, setProfile] = useState([
@@ -76,7 +76,7 @@ const ProfileScreen = ({ navigation }) => {
 
             <View>
                 <Text style={[styles.txt, { fontSize: 30, textAlign: 'center' }]}>
-                    Caretaker/Patient
+                    Patient
                 </Text>
             </View>
             <View style={styles.infoContainer}>
@@ -92,13 +92,14 @@ const ProfileScreen = ({ navigation }) => {
                     style={styles.btn}
                     onPress={() => console.log("Manage Caretaker Clicked")}>
                     <Text style={{ fontSize: 20, color: 'black', textAlign: 'center' }}>
-                        Manage Patients
+                        Manage Caretakers
                     </Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity
                     style={styles.btn}
-                    onPress={() => signOut()}>
+                    onPress={() => Alert.alert('SIGN OUT CLICKED')}                   
+                    >
                     <Text style={{ fontSize: 20, color: 'black', textAlign: 'center' }}>
                         Sign Out
                     </Text>
