@@ -3,7 +3,7 @@ import { validateAll } from 'indicative/validator';
 
 import { Text, View, TouchableOpacity, TextInput, StyleSheet, Feather } from 'react-native';
 
-import { AuthContext } from '../../components/context';
+import { AuthContext } from '../../components/Authcontext';
 
 const SignUpScreen = ({ navigation }) => {
 
