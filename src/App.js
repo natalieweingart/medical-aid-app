@@ -15,7 +15,7 @@ import DrawerNavigate from './routes/DrawerNavigate';
 
 import AsyncStorage from '@react-native-community/async-storage';
 import { stateConditionString } from './components/helpers';
-import { AuthContext } from './components/context';
+import { AuthContext } from './components/Authcontext';
 import { initialState, reducer } from './components/reducer';
 
 // This file will read rather or not the account is logged in
