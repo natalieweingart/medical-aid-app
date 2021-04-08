@@ -6,9 +6,9 @@ import { useEffect, useContext, useMemo, useReducer } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import LoginScreen from './screens/auth/LoginScreen';
-import SignUpScreen from './screens/auth/SignUpScreen';
-// import chooseAcc from './screens/auth/chooseCreate';
+import LoginScreen from './screens/Auth/LoginScreen';
+import SignUpScreen from './screens/Auth/SignUpScreen';
+// import chooseAcc from './screens/Auth/chooseCreate';
 import SplashScreen from './screens/SplashScreen';
 import StartSelection from './screens/Selection';
 import DrawerNavigate from './routes/DrawerNavigate';
