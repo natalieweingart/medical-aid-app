@@ -39,7 +39,7 @@ const ApptForm = ({ addAppt }) => {
               placeholder=""
               onChangeText={props.handleChange('title')}
               value={props.values.title}
-              onBlur={props.handleBlur('title')}></TextInput>
+              onBlur={props.handleBlur('title')} />
             <Text style={styles.errorText}>{props.touched.title && props.errors.title}</Text>
 
             <Text style={styles.label}>Description</Text>
@@ -49,7 +49,7 @@ const ApptForm = ({ addAppt }) => {
               placeholder=""
               onChangeText={props.handleChange('description')}
               value={props.values.description}
-              onBlur={props.handleBlur('description')}></TextInput>
+              onBlur={props.handleBlur('description')} />
             <Text style={styles.errorText}>{props.touched.description && props.errors.description}</Text>
 
             <Text style={styles.label}>Date</Text>
@@ -58,7 +58,7 @@ const ApptForm = ({ addAppt }) => {
               placeholder="MM/DD/YYYY"
               onChangeText={props.handleChange('date')}
               value={props.values.date}
-              onBlur={props.handleBlur('date')}></TextInput>
+              onBlur={props.handleBlur('date')} />
             <Text style={styles.errorText}>{props.touched.date && props.errors.date}</Text>
 
             <Text style={styles.label}>Time</Text>
@@ -67,7 +67,7 @@ const ApptForm = ({ addAppt }) => {
               placeholder="HH:MM AM/PM"
               onChangeText={props.handleChange('time')}
               value={props.values.time}
-              onBlur={props.handleBlur('time')}></TextInput>
+              onBlur={props.handleBlur('time')} />
             <Text style={styles.errorText}>{props.touched.time && props.errors.time}</Text>
 
             <View style={{ alignItems: 'center' }} >
@@ -123,14 +123,22 @@ const styles = StyleSheet.create({
     margin: '2%',
   },
 
+  btnTxt: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: 'black',
+    alignSelf: 'center',
+  },
+
   btn: {
+    margin: '10%',
     marginTop: '5%',
     borderRadius: 20,
     paddingVertical: 10,
     paddingHorizontal: 12,
     backgroundColor: '#77A8AB',
-    width: 250,
-    height: 45,
+    // width: 250,
+    // height: 45,
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
@@ -140,12 +148,7 @@ const styles = StyleSheet.create({
     shadowRadius: 3.84,
     elevation: 5,
   },
-  btnTxt: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    color: 'black',
-    alignSelf: 'center',
-  },
+
   errorText: {
     color: 'red',
     fontWeight: 'bold',

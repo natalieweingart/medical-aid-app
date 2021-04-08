@@ -46,7 +46,7 @@ const MedForm = ({ addMedication, navigation }) => {
                             placeholder=""
                             onChangeText={props.handleChange('name')}
                             value={props.values.name}
-                            onBlur={props.handleBlur('name')}></TextInput>
+                            onBlur={props.handleBlur('name')} />
                         <Text style={styles.errorText}>
                             {props.touched.name && props.errors.name}
                         </Text>
@@ -58,7 +58,7 @@ const MedForm = ({ addMedication, navigation }) => {
                             placeholder=""
                             onChangeText={props.handleChange('instructions')}
                             value={props.values.instructions}
-                            onBlur={props.handleBlur('instructions')}></TextInput>
+                            onBlur={props.handleBlur('instructions')} />
                         <Text style={styles.errorText}>
                             {props.touched.instructions && props.errors.instructions}
                         </Text>
@@ -69,7 +69,7 @@ const MedForm = ({ addMedication, navigation }) => {
                             placeholder="HH:MM AM/PM"
                             onChangeText={props.handleChange('time')}
                             value={props.values.time}
-                            onBlur={props.handleBlur('time')}></TextInput>
+                            onBlur={props.handleBlur('time')} />
                         <Text style={styles.errorText}>
                             {props.touched.time && props.errors.time}
                         </Text>
@@ -80,7 +80,7 @@ const MedForm = ({ addMedication, navigation }) => {
                             placeholder="## mg"
                             onChangeText={props.handleChange('dosage')}
                             value={props.values.dosage}
-                            onBlur={props.handleBlur('dosage')}></TextInput>
+                            onBlur={props.handleBlur('dosage')} />
                         <Text style={styles.errorText}>
                             {props.touched.dosage && props.errors.dosage}
                         </Text>

@@ -66,8 +66,8 @@ const Appointment = ({ navigation }) => {
                     renderItem={renderItem}
                     keyExtractor={(item) => item.id}
                 />
-                <TouchableOpacity style={styles.addBtn} onPress={() => setModalOpen(true)}>
-                    <Text style={styles.txt}>
+                <TouchableOpacity style={styles.btn} onPress={() => setModalOpen(true)}>
+                    <Text style={styles.btnTxt}>
                         Add New Appointment
                 </Text>
                 </TouchableOpacity>
@@ -127,12 +127,16 @@ const styles = StyleSheet.create({
         color: 'black',
         alignSelf: 'center',
     },
-    addBtn: {
+
+    btn: {
+        margin: '10%',
+        marginTop: '5%',
         borderRadius: 20,
-        margin: 20,
-        padding: 10,
+        paddingVertical: 10,
+        paddingHorizontal: 12,
         backgroundColor: '#77A8AB',
-        alignItems: 'center',
+        // width: 250,
+        // height: 45,
         shadowColor: "#000",
         shadowOffset: {
             width: 0,
@@ -140,7 +144,7 @@ const styles = StyleSheet.create({
         },
         shadowOpacity: 0.25,
         shadowRadius: 3.84,
-        elevation: 5
+        elevation: 5,
     },
 
     close: {

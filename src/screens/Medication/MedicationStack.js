@@ -5,7 +5,6 @@ import { createStackNavigator } from '@react-navigation/stack';
 import MedForm from './MedForm';
 import MedicationTracker from './MedScreen';
 import ReviewMed from './ViewMed';
-import Medication from './MedicationTesting';
 
 const Stack = createStackNavigator();
 
