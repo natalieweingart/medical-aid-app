@@ -56,7 +56,7 @@ const SympForm = ({ addSymptom, navigation }) => {
                             placeholder=""
                             onChangeText={props.handleChange('title')}
                             value={props.values.name}
-                            onBlur={props.handleBlur('title')}></TextInput>
+                            onBlur={props.handleBlur('title')} />
                         <Text style={styles.errorText}>
                             {props.touched.title && props.errors.title}
                         </Text>
@@ -68,7 +68,7 @@ const SympForm = ({ addSymptom, navigation }) => {
                             placeholder=""
                             onChangeText={props.handleChange('description')}
                             value={props.values.instructions}
-                            onBlur={props.handleBlur('description')}></TextInput>
+                            onBlur={props.handleBlur('description')} />
                         <Text style={styles.errorText}>
                             {props.touched.description && props.errors.description}
                         </Text>
@@ -79,7 +79,7 @@ const SympForm = ({ addSymptom, navigation }) => {
                             placeholder="MM/DD/YYYY"
                             onChangeText={props.handleChange('date')}
                             value={props.values.date}
-                            onBlur={props.handleBlur('date')}></TextInput>
+                            onBlur={props.handleBlur('date')} />
                         <Text style={styles.errorText}>
                             {props.touched.date && props.errors.date}
                         </Text>
@@ -90,7 +90,7 @@ const SympForm = ({ addSymptom, navigation }) => {
                             placeholder="HH:MM AM/PM"
                             onChangeText={props.handleChange('time')}
                             value={props.values.time}
-                            onBlur={props.handleBlur('time')}></TextInput>
+                            onBlur={props.handleBlur('time')} />
                         <Text style={styles.errorText}>
                             {props.touched.time && props.errors.time}
                         </Text>
@@ -101,7 +101,7 @@ const SympForm = ({ addSymptom, navigation }) => {
                             placeholder="0-10"
                             onChangeText={props.handleChange('painScale')}
                             value={props.values.painScale}
-                            onBlur={props.handleBlur('painScale')}></TextInput>
+                            onBlur={props.handleBlur('painScale')} />
                         <Text style={styles.errorText}>
                             {props.touched.painScale && props.errors.painScale}
                         </Text>

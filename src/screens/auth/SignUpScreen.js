@@ -8,7 +8,7 @@ import { AuthContext } from '../../components/Authcontext';
 const SignUpScreen = ({ navigation }) => {
 
   const [emailAddress, setemailAddress] = useState('');
-  const [phoneNumber, setphoneNumber] = useState('');
+  // const [phoneNumber, setphoneNumber] = useState('');
   const [password, setPassword] = useState('');
 
   const [passwordConfirm, setPasswordConfirm] = useState('');
@@ -21,7 +21,7 @@ const SignUpScreen = ({ navigation }) => {
     // https://indicative.adonisjs.com
     const rules = {
       email: 'required|email',
-      phoneNumber: 'required|phone_number',
+      // phoneNumber: 'required|phone_number',
       password: 'required|string|min:8|max:40'
     };
 
@@ -90,7 +90,7 @@ const SignUpScreen = ({ navigation }) => {
         <TextInput style={styles.txtInput}
           secureTextEntry
           label={'Password Confirm'}
-          placeholder='Password Confirm'
+          placeholder='Enter password again'
           placeholderTextColor='black'
           value={passwordConfirm}
           onChangeText={setPasswordConfirm}

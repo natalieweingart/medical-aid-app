@@ -12,7 +12,7 @@ import MedicationStack from '../screens/Medication/MedicationStack';
 import HomeScreen from '../screens/HomeScreen';
 import SymptomStack from '../screens/SymptomLog/SymptomStack';
 import ApptStack from '../screens/Appt/ApptStack';
-import CallStack from '../screens/NurseCall/CallStack';
+import CallStack from '../screens/EmergencyCall/CallStack';
 
 
 const Stack = createStackNavigator();
@@ -112,7 +112,7 @@ function appointPageStack({ navigation }) {
     );
 }
 
-function nursePageStack({ navigation }) {
+function emergencyPageStack({ navigation }) {
     return (
         <Stack.Navigator initialRouteName='CallStack'>
             <Stack.Screen name='CallStack' component={CallStack} options={{
@@ -134,7 +134,7 @@ const DrawerNavigate = () => {
                 inactiveTintColor: 'white',
                 itemStyle: { marginVertical: 5 },
                 backgroundColor: '#77A8AB',
-                labelStyle: { fontSize: 25, fontWeight: 'bold' },
+                labelStyle: { fontSize: 22, fontWeight: 'bold' },
                 // contentComponent: CustomDrawerContentComponent,
             }}>
             <Drawer.Screen name='Home' component={homePageStack}
@@ -159,9 +159,9 @@ const DrawerNavigate = () => {
                         />
                     ),
                 }} />
-                <Drawer.Screen name='NurseCall' component={nursePageStack}
+                <Drawer.Screen name='EmergencyCall' component={emergencyPageStack}
                 options={{
-                    drawerLabel: 'Nurse Call',
+                    drawerLabel: 'Emergency Call',
                     drawerIcon: ({ focused, size }) => (
                         <Feather
                             name="phone-call"
