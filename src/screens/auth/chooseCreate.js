@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { View, Text, TouchableOpacity, Image } from 'react-native'
 import { AuthContext } from '../../components/Authcontext';
-// import signUpScreenCT from '../SignUp';
 
 const chooseAcc = ({ navigation }) => {
 
