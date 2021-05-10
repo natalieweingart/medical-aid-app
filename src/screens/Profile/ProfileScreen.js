@@ -1,20 +1,14 @@
 import React, { useState, useContext } from 'react';
 
-import { NavigationContainer } from '@react-navigation/native';
-
 import {
     View, Text, StyleSheet, SafeAreaView, Image, TouchableOpacity,
     Modal, TouchableWithoutFeedback, FlatList, Keyboard, Alert
 } from 'react-native';
-import { Card, Title, Paragraph, Subheading } from 'react-native-paper';
+import { Title, Subheading } from 'react-native-paper';
 import Feather from 'react-native-vector-icons/Feather';
 import EditProfile from './EditProfile';
-import App from '../../App';
 
 const ProfileScreen = ({ navigation }) => {
-
-
-
     const [modalOpen, setModalOpen] = useState(false);
     const [profile, setProfile] = useState([
         {
@@ -110,8 +104,8 @@ const ProfileScreen = ({ navigation }) => {
                 <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
                     <TouchableOpacity
                         onPress={() => navigation.navigate('ProfileScreen')} >
-                        <View style={styles.exitIcon}>
-                            <Feather name='x-circle' size={30} color='black' onPress={() => setModalOpen(false)} />
+                        <View style={styles.close}>
+                            <Feather name='x' size={30} color='black' onPress={() => setModalOpen(false)} />
                             <EditProfile newProfile={newProfile} />
                         </View>
                     </TouchableOpacity>
@@ -177,12 +171,16 @@ const styles = StyleSheet.create({
         shadowRadius: 3.84,
         elevation: 5,
     },
-    exitIcon: {
+    close: {
+        alignSelf: 'flex-end',
+        // // padding: '5%'
+        paddingHorizontal: '5%',
+        
         flexDirection: 'row',
-        justifyContent: 'flex-end',
+        // justifyContent: 'flex-end',
         // justifyContent: 'space-between',
-        marginTop: 25,
-        marginHorizontal: 16,
+        // marginTop: 25,
+        // marginHorizontal: 16,
         // backgroundColor: 'purple',
     },
 

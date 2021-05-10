@@ -17,6 +17,11 @@ import AsyncStorage from '@react-native-community/async-storage';
 import { stateConditionString } from './components/helpers';
 import { AuthContext } from './components/Authcontext';
 import { initialState, reducer } from './components/reducer';
+import { LogBox } from 'react-native';
+
+LogBox.ignoreLogs([
+ 'Non-serializable values were found in the navigation state',
+]);
 
 // This file will read rather or not the account is logged in
 const Stack = createStackNavigator();
@@ -128,9 +133,9 @@ const App = ({ navigation }) => {
     <AuthContext.Provider value={authContextValue}>
       <NavigationContainer>
         <Stack.Navigator>
-          {chooseScreen(state)}
+          {/* {chooseScreen(state)} */}
           {/* <Stack.Screen name="Splash" component={SplashScreen} options={{ headerShown: false }} /> */}
-          {/* <Stack.Screen name="Drawer" component={DrawerNavigate} options={{ headerShown: false }} /> */}
+          <Stack.Screen name="Drawer" component={DrawerNavigate} options={{ headerShown: false }} />
         </Stack.Navigator>
       </NavigationContainer>
     </AuthContext.Provider>

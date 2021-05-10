@@ -208,8 +208,16 @@ const styles = StyleSheet.create({
     },
 
     close: {
-        alignSelf: 'center',
-        padding: '2%'
+        alignSelf: 'flex-end',
+        // // padding: '5%'
+        paddingHorizontal: '5%',
+        
+        flexDirection: 'row',
+        // justifyContent: 'flex-end',
+        // justifyContent: 'space-between',
+        // marginTop: 25,
+        // marginHorizontal: 16,
+        // backgroundColor: 'purple',
     },
 
     cardList: {

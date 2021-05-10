@@ -8,7 +8,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 
 import ProfileStack from '../screens/Profile/ProfileStack';
 
-import MedicationStack from '../screens/Medication/MedicationStack';
+import MedicationStack from '../screens/Medication/MedStack';
 import HomeScreen from '../screens/HomeScreen';
 import SymptomStack from '../screens/SymptomLog/SymptomStack';
 import ApptStack from '../screens/Appt/ApptStack';

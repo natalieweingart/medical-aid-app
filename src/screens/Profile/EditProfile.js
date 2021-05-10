@@ -81,8 +81,6 @@ const EditProfile = ({ newProfile }) => {
                                 {props.touched.email && props.errors.email}
                             </Text>
 
-
-
                             <TextInput style={styles.txtInput}
                                 label={'phoneNum'}
                                 placeholder='Phone number'
@@ -108,18 +106,10 @@ export default EditProfile;
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        // padding: 16,
-        // backgroundColor: 'red'
+        marginHorizontal: '7%',
+        marginVertical: '5%'
     },
-    exitIcon: {
-        flexDirection: 'row',
-        justifyContent: 'flex-end',
-        // justifyContent: 'space-between',
-        marginTop: 25,
-        marginHorizontal: 16,
-        // backgroundColor: 'purple',
-    },
+    
     viewInput: {
         // backgroundColor: 'white',
         height: 50,

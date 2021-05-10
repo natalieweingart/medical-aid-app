@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
-    Text, TextInput, View, StyleSheet,
-    TouchableOpacity, ScrollView,
+    Text, TextInput, View, TouchableOpacity,
+    ScrollView, StyleSheet,
 } from 'react-native';
 import { Formik } from 'formik';
 import * as yup from 'yup';
@@ -27,31 +27,32 @@ const MedSchema = yup.object({
         .matches(/^([1-9][0-9]*)\s?([A-z]+)$/, { message: 'Invalid Dosage.' }),
 });
 
-const MedForm = (addMedication) => {
+const MedicationEditForm = (props) => {
     return (
         <ScrollView>
-            <Text style={styles.heading}>Add Medication</Text>
+            <Text style={styles.heading}>Edit Medication</Text>
             <Formik
-                initialValues={{ 
-                    id: '', 
-                    name: '', 
-                    instructions: '', 
-                    time: '', dosage: '',
-                    taken: false, }}
+                initialValues={{
+                    id: props.item.id,
+                    name: props.item.name,
+                    instructions: props.item.instructions,
+                    time: props.item.time,
+                    dosage: props.item.dosage,
+                }}
                 validationSchema={MedSchema}
                 onSubmit={(values, actions) => {
                     actions.resetForm();
-                    addMedication(values);
+                    props.updateMedication(values);
                 }}>
                 {(props) => (
-                    <View style={styles.container}>
+                    <View>
                         <Text style={styles.label}>Name</Text>
                         <TextInput
                             style={styles.inputBox}
-                            placeholder=""
+                            placeholder={props.initialValues.name}
                             onChangeText={props.handleChange('name')}
                             value={props.values.name}
-                            onBlur={props.handleBlur('name')} />
+                            onBlur={props.handleBlur('name')}></TextInput>
                         <Text style={styles.errorText}>
                             {props.touched.name && props.errors.name}
                         </Text>
@@ -60,10 +61,10 @@ const MedForm = (addMedication) => {
                         <TextInput
                             multiline
                             style={styles.descriptionBox}
-                            placeholder=""
+                            placeholder={props.initialValues.instructions}
                             onChangeText={props.handleChange('instructions')}
                             value={props.values.instructions}
-                            onBlur={props.handleBlur('instructions')} />
+                            onBlur={props.handleBlur('instructions')}></TextInput>
                         <Text style={styles.errorText}>
                             {props.touched.instructions && props.errors.instructions}
                         </Text>
@@ -71,10 +72,10 @@ const MedForm = (addMedication) => {
                         <Text style={styles.label}>Time</Text>
                         <TextInput
                             style={styles.inputBox}
-                            placeholder="HH:MM AM/PM"
+                            placeholder={''}
                             onChangeText={props.handleChange('time')}
                             value={props.values.time}
-                            onBlur={props.handleBlur('time')} />
+                            onBlur={props.handleBlur('time')}></TextInput>
                         <Text style={styles.errorText}>
                             {props.touched.time && props.errors.time}
                         </Text>
@@ -82,17 +83,16 @@ const MedForm = (addMedication) => {
                         <Text style={styles.label}>Dosage</Text>
                         <TextInput
                             style={styles.inputBox}
-                            placeholder="## mg"
+                            placeholder={props.initialValues.dosage}
                             onChangeText={props.handleChange('dosage')}
                             value={props.values.dosage}
-                            onBlur={props.handleBlur('dosage')} />
+                            onBlur={props.handleBlur('dosage')}></TextInput>
                         <Text style={styles.errorText}>
                             {props.touched.dosage && props.errors.dosage}
                         </Text>
 
                         <View style={{ alignItems: 'center' }} >
-                            <TouchableOpacity
-                                style={styles.btn}
+                            <TouchableOpacity style={styles.btn}
                                 onPress={props.handleSubmit}>
                                 <Text style={styles.btnTxt}>Save</Text>
                             </TouchableOpacity>
@@ -104,8 +104,7 @@ const MedForm = (addMedication) => {
     );
 };
 
-export default MedForm;
-
+export default MedicationEditForm;
 
 const styles = StyleSheet.create({
     container: {
@@ -119,7 +118,6 @@ const styles = StyleSheet.create({
         paddingVertical: '3%',
         fontWeight: 'bold',
         color: 'black',
-        // backgroundColor: 'red'
     },
 
     label: {
@@ -128,14 +126,14 @@ const styles = StyleSheet.create({
 
     inputBox: {
         borderWidth: 1,
-        borderRadius: 25,
+        borderRadius: 7,
         padding: '2%',
-        margin: '2%',
+        margin: '2%'
     },
 
     descriptionBox: {
         borderWidth: 1,
-        borderRadius: 25,
+        borderRadius: 10,
         paddingHorizontal: '2%',
         paddingTop: '2%',
         paddingBottom: '10%',
@@ -159,17 +157,18 @@ const styles = StyleSheet.create({
         shadowRadius: 3.84,
         elevation: 5,
     },
+
     btnTxt: {
         fontSize: 18,
         fontWeight: 'bold',
         color: 'black',
         alignSelf: 'center',
     },
+
     errorText: {
         color: 'red',
         fontWeight: 'bold',
-        textAlign: 'center',
-        // marginLeft: '4%',
-        // marginBottom: '2%'
+        marginLeft: '4%',
+        marginBottom: '2%'
     }
 })

@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
-import { Text, TextInput, View, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
+import {
+  Text, TextInput, View, StyleSheet,
+  TouchableOpacity, ScrollView
+} from 'react-native';
 import { Formik } from 'formik';
 import * as yup from 'yup';
 
@@ -24,7 +27,13 @@ const ApptForm = ({ addAppt }) => {
     <ScrollView>
       <Text style={styles.heading}>New Appointment</Text>
       <Formik
-        initialValues={{ title: '', description: '', date: '', time: '' }}
+        initialValues={{
+          id: '',
+          title: '',
+          description: '',
+          date: '',
+          time: ''
+        }}
         validationSchema={ApptSchema}
         onSubmit={(values, actions) => {
           actions.resetForm();
@@ -95,7 +104,7 @@ const styles = StyleSheet.create({
   },
 
   heading: {
-    fontSize: 30,
+    fontSize: 21,
     alignSelf: 'center',
     paddingVertical: '3%',
     fontWeight: 'bold',

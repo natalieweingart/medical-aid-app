@@ -1,39 +1,27 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {
-    View, Text, StyleSheet, Modal, Keyboard,
-    TouchableOpacity, SafeAreaView, TouchableWithoutFeedback,
+    View, Text, StyleSheet,
+    TouchableOpacity, SafeAreaView
 } from 'react-native';
-import Icon from 'react-native-vector-icons/Feather';
-import { Card, Title, Subheading } from 'react-native-paper';
-import MedicationEditForm from './MedEditForm';
+import { Card, Title, Paragraph, Subheading } from 'react-native-paper';
 
-const ReviewMed = ({ navigation, route }) => {
-
-    const [modalOpen, setModalOpen] = useState(false);
-  
-    const onUpdate = (medication) => {
-      route.params.updateMedication(medication);
-      setModalOpen(false);
-      navigation.navigate('MedicationTracker');
-    }
-  
-
+const ViewCall = ({ navigation, route }) => {
     return (
         <SafeAreaView style={{ flex: 1 }}>
             <View style={styles.container}>
                 <Card style={styles.itemCard}>
                     <Card.Content>
-                        <Title>{route.params.item.name}</Title>
+                        <Title>{route.params.name}</Title>
                         <Subheading>
-                            {route.params.item.instructions}
+                            {route.params.instructions}
                             {'\n'}
-                            {route.params.item.time} | {route.params.item.dosage}
+                            {route.params.time} | {route.params.dosage}
                         </Subheading>
                     </Card.Content>
                     <Card.Actions style={styles.cardBtn}>
                         <TouchableOpacity
                             style={styles.btn}
-                            onPress={() => setModalOpen(true)}>
+                            onPress={() => console.log('EDIT CLICKED')}>
                             <Text style={styles.btnTxt}>
                                 Edit
                             </Text>
@@ -48,22 +36,6 @@ const ReviewMed = ({ navigation, route }) => {
                     </Card.Actions>
                 </Card>
             </View>
-
-            <Modal visible={modalOpen} animationType="slide">
-                <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-                    <View style={styles.modalContent}>
-                        <Icon
-                            name="x"
-                            style={styles.close}
-                            size={25}
-                            color="#77A8AB"
-                            onPress={() => setModalOpen(false)}
-                        />
-                        <MedicationEditForm item={route.params.item} updateMedication={onUpdate} />
-                    </View>
-                </TouchableWithoutFeedback>
-            </Modal>
-
             <TouchableOpacity
                 style={styles.btn}
                 onPress={() => navigation.goBack()}>
@@ -75,7 +47,7 @@ const ReviewMed = ({ navigation, route }) => {
     );
 };
 
-export default ReviewMed;
+export default ViewCall;
 
 const styles = StyleSheet.create({
     container: {
@@ -130,21 +102,5 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         color: 'black',
         alignSelf: 'center',
-    },
-
-    modalContent: {
-        paddingVertical: '5%'
-    },
-    close: {
-        alignSelf: 'flex-end',
-        // // padding: '5%'
-        paddingHorizontal: '5%',
-        
-        flexDirection: 'row',
-        // justifyContent: 'flex-end',
-        // justifyContent: 'space-between',
-        // marginTop: 25,
-        // marginHorizontal: 16,
-        // backgroundColor: 'purple',
     },
 });

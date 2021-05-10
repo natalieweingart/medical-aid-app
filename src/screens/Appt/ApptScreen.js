@@ -1,126 +1,111 @@
 import React, { useState } from 'react';
 import {
-    Text, View, StyleSheet, TouchableOpacity, ScrollView,
-    Button, Modal, TouchableWithoutFeedback, Keyboard, FlatList,
+    Text, View, StyleSheet, TouchableOpacity,
+    Modal, TouchableWithoutFeedback, Keyboard, FlatList
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 import { Card, Title, Subheading } from 'react-native-paper';
-import SympForm from './SymptomForm';
+import ApptForm from './ApptForm';
 import { SafeAreaView } from 'react-native';
 
-const SymptomScreen = ({ navigation }) => {
+const Appointment = ({ navigation }) => {
     const [modalOpen, setModalOpen] = useState(false);
-
-    const [symptom, setSymptom] = useState([
+    const [appt, setAppt] = useState([
         {
-            id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-            date: '05/05/2021',
-            time: '12:32 PM',
-            title: 'Back Pain',
-            description: 'Dull pain in lumbars.',
-            painScale: '3',
+            id: '0',
+            title: "Doctor's Appointment",
+            description: "Physical Check Up",
+            date: '04/06/2021',
+            time: '10:00 AM'
         },
         {
-            id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
-            date: '05/04/2021',
-            time: '04:23 PM',
-            title: 'Nausea',
-            description: 'Sudden bout of nausea and dizziness.',
-            painScale: '0',
-        },
-        {
-            id: '58694a0f-3da1-471f-bd96-145571e29d72',
-            date: '08/10/2021',
-            time: '10:42 AM',
-            title: 'Headache',
-            description: 'Sharp headache in the temporal area of the head.',
-            painScale: '5',
-        },
+            id: '1',
+            title: "Dentist's Appointment",
+            description: "Cleaning",
+            date: '04/09/2021',
+            time: '11:00 AM'
+        }
     ]);
 
-    const addSymptom = (symptom) => {
-        setSymptom((currentSymptom) => {
-            return [symptom, ...currentSymptom];
+    const addAppt = (appt) => {
+        setAppt((currentAppt) => {
+            return [...currentAppt, appt]
         });
         setModalOpen(false);
     };
 
-    const updateSymptom = (item) => {
-        const newSymptom = [...symptom];
-        newSymptom[item.id] = item;
-        return setSymptom(newSymptom);
+    const updateAppt = (item) => {
+        const newAppointment = [...appt];
+        newAppointment[item.id] = item;
+        return setAppt(newAppointment);
     };
 
-    const deleteSymptom = (index) => {
-        setSymptom(symptom.filter((data) => data.id !== index));
+    const deleteAppt = (index) => {
+        setAppt(appt.filter((data) => data.id !== index));
     };
 
-    const Item = ({ title, description, date, time, painScale }) => (
-        <View style={styles.cardList}>
-            <Card style={styles.itemCard}>
-                <Card.Content>
-                    <Title>{title}</Title>
-                    <Subheading>
-                        {description}
-                        {'\n'}
-                        {date} at {time}
-                        {'\n'}
-            Pain Level: {painScale}
-                    </Subheading>
-                </Card.Content>
-            </Card>
-        </View>
-    );
+    function Appointment({ id, title, description, date, time }) {
+        return (
+            <View style={styles.cardList}>
+                <Card style={styles.itemCard}>
+                    <Card.Content>
+                        <Title>{title}</Title>
+                        <Subheading>
+                            {description}
+                            {'\n'}
+                            {date} | {time}
+                        </Subheading>
+                    </Card.Content>
+                </Card>
+            </View>
+        )
+    }
 
     const renderItem = ({ item }) => (
         <TouchableOpacity
             onPress={() => {
-                navigation.navigate('View Symptom',
+                navigation.navigate('View Appointment',
                     {
                         item: item,
-                        updateSymptom: updateSymptom,
-                        deleteSymptom: deleteSymptom,
+                        updateAppt: updateAppt,
+                        deleteAppt: deleteAppt,
                     });
             }}>
-            <Item
+            <Appointment
                 id={item.id}
                 title={item.title}
                 description={item.description}
                 date={item.date}
-                time={item.time}
-                painScale={item.painScale}
-            />
+                time={item.time} />
         </TouchableOpacity>
     );
 
     return (
-        <SafeAreaView style={{ flex: 1 }} >
+        <SafeAreaView style={{ flex: 1 }}>
             <View style={styles.header}>
                 <Text style={[styles.txt, { fontSize: 30 }]} >
-                    Symptom Log
+                    Appointments
                     </Text>
             </View>
 
             <FlatList
-                data={symptom}
+                data={appt}
                 renderItem={renderItem}
                 keyExtractor={(item) => item.id}
             />
-
             <TouchableOpacity style={styles.btn} onPress={() => setModalOpen(true)}>
                 <Text style={styles.btnTxt}>
-                    Add New Symptom
+                    Add New Appointment
                 </Text>
             </TouchableOpacity>
 
-            <Modal visible={modalOpen} animationType="slide">
+            <Modal visible={modalOpen} animationType='slide'>
                 <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
                     <View style={styles.modalContent}>
-                        <Icon
-                            name="x" style={styles.close}
+                        <Icon name="x" style={styles.close}
                             size={25} color="#77A8AB"
                             onPress={() => setModalOpen(false)} />
-                        <SympForm addSymptom={addSymptom}></SympForm>
+                        <ApptForm addAppt={addAppt} />
                     </View>
                 </TouchableWithoutFeedback>
             </Modal>
@@ -128,7 +113,7 @@ const SymptomScreen = ({ navigation }) => {
     );
 };
 
-export default SymptomScreen;
+export default Appointment;
 
 const styles = StyleSheet.create({
     container: {
@@ -189,7 +174,7 @@ const styles = StyleSheet.create({
         alignSelf: 'flex-end',
         // // padding: '5%'
         paddingHorizontal: '5%',
-
+        
         flexDirection: 'row',
         // justifyContent: 'flex-end',
         // justifyContent: 'space-between',
@@ -206,3 +191,4 @@ const styles = StyleSheet.create({
         paddingHorizontal: '10%',
     },
 })
+
