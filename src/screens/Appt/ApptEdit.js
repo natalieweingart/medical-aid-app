@@ -24,7 +24,8 @@ const ApptSchema = yup.object({
 const EditAppt = (props) => {
     return (
         <ScrollView>
-            <Text style={styles.heading}>Edit Appointment</Text>
+            <Text style={styles.heading}>
+                Edit Appointment</Text>
             <Formik
                 initialValues={{
                     id: props.item.id,
@@ -120,7 +121,8 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderRadius: 7,
         padding: '2%',
-        margin: '2%'
+        margin: '2%',
+        fontSize: 18,
     },
 
     descriptionBox: {
@@ -130,6 +132,7 @@ const styles = StyleSheet.create({
         paddingTop: '2%',
         paddingBottom: '10%',
         margin: '2%',
+        fontSize: 18,
     },
 
     btn: {

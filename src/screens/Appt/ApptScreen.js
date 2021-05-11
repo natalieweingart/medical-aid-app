@@ -102,7 +102,8 @@ const Appointment = ({ navigation }) => {
             <Modal visible={modalOpen} animationType='slide'>
                 <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
                     <View style={styles.modalContent}>
-                        <Icon name="x" style={styles.close}
+                        <Icon
+                            name="x" style={styles.close}
                             size={25} color="#77A8AB"
                             onPress={() => setModalOpen(false)} />
                         <ApptForm addAppt={addAppt} />
@@ -174,7 +175,7 @@ const styles = StyleSheet.create({
         alignSelf: 'flex-end',
         // // padding: '5%'
         paddingHorizontal: '5%',
-        
+
         flexDirection: 'row',
         // justifyContent: 'flex-end',
         // justifyContent: 'space-between',

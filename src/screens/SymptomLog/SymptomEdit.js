@@ -96,7 +96,7 @@ const SymptomEdit = (props) => {
                         <Text style={styles.label}>Pain Scale</Text>
                         <TextInput
                             style={styles.inputBox}
-                            placeholder="0-10"
+                            placeholder={props.initialValues.painScale}
                             onChangeText={props.handleChange('painScale')}
                             value={props.values.painScale}
                             onBlur={props.handleBlur('painScale')} />
@@ -142,7 +142,8 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderRadius: 7,
         padding: '2%',
-        margin: '2%'
+        margin: '2%',
+        fontSize: 18,
     },
 
     descriptionBox: {
@@ -152,6 +153,7 @@ const styles = StyleSheet.create({
         paddingTop: '2%',
         paddingBottom: '10%',
         margin: '2%',
+        fontSize: 18,
     },
 
     btn: {

@@ -1,6 +1,6 @@
-import React, { useState, Component } from 'react';
+import React, { useState } from 'react';
 import {
-    Text, View, StyleSheet, TouchableOpacity, ScrollView,
+    Text, View, StyleSheet, TouchableOpacity,
     Modal, TouchableWithoutFeedback, Keyboard, FlatList,
     SafeAreaView
 } from 'react-native';
@@ -12,28 +12,26 @@ const MedicationTracker = ({ navigation }) => {
     const [modalOpen, setModalOpen] = useState(false);
     const [medication, setMedication] = useState([
         {
-            id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-            time: '9:00 AM',
+            id: 0,
             name: 'Simvastatin',
-            dosage: '300mg',
             instructions: 'Take with water on an empty stomach.',
-            taken: false,
+            time: '9:00am',
+            dosage: '300mg'
+
         },
         {
-            id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
-            time: '9:30 AM',
+            id: 1,
             name: 'Lisinopril',
-            dosage: '150mg',
             instructions: 'Take with food and water.',
-            taken: false,
+            time: '9:30am',
+            dosage: '150mg'
         },
         {
-            id: '58694a0f-3da1-471f-bd96-145571e29d72',
-            time: '9:00 PM',
+            id: 2,
             name: 'Levothyroxine',
-            dosage: '50mg',
             instructions: 'Do not eat at least an hour after taking medication.',
-            taken: false,
+            time: '9:00pm',
+            dosage: '50mg'
         },
     ]);
 
@@ -54,35 +52,20 @@ const MedicationTracker = ({ navigation }) => {
         setMedication(medication.filter((data) => data.id !== index));
     };
 
-    // const medicationTaken = (id) => {
-    //     const newItem = medication[id];
-    //     newItem.taken = true;
-    //     return updateMedication(newItem);
-    // };
-
-    function Medication({ id, name, instructions, time, dosage, taken }) {
-        return (
-            <View style={styles.cardList}>
-                <Card style={styles.itemCard}>
-                    <Card.Content>
-                        <Title>{name}</Title>
-                        <Subheading>
-                            {instructions}
-                        </Subheading>
-                        <Paragraph>
-                            {dosage} at {time}
-                        </Paragraph>
-                        {/* {!taken &&
-                            <TouchableOpacity style={styles.btn}
-                                onPress={() => medicationTaken(id)}>
-                                <Text style={styles.btnTxt}>Take Medication</Text>
-                            </TouchableOpacity>
-                        } */}
-                    </Card.Content>
-                </Card>
-            </View>
-        );
-    }
+    const Medication = ({ id, name, instructions, time, dosage }) => (
+        <View style={styles.cardList}>
+            <Card style={styles.itemCard}>
+                <Card.Content>
+                    <Title>{name}</Title>
+                    <Subheading>
+                        {instructions}
+                        {'\n'}
+                        {dosage} at {time}
+                    </Subheading>
+                </Card.Content>
+            </Card>
+        </View>
+    );
 
     const renderItem = ({ item }) => (
         <TouchableOpacity
@@ -121,9 +104,7 @@ const MedicationTracker = ({ navigation }) => {
             <TouchableOpacity
                 style={styles.btn}
                 onPress={() => setModalOpen(true)}>
-                <Text style={styles.btnTxt}>
-                    Add New Medication
-                </Text>
+                <Text style={styles.btnTxt}>Add New Medication</Text>
             </TouchableOpacity>
 
             <Modal visible={modalOpen} animationType="slide">
@@ -133,7 +114,7 @@ const MedicationTracker = ({ navigation }) => {
                             size={25} color="#77A8AB"
                             onPress={() => setModalOpen(false)}
                         />
-                        <MedForm addMedication={addMedication} />
+                        <MedForm addMedication={addMedication} id={medication.length}></MedForm>
                     </View>
                 </TouchableWithoutFeedback>
             </Modal>
@@ -202,7 +183,7 @@ const styles = StyleSheet.create({
         alignSelf: 'flex-end',
         // // padding: '5%'
         paddingHorizontal: '5%',
-        
+
         flexDirection: 'row',
         // justifyContent: 'flex-end',
         // justifyContent: 'space-between',

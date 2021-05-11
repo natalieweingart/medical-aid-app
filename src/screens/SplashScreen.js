@@ -2,7 +2,6 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 
-
 const SplashScreen = () => {
   return (
     <View style={styles.center}>

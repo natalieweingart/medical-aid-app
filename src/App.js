@@ -17,11 +17,12 @@ import AsyncStorage from '@react-native-community/async-storage';
 import { stateConditionString } from './components/helpers';
 import { AuthContext } from './components/Authcontext';
 import { initialState, reducer } from './components/reducer';
-import { LogBox } from 'react-native';
 
-LogBox.ignoreLogs([
- 'Non-serializable values were found in the navigation state',
-]);
+// import { LogBox } from 'react-native';
+
+// LogBox.ignoreLogs([
+//  'Non-serializable values were found in the navigation state',
+// ]);
 
 // This file will read rather or not the account is logged in
 const Stack = createStackNavigator();

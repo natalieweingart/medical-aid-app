@@ -128,7 +128,8 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderRadius: 7,
         padding: '2%',
-        margin: '2%'
+        margin: '2%',
+        fontSize: 18,
     },
 
     descriptionBox: {
@@ -138,6 +139,7 @@ const styles = StyleSheet.create({
         paddingTop: '2%',
         paddingBottom: '10%',
         margin: '2%',
+        fontSize: 18,
     },
 
     btn: {

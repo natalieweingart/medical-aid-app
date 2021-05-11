@@ -121,6 +121,7 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     padding: '2%',
     margin: '2%',
+    fontSize: 18,
   },
 
   descriptionBox: {
@@ -130,6 +131,7 @@ const styles = StyleSheet.create({
     paddingTop: '2%',
     paddingBottom: '10%',
     margin: '2%',
+    fontSize: 18,
   },
 
   btnTxt: {

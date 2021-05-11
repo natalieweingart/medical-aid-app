@@ -6,30 +6,30 @@ import {
 import { Formik } from 'formik';
 import * as yup from 'yup';
 
-const SympForm = ({ addSymptom, navigation }) => {
-    const SympSchema = yup.object({
-        title: yup
-            .string()
-            .required('Symptom is required.')
-            .min(3, ({ min }) => `Title must be at least ${min} long.`),
-        description: yup
-            .string()
-            .required('Description is required.')
-            .max(250, ({ max }) => `Instructions must be at most 250 characters.`),
-        date: yup
-            .string()
-            .required('Date is required.')
-            .matches(
-                /^([0][1-9]|[1][0-2])\/([0][1-9]|[1][0-9]|[2][0-9]|[3][0-1])\/([1-2][0-9][0-9][0-9])$/,
-                { message: 'Invalid Date.' }
-            ),
-        time: yup
-            .string()
-            .required('Time is required.')
-            .matches(/^([1-9]|[1][0-2])\:([0-5][0-9])\s(A|P)(M)$/, { message: 'Invalid Time.' }),
-        painScale: yup.string().required('Pain Level is required.'),
-    });
+const SympSchema = yup.object({
+    title: yup
+        .string()
+        .required('Symptom is required.')
+        .min(3, ({ min }) => `Title must be at least ${min} long.`),
+    description: yup
+        .string()
+        .required('Description is required.')
+        .max(250, ({ max }) => `Instructions must be at most 250 characters.`),
+    date: yup
+        .string()
+        .required('Date is required.')
+        .matches(
+            /^([0][1-9]|[1][0-2])\/([0][1-9]|[1][0-9]|[2][0-9]|[3][0-1])\/([1-2][0-9][0-9][0-9])$/,
+            { message: 'Invalid Date.' }
+        ),
+    time: yup
+        .string()
+        .required('Time is required.')
+        .matches(/^([1-9]|[1][0-2])\:([0-5][0-9])\s(A|P)(M)$/, { message: 'Invalid Time.' }),
+    painScale: yup.string().required('Pain Level is required.'),
+});
 
+const SympForm = ({ addSymptom, navigation }) => {
     return (
         <ScrollView>
             <Text style={styles.heading}>Log Symptom</Text>
@@ -144,6 +144,7 @@ const styles = StyleSheet.create({
         borderRadius: 25,
         padding: '2%',
         margin: '2%',
+        fontSize: 18,
     },
 
     descriptionBox: {
@@ -153,6 +154,7 @@ const styles = StyleSheet.create({
         paddingTop: '2%',
         paddingBottom: '10%',
         margin: '2%',
+        fontSize: 18,
     },
 
     btn: {

@@ -1,25 +1,29 @@
 import React, { useState } from 'react';
 import {
-    View, Text, StyleSheet, Modal, Keyboard,
+    View, Text, StyleSheet, Modal, Keyboard, Linking,
     TouchableOpacity, SafeAreaView, TouchableWithoutFeedback,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 import { Card, Title, Subheading } from 'react-native-paper';
-import MedicationEditForm from './MedEditForm';
+import ContactEdit from './ContactEdit';
 
-const ReviewMed = ({ navigation, route }) => {
+const ViewContact = ({ navigation, route }) => {
 
     const [modalOpen, setModalOpen] = useState(false);
 
-    const onUpdate = (medication) => {
-        route.params.updateMedication(medication);
+    const triggerCall = () => {
+        Linking.openURL(`tel:${route.params.item.phoneNum}`)
+    };
+
+    const onUpdate = (item) => {
+        route.params.updateContact(item);
         setModalOpen(false);
-        navigation.navigate('MedicationTracker');
+        navigation.navigate('ContactList');
     }
 
     const onDelete = (id) => {
-        route.params.deleteMedication(id);
-        navigation.navigate('MedicationTracker');
+        route.params.deleteContact(id);
+        navigation.navigate('ContactList');
     }
 
     return (
@@ -27,12 +31,10 @@ const ReviewMed = ({ navigation, route }) => {
             <View style={styles.container}>
                 <Card style={styles.itemCard}>
                     <Card.Content>
-                        <Title>
-                            {route.params.item.name}</Title>
-                        <Subheading>
-                            {route.params.item.instructions}
-                            {'\n'}
-                            {route.params.item.time} | {route.params.item.dosage}
+                        <Title style={{ alignSelf: 'center', fontSize: 21 }}>
+                            {route.params.item.name} </Title>
+                        <Subheading style={{ fontSize: 18 }}>
+                            {route.params.item.phoneNum}
                         </Subheading>
                     </Card.Content>
                     <Card.Actions style={styles.cardBtn}>
@@ -52,6 +54,13 @@ const ReviewMed = ({ navigation, route }) => {
                         </TouchableOpacity>
                     </Card.Actions>
                 </Card>
+                <TouchableOpacity
+                    style={styles.btnCall}
+                    onPress={() => triggerCall(route.params.item.phoneNum)}>
+                    <Text style={styles.btnTxt}>
+                        Call
+                        </Text>
+                </TouchableOpacity>
             </View>
 
             <Modal visible={modalOpen} animationType="slide">
@@ -64,8 +73,8 @@ const ReviewMed = ({ navigation, route }) => {
                             color="#77A8AB"
                             onPress={() => setModalOpen(false)}
                         />
-                        <MedicationEditForm item={route.params.item}
-                            updateMedication={onUpdate} />
+                        <ContactEdit item={route.params.item}
+                            updateContact={onUpdate} />
                     </View>
                 </TouchableWithoutFeedback>
             </Modal>
@@ -81,7 +90,7 @@ const ReviewMed = ({ navigation, route }) => {
     );
 };
 
-export default ReviewMed;
+export default ViewContact;
 
 const styles = StyleSheet.create({
     container: {
@@ -152,5 +161,22 @@ const styles = StyleSheet.create({
         // marginTop: 25,
         // marginHorizontal: 16,
         // backgroundColor: 'purple',
+    },
+
+    btnCall: {
+        margin: '10%',
+        marginTop: '5%',
+        borderRadius: 20,
+        paddingVertical: 10,
+        paddingHorizontal: 50,
+        backgroundColor: '#77A8AB',
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        elevation: 5,
     },
 });

@@ -68,11 +68,11 @@ const ProfileScreen = ({ navigation }) => {
                 </View>
             </View>
 
-            <View>
+            {/* <View>
                 <Text style={[styles.txt, { fontSize: 30, textAlign: 'center' }]}>
                     Patient
                 </Text>
-            </View>
+            </View> */}
             <View style={styles.infoContainer}>
                 <FlatList
                     data={profile}

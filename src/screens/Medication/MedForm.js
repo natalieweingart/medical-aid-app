@@ -27,17 +27,18 @@ const MedSchema = yup.object({
         .matches(/^([1-9][0-9]*)\s?([A-z]+)$/, { message: 'Invalid Dosage.' }),
 });
 
-const MedForm = (addMedication) => {
+const MedForm = ({ id, addMedication, navigation }) => {
     return (
         <ScrollView>
             <Text style={styles.heading}>Add Medication</Text>
             <Formik
-                initialValues={{ 
-                    id: '', 
-                    name: '', 
-                    instructions: '', 
-                    time: '', dosage: '',
-                    taken: false, }}
+                initialValues={{
+                    id: id,
+                    name: '',
+                    instructions: '',
+                    time: '',
+                    dosage: ''
+                }}
                 validationSchema={MedSchema}
                 onSubmit={(values, actions) => {
                     actions.resetForm();
@@ -131,6 +132,7 @@ const styles = StyleSheet.create({
         borderRadius: 25,
         padding: '2%',
         margin: '2%',
+        fontSize: 18,
     },
 
     descriptionBox: {
@@ -140,6 +142,7 @@ const styles = StyleSheet.create({
         paddingTop: '2%',
         paddingBottom: '10%',
         margin: '2%',
+        fontSize: 18,
     },
 
     btn: {
