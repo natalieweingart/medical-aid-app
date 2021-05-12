@@ -41,8 +41,8 @@ const Appointment = ({ navigation }) => {
         return setAppt(newAppointment);
     };
 
-    const deleteAppt = (index) => {
-        setAppt(appt.filter((data) => data.id !== index));
+    const deleteAppt = (id) => {
+        setAppt(appt.filter((data) => data.id !== id));
         for (var index = id; index < appt.length; index++) {
             appt[index].id = appt[index].id - 1;
         }
@@ -73,7 +73,11 @@ const Appointment = ({ navigation }) => {
                 console.log(appt);
                 setAppt(appt.sort(
                     function (a, b) {
-                        return (a.date < b.date && a.time < b.time);
+                        if (a.date == b.date) {
+                            return (a.time < b.time);
+                        } else {
+                            return (a.date < b.date);
+                        }
                     }
                 ))
                 break;
@@ -167,7 +171,8 @@ const Appointment = ({ navigation }) => {
                             name="x" style={styles.close}
                             size={25} color="#77A8AB"
                             onPress={() => setModalOpen(false)} />
-                        <ApptForm addAppt={addAppt} />
+                        <ApptForm addAppt={addAppt}
+                            id={appt.length} />
                     </View>
                 </TouchableWithoutFeedback>
             </Modal>

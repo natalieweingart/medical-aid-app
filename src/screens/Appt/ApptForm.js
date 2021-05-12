@@ -28,7 +28,7 @@ const ApptForm = ({ addAppt }) => {
       <Text style={styles.heading}>New Appointment</Text>
       <Formik
         initialValues={{
-          id: '',
+          id: id,
           title: '',
           description: '',
           date: '',

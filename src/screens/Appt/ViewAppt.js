@@ -16,6 +16,11 @@ const ReviewAppt = ({ navigation, route }) => {
         navigation.navigate('Appointments');
     }
 
+    const onDelete = (id) => {
+        route.params.deleteAppt(id);
+        navigation.navigate('Appointments');
+    }
+
     return (
         <SafeAreaView style={{ flex: 1 }}>
             <View style={styles.container}>
@@ -38,9 +43,9 @@ const ReviewAppt = ({ navigation, route }) => {
                         </TouchableOpacity>
                         <TouchableOpacity
                             style={styles.btn}
-                            onPress={() => console.log('DELETE CLICKED')}
-                            // onPress={()=> arrayHelpers.remove(index)}
-                            >
+                            // onPress={() => console.log('DELETE CLICKED')}
+                            onPress={() => onDelete(route.params.item.id)}
+                        >
                             <Text style={styles.btnTxt}>
                                 Delete
                             </Text>
@@ -136,7 +141,7 @@ const styles = StyleSheet.create({
         alignSelf: 'flex-end',
         // // padding: '5%'
         paddingHorizontal: '5%',
-        
+
         flexDirection: 'row',
         // justifyContent: 'flex-end',
         // justifyContent: 'space-between',

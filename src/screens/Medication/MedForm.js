@@ -37,7 +37,8 @@ const MedForm = ({ id, addMedication, navigation }) => {
                     name: '',
                     instructions: '',
                     time: '',
-                    dosage: ''
+                    dosage: '',
+                    taken: false,
                 }}
                 validationSchema={MedSchema}
                 onSubmit={(values, actions) => {
