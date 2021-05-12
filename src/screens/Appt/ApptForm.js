@@ -21,7 +21,7 @@ const ApptSchema = yup.object({
     .matches(/^([0][1-9]|[1][0-2])\:([0-5][0-9])\s(A|P)(M)$/, { message: 'Invalid Time.' })
 });
 
-const ApptForm = ({ addAppt }) => {
+const ApptForm = ({ id, addAppt }) => {
 
   return (
     <ScrollView>
