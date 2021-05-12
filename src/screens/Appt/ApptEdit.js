@@ -15,10 +15,10 @@ const ApptSchema = yup.object({
         .max(250, ({ max }) => `Description must be at most 250 characters.`),
     date: yup.string()
         .required("Date is required.")
-        .matches(/^([0][1-9]|[1][0-2])\/([0][1-9]|[1][0-9]|[2][0-9]|[3][0-1])\/([1-2][0-9][0-9][0-9])$/, { message: 'Invalid Date.' }),
+        .matches(/^([0]?[1-9]|[1][0-2])\/([0][1-9]|[1][0-9]|[2][0-9]|[3][0-1])\/([1-2][0-9][0-9][0-9])$/, { message: 'Invalid Date.' }),
     time: yup.string()
         .required("Time is required.")
-        .matches(/^([1-9]|[1][0-2])\:([0-5][0-9])\s(A|P)(M)$/, { message: 'Invalid Time.' })
+        .matches(/^([0][1-9]|[1][0-2])\:([0-5][0-9])\s(A|P)(M)$/, { message: 'Invalid Time.' })
 });
 
 const EditAppt = (props) => {

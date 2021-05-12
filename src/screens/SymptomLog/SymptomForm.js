@@ -25,14 +25,15 @@ const SympSchema = yup.object({
     time: yup
         .string()
         .required('Time is required.')
-        .matches(/^([1-9]|[1][0-2])\:([0-5][0-9])\s(A|P)(M)$/, { message: 'Invalid Time.' }),
+        .matches(/^([0]?[1-9]|[1][0-2])\:([0-5][0-9])\s(A|P)(M)$/, { message: 'Invalid Time.' }),
     painScale: yup.string().required('Pain Level is required.'),
 });
 
 const SympForm = ({ addSymptom, navigation }) => {
     return (
         <ScrollView>
-            <Text style={styles.heading}>Log Symptom</Text>
+            <Text style={styles.heading}>
+                Log Symptom</Text>
             <Formik
                 initialValues={{
                     title: '',
@@ -48,7 +49,8 @@ const SympForm = ({ addSymptom, navigation }) => {
                 }}>
                 {(props) => (
                     <View style={styles.container}>
-                        <Text style={styles.label}>Symptom</Text>
+                        <Text style={styles.label}>
+                            Symptom</Text>
                         <TextInput
                             style={styles.inputBox}
                             placeholder=""
@@ -59,7 +61,8 @@ const SympForm = ({ addSymptom, navigation }) => {
                             {props.touched.title && props.errors.title}
                         </Text>
 
-                        <Text style={styles.label}>Description</Text>
+                        <Text style={styles.label}>
+                            Description</Text>
                         <TextInput
                             multiline
                             style={styles.descriptionBox}
@@ -71,7 +74,8 @@ const SympForm = ({ addSymptom, navigation }) => {
                             {props.touched.description && props.errors.description}
                         </Text>
 
-                        <Text style={styles.label}>Date</Text>
+                        <Text style={styles.label}>
+                            Date</Text>
                         <TextInput
                             style={styles.inputBox}
                             placeholder="MM/DD/YYYY"
@@ -82,7 +86,8 @@ const SympForm = ({ addSymptom, navigation }) => {
                             {props.touched.date && props.errors.date}
                         </Text>
 
-                        <Text style={styles.label}>Time</Text>
+                        <Text style={styles.label}>
+                            Time</Text>
                         <TextInput
                             style={styles.inputBox}
                             placeholder="HH:MM AM/PM"
@@ -93,7 +98,8 @@ const SympForm = ({ addSymptom, navigation }) => {
                             {props.touched.time && props.errors.time}
                         </Text>
 
-                        <Text style={styles.label}>Pain Scale</Text>
+                        <Text style={styles.label}>
+                            Pain Scale</Text>
                         <TextInput
                             style={styles.inputBox}
                             placeholder="0-10"
@@ -108,7 +114,8 @@ const SympForm = ({ addSymptom, navigation }) => {
                             <TouchableOpacity
                                 style={styles.btn}
                                 onPress={props.handleSubmit}>
-                                <Text style={styles.btnTxt}>Save</Text>
+                                <Text style={styles.btnTxt}>
+                                    Save</Text>
                             </TouchableOpacity>
                         </View>
                     </View>

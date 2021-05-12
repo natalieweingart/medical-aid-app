@@ -13,12 +13,12 @@ const ContactList = ({ navigation }) => {
     const [modalOpen, setModalOpen] = useState(false);
     const [contact, setContact] = useState([
         {
-            id: '1',
+            id: '0',
             name: 'Mom',
             phoneNum: '+1(818)456-7890',
         },
         {
-            id: '2',
+            id: '1',
             name: 'Brother',
             phoneNum: '+1(818)987-2413',
         }
@@ -187,7 +187,6 @@ const styles = StyleSheet.create({
         alignSelf: 'flex-end',
         // // padding: '5%'
         paddingHorizontal: '5%',
-
         flexDirection: 'row',
         // justifyContent: 'flex-end',
         // justifyContent: 'space-between',

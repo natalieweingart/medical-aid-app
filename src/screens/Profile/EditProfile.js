@@ -35,20 +35,24 @@ const EditProfile = ({ newProfile }) => {
                 </View>
 
                 <Formik
-                    initialValues={{ fname: '', lname: '', email: '', phoneNum: '' }}
+                    initialValues={{
+                        fname: '',
+                        lname: '',
+                        email: '',
+                        phoneNum: '',
+                    }}
                     validationSchema={editRules}
                     onSubmit={(values, actions) => {
                         actions.resetForm();
                         newProfile(values);
                     }} >
                     {(props) => (
-                        <View style={styles.infoContainer}>
-                            <Text style={[styles.txt, { fontSize: 25 }]}>
-                                Caretaker/Patient ??
-                                </Text>
+                        <View>
+                            <Text style={styles.label}>
+                                First Name</Text>
                             <TextInput style={styles.txtInput}
                                 label={'fname'}
-                                placeholder='First Name'
+                                placeholder=''
                                 onSubmitEditing={Keyboard.dismiss}
                                 autoCapitalize='words'
                                 onChangeText={props.handleChange('fname')}
@@ -57,9 +61,11 @@ const EditProfile = ({ newProfile }) => {
                                 {props.touched.fname && props.errors.fname}
                             </Text>
 
+                            <Text style={styles.label}>
+                                Last Name</Text>
                             <TextInput style={styles.txtInput}
                                 label={'lname'}
-                                placeholder='Last Name'
+                                placeholder=''
                                 onSubmitEditing={Keyboard.dismiss}
                                 autoCapitalize='words'
                                 onChangeText={props.handleChange('lname')}
@@ -68,11 +74,11 @@ const EditProfile = ({ newProfile }) => {
                                 {props.touched.lname && props.errors.lname}
                             </Text>
 
-
-
+                            <Text style={styles.label}>
+                                Email</Text>
                             <TextInput style={styles.txtInput}
                                 label={'email'}
-                                placeholder='Email'
+                                placeholder=''
                                 onSubmitEditing={Keyboard.dismiss}
                                 onChangeText={props.handleChange('email')}
 
@@ -81,9 +87,11 @@ const EditProfile = ({ newProfile }) => {
                                 {props.touched.email && props.errors.email}
                             </Text>
 
+                            <Text style={styles.label}>
+                                Phone Number</Text>
                             <TextInput style={styles.txtInput}
                                 label={'phoneNum'}
-                                placeholder='Phone number'
+                                placeholder=''
                                 onChangeText={props.handleChange('phoneNum')}
                                 onSubmitEditing={Keyboard.dismiss}
                             />
@@ -109,21 +117,28 @@ const styles = StyleSheet.create({
         marginHorizontal: '7%',
         marginVertical: '5%'
     },
-    
-    viewInput: {
-        // backgroundColor: 'white',
-        height: 50,
-        // marginTop: 15,
-        justifyContent: 'center',
-
+    label: {
+        marginLeft: '4%'
     },
+    // viewInput: {
+    //     // backgroundColor: 'white',
+    //     height: 50,
+    //     // marginTop: 15,
+    //     justifyContent: 'center',
+
+    // },
     txtInput: {
-        fontSize: 20,
-        height: 50,
-        borderRadius: 25,
-        padding: 10,
         borderWidth: 1,
-        width: 300,
+        borderRadius: 25,
+        padding: '2%',
+        // margin: '2%',
+        fontSize: 18,
+        // fontSize: 20,
+        // height: 50,
+        // borderRadius: 25,
+        // padding: 10,
+        // borderWidth: 1,
+        // width: 300,
     },
     txt: {
         color: 'black',
@@ -144,17 +159,26 @@ const styles = StyleSheet.create({
     infoContainer: {
         alignSelf: 'center',
         alignItems: 'center',
-        marginTop: 30,
+        // marginTop: 30,
         // backgroundColor: 'red',
     },
+
+    btnTxt: {
+        fontSize: 20,
+        fontWeight: 'bold',
+        color: 'black',
+        alignSelf: 'center',
+    },
+
     btn: {
+        margin: '10%',
         marginTop: '5%',
         borderRadius: 20,
         paddingVertical: 10,
         paddingHorizontal: 12,
         backgroundColor: '#77A8AB',
-        width: 170,
-        height: 45,
+        // width: 250,
+        // height: 45,
         shadowColor: "#000",
         shadowOffset: {
             width: 0,
@@ -164,16 +188,14 @@ const styles = StyleSheet.create({
         shadowRadius: 3.84,
         elevation: 5,
     },
-    btnTxt: {
-        fontSize: 18,
-        fontWeight: 'bold',
-        color: 'black',
-        alignSelf: 'center',
-    },
+
     errorTxt: {
         color: 'red',
         fontWeight: 'bold',
-        marginLeft: '4%',
-        marginBottom: '2%',
+        textAlign: 'center',
+        fontSize: 15,
+        // marginLeft: '4%',
+        // marginBottom: '2%'
+        // backgroundColor: 'blue',
     },
 })

@@ -134,9 +134,9 @@ const App = ({ navigation }) => {
     <AuthContext.Provider value={authContextValue}>
       <NavigationContainer>
         <Stack.Navigator>
-          {/* {chooseScreen(state)} */}
+          {chooseScreen(state)}
           {/* <Stack.Screen name="Splash" component={SplashScreen} options={{ headerShown: false }} /> */}
-          <Stack.Screen name="Drawer" component={DrawerNavigate} options={{ headerShown: false }} />
+          {/* <Stack.Screen name="Drawer" component={DrawerNavigate} options={{ headerShown: false }} /> */}
         </Stack.Navigator>
       </NavigationContainer>
     </AuthContext.Provider>

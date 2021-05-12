@@ -67,10 +67,8 @@ const ViewContact = ({ navigation, route }) => {
                 <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
                     <View style={styles.modalContent}>
                         <Icon
-                            name="x"
-                            style={styles.close}
-                            size={25}
-                            color="#77A8AB"
+                            name="x" style={styles.close}
+                            size={25} color="#77A8AB"
                             onPress={() => setModalOpen(false)}
                         />
                         <ContactEdit item={route.params.item}

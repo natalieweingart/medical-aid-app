@@ -30,7 +30,8 @@ const MedSchema = yup.object({
 const MedicationEditForm = (props) => {
     return (
         <ScrollView>
-            <Text style={styles.heading}>Edit Medication</Text>
+            <Text style={styles.heading}>
+                Edit Medication</Text>
             <Formik
                 initialValues={{
                     id: props.item.id,
@@ -46,47 +47,51 @@ const MedicationEditForm = (props) => {
                 }}>
                 {(props) => (
                     <View>
-                        <Text style={styles.label}>Name</Text>
+                        <Text style={styles.label}>
+                            Name</Text>
                         <TextInput
                             style={styles.inputBox}
                             placeholder={props.initialValues.name}
                             onChangeText={props.handleChange('name')}
                             value={props.values.name}
-                            onBlur={props.handleBlur('name')}></TextInput>
+                            onBlur={props.handleBlur('name')} />
                         <Text style={styles.errorText}>
                             {props.touched.name && props.errors.name}
                         </Text>
 
-                        <Text style={styles.label}>Instructions</Text>
+                        <Text style={styles.label}>
+                            Instructions</Text>
                         <TextInput
                             multiline
                             style={styles.descriptionBox}
                             placeholder={props.initialValues.instructions}
                             onChangeText={props.handleChange('instructions')}
                             value={props.values.instructions}
-                            onBlur={props.handleBlur('instructions')}></TextInput>
+                            onBlur={props.handleBlur('instructions')} />
                         <Text style={styles.errorText}>
                             {props.touched.instructions && props.errors.instructions}
                         </Text>
 
-                        <Text style={styles.label}>Time</Text>
+                        <Text style={styles.label}>
+                            Time</Text>
                         <TextInput
                             style={styles.inputBox}
                             placeholder={''}
                             onChangeText={props.handleChange('time')}
                             value={props.values.time}
-                            onBlur={props.handleBlur('time')}></TextInput>
+                            onBlur={props.handleBlur('time')} />
                         <Text style={styles.errorText}>
                             {props.touched.time && props.errors.time}
                         </Text>
 
-                        <Text style={styles.label}>Dosage</Text>
+                        <Text style={styles.label}>
+                            Dosage</Text>
                         <TextInput
                             style={styles.inputBox}
                             placeholder={props.initialValues.dosage}
                             onChangeText={props.handleChange('dosage')}
                             value={props.values.dosage}
-                            onBlur={props.handleBlur('dosage')}></TextInput>
+                            onBlur={props.handleBlur('dosage')} />
                         <Text style={styles.errorText}>
                             {props.touched.dosage && props.errors.dosage}
                         </Text>
@@ -94,7 +99,8 @@ const MedicationEditForm = (props) => {
                         <View style={{ alignItems: 'center' }} >
                             <TouchableOpacity style={styles.btn}
                                 onPress={props.handleSubmit}>
-                                <Text style={styles.btnTxt}>Save</Text>
+                                <Text style={styles.btnTxt}>
+                                    Save</Text>
                             </TouchableOpacity>
                         </View>
                     </View>

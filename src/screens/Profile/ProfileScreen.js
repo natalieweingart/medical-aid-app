@@ -7,6 +7,7 @@ import {
 import { Title, Subheading } from 'react-native-paper';
 import Feather from 'react-native-vector-icons/Feather';
 import EditProfile from './EditProfile';
+import { AuthContext } from '../../components/Authcontext';
 
 const ProfileScreen = ({ navigation }) => {
     const [modalOpen, setModalOpen] = useState(false);
@@ -18,6 +19,8 @@ const ProfileScreen = ({ navigation }) => {
             phoneNum: '(123)456-7890',
         }
     ])
+
+    const { signOut } = useContext(AuthContext);
 
     const newProfile = (profile) => {
         setProfile((currentProfile) => {
@@ -84,17 +87,14 @@ const ProfileScreen = ({ navigation }) => {
             <View style={{ alignContent: 'center', alignSelf: 'center', marginTop: 20 }}>
                 <TouchableOpacity
                     style={styles.btn}
-                    onPress={() => console.log("Manage Caretaker Clicked")}>
-                    <Text style={{ fontSize: 20, color: 'black', textAlign: 'center' }}>
-                        Manage Caretakers
-                    </Text>
-                </TouchableOpacity>
-
-                <TouchableOpacity
-                    style={styles.btn}
-                    onPress={() => Alert.alert('SIGN OUT CLICKED')}                   
-                    >
-                    <Text style={{ fontSize: 20, color: 'black', textAlign: 'center' }}>
+                    // onPress={() => Alert.alert('SIGN OUT CLICKED')} 
+                    onPress={() => signOut()} 
+                >
+                    <Text style=
+                        {{
+                            fontSize: 20, color: 'black',
+                            textAlign: 'center'
+                        }}>
                         Sign Out
                     </Text>
                 </TouchableOpacity>
@@ -105,7 +105,9 @@ const ProfileScreen = ({ navigation }) => {
                     <TouchableOpacity
                         onPress={() => navigation.navigate('ProfileScreen')} >
                         <View style={styles.close}>
-                            <Feather name='x' size={30} color='black' onPress={() => setModalOpen(false)} />
+                            <Feather
+                                name='x' size={30} color='#77A8AB'
+                                onPress={() => setModalOpen(false)} />
                             <EditProfile newProfile={newProfile} />
                         </View>
                     </TouchableOpacity>
@@ -175,7 +177,6 @@ const styles = StyleSheet.create({
         alignSelf: 'flex-end',
         // // padding: '5%'
         paddingHorizontal: '5%',
-        
         flexDirection: 'row',
         // justifyContent: 'flex-end',
         // justifyContent: 'space-between',

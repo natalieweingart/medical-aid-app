@@ -1,7 +1,10 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { validateAll } from 'indicative/validator';
 
-import { Text, View, TouchableOpacity, TextInput, StyleSheet } from 'react-native';
+import {
+  Text, View, TouchableOpacity,
+  TextInput, StyleSheet, ScrollView
+} from 'react-native';
 
 import { AuthContext } from '../../components/Authcontext';
 
@@ -22,7 +25,9 @@ const LoginScreen = ({ navigation }) => {
 
     const data = {
       email: emailAddress,
-      password: password
+      password: password,
+      // email: 'eileenquiroz@gmail.com',
+      // password: 'csun2021'
     };
 
     const messages = {
@@ -48,44 +53,46 @@ const LoginScreen = ({ navigation }) => {
 
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.txtTitle}>
-        Log In
-        </Text>
-      <TouchableOpacity 
-        onPress={() => signUp()}>
-        <Text style={styles.txtCreate}>
-          <Text style={styles.txtNewUser}>
-            New user? </Text> Create an account
-        </Text>
-      </TouchableOpacity>
-      <View style={styles.viewInput}>
-        <TextInput style={styles.txtInput}
-          label={'Email'}
-          placeholder='Email'
-          placeholderTextColor='black'
-          value={emailAddress}
-          onChangeText={setemailAddress}
-          errorMessage={SignUpErrors ? SignUpErrors.email : null}
-        />
-      </View>
-      <View style={styles.viewInput}>
-        <TextInput style={styles.txtInput}
-          secureTextEntry
-          placeholder='Password'
-          placeholderTextColor='black'
-          value={password}
-          onChangeText={setPassword}
-          errorMessage={SignUpErrors ? SignUpErrors.password : null}
-        />
-      </View>
-      <TouchableOpacity style={styles.btnLogin}
-        onPress={() => handleSignIn()}>
-        <Text style={styles.btnTxt}>
+    <ScrollView>
+      <View style={styles.container}>
+        <Text style={styles.txtTitle}>
           Log In
         </Text>
-      </TouchableOpacity>
-    </View>
+        <TouchableOpacity
+          onPress={() => signUp()}>
+          <Text style={styles.txtCreate}>
+            <Text style={styles.txtNewUser}>
+              New user? </Text> Create an account
+        </Text>
+        </TouchableOpacity>
+        <View style={styles.viewInput}>
+          <TextInput style={styles.txtInput}
+            label={'Email'}
+            placeholder='Email'
+            placeholderTextColor='black'
+            value={emailAddress}
+            onChangeText={setemailAddress}
+            errorMessage={SignUpErrors ? SignUpErrors.email : null}
+          />
+        </View>
+        <View style={styles.viewInput}>
+          <TextInput style={styles.txtInput}
+            secureTextEntry
+            placeholder='Password'
+            placeholderTextColor='black'
+            value={password}
+            onChangeText={setPassword}
+            errorMessage={SignUpErrors ? SignUpErrors.password : null}
+          />
+        </View>
+        <TouchableOpacity style={styles.btnLogin}
+          onPress={() => handleSignIn()}>
+          <Text style={styles.btnTxt}>
+            Log In
+        </Text>
+        </TouchableOpacity>
+      </View>
+    </ScrollView>
   );
 };
 
@@ -95,7 +102,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center',
+    marginTop: '20%',
+    // justifyContent: 'center',
     // backgroundColor: 'red'
   },
   txtTitle: {

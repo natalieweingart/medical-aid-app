@@ -8,7 +8,8 @@ const StartSelection = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.txtTitle}>Welcome to the Medical Aid App</Text>
+      <Text style={styles.txtTitle}>
+        Welcome to the Medical Aid App</Text>
       <Image
         style={styles.imgMain}
         source={require('../image/Logo.png')} />

@@ -25,7 +25,7 @@ const SympSchema = yup.object({
     time: yup
         .string()
         .required('Time is required.')
-        .matches(/^([1-9]|[1][0-2])\:([0-5][0-9])\s(A|P)(M)$/, { message: 'Invalid Time.' }),
+        .matches(/^([0]?[1-9]|[1][0-2])\:([0-5][0-9])\s(A|P)(M)$/, { message: 'Invalid Time.' }),
     painScale: yup.string().required('Pain Level is required.'),
 });
 
@@ -52,8 +52,7 @@ const SymptomEdit = (props) => {
                 {(props) => (
                     <View style={styles.container}>
                         <Text style={styles.label}>
-                            Title
-                        </Text>
+                            Title </Text>
                         <TextInput
                             style={styles.inputBox}
                             placeholder={props.initialValues.title}
@@ -64,7 +63,8 @@ const SymptomEdit = (props) => {
                             {props.touched.title && props.errors.title}
                         </Text>
 
-                        <Text style={styles.label}>Description</Text>
+                        <Text style={styles.label}>
+                            Description</Text>
                         <TextInput
                             style={styles.descriptionBox}
                             placeholder={props.initialValues.description}
@@ -75,23 +75,27 @@ const SymptomEdit = (props) => {
                             {props.touched.description && props.errors.description}
                         </Text>
 
-                        <Text style={styles.label}>Date</Text>
+                        <Text style={styles.label}>
+                            Date</Text>
                         <TextInput
                             style={styles.inputBox}
                             placeholder={props.initialValues.date}
                             onChangeText={props.handleChange('date')}
                             value={props.values.date}
                             onBlur={props.handleBlur('date')} />
-                        <Text style={styles.errorText}>{props.touched.date && props.errors.date}</Text>
+                        <Text style={styles.errorText}>
+                            {props.touched.date && props.errors.date}</Text>
 
-                        <Text style={styles.label}>Time</Text>
+                        <Text style={styles.label}>
+                            Time</Text>
                         <TextInput
                             style={styles.inputBox}
                             placeholder={props.initialValues.time}
                             onChangeText={props.handleChange('time')}
                             value={props.values.time}
                             onBlur={props.handleBlur('time')} />
-                        <Text style={styles.errorText}>{props.touched.time && props.errors.time}</Text>
+                        <Text style={styles.errorText}>
+                            {props.touched.time && props.errors.time}</Text>
 
                         <Text style={styles.label}>Pain Scale</Text>
                         <TextInput
@@ -107,7 +111,8 @@ const SymptomEdit = (props) => {
                         <View style={{ alignItems: 'center' }} >
                             <TouchableOpacity style={styles.btn}
                                 onPress={props.handleSubmit}>
-                                <Text style={styles.btnTxt}>Save</Text>
+                                <Text style={styles.btnTxt}>
+                                    Save</Text>
                             </TouchableOpacity>
                         </View>
 

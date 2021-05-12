@@ -13,7 +13,12 @@ const ReviewSymp = ({ navigation, route }) => {
     const onUpdate = (symp) => {
         route.params.updateSymptom(symp);
         setModalOpen(false);
-        navigation.navigate('SymptomScreen');
+        navigation.navigate('Symptom Log');
+    }
+
+    const onDelete = (id) => {
+        route.params.deleteSymptom(id);
+        navigation.navigate('Symptom Log');
     }
 
     return (
@@ -44,7 +49,7 @@ const ReviewSymp = ({ navigation, route }) => {
                         {/* <Button title='Delete'></Button> */}
                         <TouchableOpacity
                             style={styles.btn}
-                            onPress={() => console.log('DELETE CLICKED')}>
+                            onPress={() => onDelete(route.params.item.id)}>
                             <Text style={styles.btnTxt}>
                                 Delete
                             </Text>
@@ -140,7 +145,7 @@ const styles = StyleSheet.create({
         alignSelf: 'flex-end',
         // // padding: '5%'
         paddingHorizontal: '5%',
-        
+
         flexDirection: 'row',
         // justifyContent: 'flex-end',
         // justifyContent: 'space-between',

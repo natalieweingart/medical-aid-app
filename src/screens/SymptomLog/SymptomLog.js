@@ -1,39 +1,37 @@
 import React, { useState } from 'react';
 import {
-    Text, TextInput, View, StyleSheet, TouchableOpacity, ScrollView,
+    Text, View, StyleSheet, TouchableOpacity, ScrollView,
     Button, Modal, TouchableWithoutFeedback, Keyboard, FlatList,
 } from 'react-native';
-import { Calendar, CalendarList, Agenda } from 'react-native-calendars';
 import Icon from 'react-native-vector-icons/Feather';
-import { Card, Title, Paragraph, Subheading } from 'react-native-paper';
+import { Card, Title, Subheading } from 'react-native-paper';
 import SympForm from './SymptomForm';
+import { SafeAreaView } from 'react-native';
 
-const SymptomLog = ({ navigation }) => {
+const SymptomScreen = ({ navigation }) => {
     const [modalOpen, setModalOpen] = useState(false);
 
-    const [btn, setBtn] = useState(false);
-    const [currentDate, setCurrentDate] = useState('');
     const [symptom, setSymptom] = useState([
         {
             id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-            date: 'June 5',
-            time: '12:32pm',
+            date: '05/05/2021',
+            time: '12:32 PM',
             title: 'Back Pain',
             description: 'Dull pain in lumbars.',
             painScale: '3',
         },
         {
             id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
-            date: 'May 4',
-            time: '14:23pm',
+            date: '05/04/2021',
+            time: '4:23 PM',
             title: 'Nausea',
             description: 'Sudden bout of nausea and dizziness.',
             painScale: '0',
         },
         {
             id: '58694a0f-3da1-471f-bd96-145571e29d72',
-            date: 'Aug 10',
-            time: '10:42am',
+            date: '08/10/2021',
+            time: '10:42 AM',
             title: 'Headache',
             description: 'Sharp headache in the temporal area of the head.',
             painScale: '5',
@@ -42,9 +40,22 @@ const SymptomLog = ({ navigation }) => {
 
     const addSymptom = (symptom) => {
         setSymptom((currentSymptom) => {
-            return [symptom, ...currentSymptom];
+            return [...currentSymptom, symptom];
         });
         setModalOpen(false);
+    };
+
+    const updateSymptom = (item) => {
+        const newSymptom = [...symptom];
+        newSymptom[item.id] = item;
+        return setSymptom(newSymptom);
+    };
+
+    const deleteSymptom = (id) => {
+        setSymptom(symptom.filter((data) => data.id !== id));
+        for (var index = id; index < symptom.length; index++) {
+            symptom[index].id = symptom[index].id - 1;
+        }
     };
 
     const Item = ({ title, description, date, time, painScale }) => (
@@ -65,8 +76,17 @@ const SymptomLog = ({ navigation }) => {
     );
 
     const renderItem = ({ item }) => (
-        <TouchableOpacity onPress={() => navigation.navigate('View Symptom', item)}>
+        <TouchableOpacity
+            onPress={() => {
+                navigation.navigate('View Symptom',
+                    {
+                        item: item,
+                        updateSymptom: updateSymptom,
+                        deleteSymptom: deleteSymptom,
+                    });
+            }}>
             <Item
+                id={item.id}
                 title={item.title}
                 description={item.description}
                 date={item.date}
@@ -77,98 +97,88 @@ const SymptomLog = ({ navigation }) => {
     );
 
     return (
-        <View style={styles.container}>
-            <TouchableOpacity
-                style={styles.saveButton}
-                onPress={() => setModalOpen(true)}>
-                <Text>Log New Symptom</Text>
-            </TouchableOpacity>
-
-            <Modal visible={modalOpen} animationType="slide">
-                <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-                    <View style={styles.modalContent}>
-                        <Icon
-                            name="x"
-                            style={styles.close}
-                            size={25}
-                            color="#77A8AB"
-                            onPress={() => setModalOpen(false)}
-                        />
-                        <SympForm addSymptom={addSymptom}></SympForm>
-                    </View>
-                </TouchableWithoutFeedback>
-            </Modal>
+        <SafeAreaView style={{ flex: 1 }} >
+            <View style={styles.header}>
+                <Text style={[styles.txt, { fontSize: 30 }]} >
+                    Symptom Log
+                    </Text>
+            </View>
 
             <FlatList
                 data={symptom}
                 renderItem={renderItem}
                 keyExtractor={(item) => item.id}
             />
-        </View>
+
+            <TouchableOpacity style={styles.btn} onPress={() => setModalOpen(true)}>
+                <Text style={styles.btnTxt}>
+                    Add New Symptom
+                </Text>
+            </TouchableOpacity>
+
+            <Modal visible={modalOpen} animationType="slide">
+                <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+                    <View style={styles.modalContent}>
+                        <Icon
+                            name="x" style={styles.close}
+                            size={25} color="#77A8AB"
+                            onPress={() => setModalOpen(false)} />
+                        <SympForm addSymptom={addSymptom}></SympForm>
+                    </View>
+                </TouchableWithoutFeedback>
+            </Modal>
+        </SafeAreaView>
     );
 };
 
-export default SymptomLog;
+export default SymptomScreen;
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: 'white',
-        justifyContent: 'center',
-        padding: 5,
+        // alignItems: 'center'
     },
 
-    heading: {
-        fontSize: 25,
-        alignSelf: 'center',
-        paddingVertical: 10,
+    modalContent: {
+        paddingVertical: '5%'
+    },
+    header: {
+        // flexDirection: 'row',
+        // justifyContent: 'flex-end',
+        // justifyContent: 'space-between',
+        // justifyContent: 'center',
+        marginTop: '5%',
+        marginBottom: '3%',
+        marginHorizontal: 16,
+        // backgroundColor: 'purple',
+        alignItems: 'center',
+    },
+    mainTxt: {
+        alignItems: 'center',
+        marginTop: 20,
+        // backgroundColor: 'purple',
+    },
+    txt: {
+        color: 'black',
         fontWeight: 'bold',
     },
-
-    inputBox: {
-        borderWidth: 1,
-        padding: 10,
-        margin: 10,
+    btnTxt: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        color: 'black',
+        alignSelf: 'center',
     },
 
-    descriptionBox: {
-        borderWidth: 1,
-        paddingHorizontal: 7,
-        paddingTop: 7,
-        paddingBottom: 50,
-        margin: 10,
-    },
-
-    submitButton: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-evenly',
-        padding: 10,
-    },
-
-    saveButton: {
+    btn: {
+        margin: '10%',
+        marginTop: '5%',
         borderRadius: 20,
-        margin: 20,
-        padding: 10,
-        backgroundColor: '#77A8AB',
-        alignItems: 'center',
-        shadowColor: "#000",
-        shadowOffset: {
-            width: 0,
-            height: 2,
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 3.84,
-        elevation: 5
-    },
-
-    cancelButton: {
-        borderRadius: 20,
-        paddingHorizontal: 30,
         paddingVertical: 10,
-        backgroundColor: '#F2F4F8',
-        alignItems: 'center',
-        shadowColor: '#000',
+        paddingHorizontal: 12,
+        backgroundColor: '#77A8AB',
+        // width: 250,
+        // height: 45,
+        shadowColor: "#000",
         shadowOffset: {
             width: 0,
             height: 2,
@@ -178,40 +188,11 @@ const styles = StyleSheet.create({
         elevation: 5,
     },
 
-    title: {
-        fontSize: 30,
-        textAlign: 'center',
-        color: 'black',
-        fontWeight: 'bold',
-        marginTop: '5%',
-    },
-
-    buttonText: {
-        fontSize: 18,
-        fontWeight: 'bold',
-        color: 'black',
-        alignSelf: 'center',
-    },
-
-    listHeading: {
-        fontSize: 18,
-        fontWeight: 'bold',
-    },
-
-    listText: {
-        fontSize: 16,
-        marginBottom: 5,
-    },
-
-    modalContent: {
-        paddingVertical: '5%'
-    },
-
     close: {
         alignSelf: 'flex-end',
         // // padding: '5%'
         paddingHorizontal: '5%',
-        
+
         flexDirection: 'row',
         // justifyContent: 'flex-end',
         // justifyContent: 'space-between',
@@ -227,12 +208,4 @@ const styles = StyleSheet.create({
     itemCard: {
         paddingHorizontal: '10%',
     },
-
-    errorText: {
-        color: 'red',
-        fontWeight: 'bold',
-        marginLeft: '4%',
-        marginBottom: '2%'
-    },
-});
-
+})

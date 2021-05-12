@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
     Text, View, StyleSheet, TouchableOpacity,
     Modal, TouchableWithoutFeedback, Keyboard, FlatList
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 import { Card, Title, Subheading } from 'react-native-paper';
+import { Picker } from '@react-native-picker/picker';
 import ApptForm from './ApptForm';
 import { SafeAreaView } from 'react-native';
 
@@ -15,14 +16,14 @@ const Appointment = ({ navigation }) => {
             id: '0',
             title: "Doctor's Appointment",
             description: "Physical Check Up",
-            date: '04/06/2021',
+            date: '05/16/2021',
             time: '10:00 AM'
         },
         {
             id: '1',
             title: "Dentist's Appointment",
             description: "Cleaning",
-            date: '04/09/2021',
+            date: '07/09/2021',
             time: '11:00 AM'
         }
     ]);
@@ -42,7 +43,52 @@ const Appointment = ({ navigation }) => {
 
     const deleteAppt = (index) => {
         setAppt(appt.filter((data) => data.id !== index));
+        for (var index = id; index < appt.length; index++) {
+            appt[index].id = appt[index].id - 1;
+        }
     };
+
+    const [selectedSort, setSort] = useState("Default");
+    useEffect(() => {
+        switch (selectedSort) {
+            case "Default": {
+                console.log(appt);
+                setAppt(appt.sort(
+                    function (a, b) {
+                        return a.id < b.id;
+                    }
+                ))
+                break;
+            }
+            case "A-Z": {
+                console.log(appt);
+                setAppt(appt.sort(
+                    function (a, b) {
+                        return a.name < b.name;
+                    }
+                ))
+                break;
+            }
+            case "Date": {
+                console.log(appt);
+                setAppt(appt.sort(
+                    function (a, b) {
+                        return (a.date < b.date && a.time < b.time);
+                    }
+                ))
+                break;
+            }
+
+            default: {
+                console.log(appt);
+                setAppt(appt.sort(
+                    function (a, b) {
+                        return a.id < b.id;
+                    }
+                ))
+            }
+        }
+    }, [selectedSort, appt]);
 
     function Appointment({ id, title, description, date, time }) {
         return (
@@ -86,6 +132,21 @@ const Appointment = ({ navigation }) => {
                 <Text style={[styles.txt, { fontSize: 30 }]} >
                     Appointments
                     </Text>
+            </View>
+
+            <View>
+                <Text style={{ marginLeft: '5%' }}>
+                    Sort By</Text>
+                <Picker
+                    mode="dropdown"
+                    selectedValue={selectedSort}
+                    onValueChange={(itemValue) =>
+                        setSort(itemValue)
+                    }>
+                    <Picker.Item label="Default" value="Default" />
+                    <Picker.Item label="Title (A to Z)" value="A-Z" />
+                    <Picker.Item label="Upcoming Date" value="Date" />
+                </Picker>
             </View>
 
             <FlatList

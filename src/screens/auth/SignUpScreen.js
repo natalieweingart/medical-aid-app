@@ -1,7 +1,10 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { validateAll } from 'indicative/validator';
 
-import { Text, View, TouchableOpacity, TextInput, StyleSheet, Feather } from 'react-native';
+import {
+  Text, View, TouchableOpacity,
+  TextInput, StyleSheet, ScrollView
+} from 'react-native';
 
 import { AuthContext } from '../../components/Authcontext';
 
@@ -56,56 +59,58 @@ const SignUpScreen = ({ navigation }) => {
   useEffect(() => { }, [SignUpErrors]);
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.txtTitle}>
-        Sign Up
-      </Text>
-      <TouchableOpacity
-        onPress={() => signIn()}>
-        <Text style={styles.txtAlready}>
-          Already a user? <Text style={styles.txtSign}> Sign in </Text>
-        </Text>
-      </TouchableOpacity>
-      <View style={styles.viewInput}>
-        <TextInput style={styles.txtInput}
-          label={'Email'}
-          placeholder='Email address...'
-          placeholderTextColor='black'
-          value={emailAddress}
-          onChangeText={setemailAddress}
-          errorMessage={SignUpErrors ? SignUpErrors.email : null}
-        />
-      </View>
-      <View style={styles.viewInput}>
-        <TextInput style={styles.txtInput}
-          secureTextEntry
-          label={'Password'}
-          placeholder="Password.."
-          placeholderTextColor='black'
-          value={password}
-          onChangeText={setPassword}
-        />
-      </View>
-      <View style={styles.viewInput}>
-        <TextInput style={styles.txtInput}
-          secureTextEntry
-          label={'Password Confirm'}
-          placeholder='Enter password again'
-          placeholderTextColor='black'
-          value={passwordConfirm}
-          onChangeText={setPasswordConfirm}
-        />
-      </View>
-      <Text style={{ color: 'red', marginLeft: 10, fontSize: 10 }}>
-        {SignUpErrors ? SignUpErrors.password : null}
-      </Text>
-      <TouchableOpacity style={styles.btnLogin}
-        onPress={() => handleSignUp()}>
-        <Text style={styles.btnTxt}>
+    <ScrollView>
+      <View style={styles.container}>
+        <Text style={styles.txtTitle}>
           Sign Up
+      </Text>
+        <TouchableOpacity
+          onPress={() => signIn()}>
+          <Text style={styles.txtAlready}>
+            Already a user? <Text style={styles.txtSign}> Sign in </Text>
+          </Text>
+        </TouchableOpacity>
+        <View style={styles.viewInput}>
+          <TextInput style={styles.txtInput}
+            label={'Email'}
+            placeholder='Email address...'
+            placeholderTextColor='black'
+            value={emailAddress}
+            onChangeText={setemailAddress}
+            errorMessage={SignUpErrors ? SignUpErrors.email : null}
+          />
+        </View>
+        <View style={styles.viewInput}>
+          <TextInput style={styles.txtInput}
+            secureTextEntry
+            label={'Password'}
+            placeholder="Password.."
+            placeholderTextColor='black'
+            value={password}
+            onChangeText={setPassword}
+          />
+        </View>
+        <View style={styles.viewInput}>
+          <TextInput style={styles.txtInput}
+            secureTextEntry
+            label={'Password Confirm'}
+            placeholder='Enter password again'
+            placeholderTextColor='black'
+            value={passwordConfirm}
+            onChangeText={setPasswordConfirm}
+          />
+        </View>
+        <Text style={{ color: 'red', marginLeft: 10, fontSize: 10 }}>
+          {SignUpErrors ? SignUpErrors.password : null}
         </Text>
-      </TouchableOpacity>
-    </View>
+        <TouchableOpacity style={styles.btnLogin}
+          onPress={() => handleSignUp()}>
+          <Text style={styles.btnTxt}>
+            Sign Up
+        </Text>
+        </TouchableOpacity>
+      </View>
+    </ScrollView>
   );
 };
 
@@ -113,8 +118,12 @@ export default SignUpScreen;
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     alignItems: 'center',
-    justifyContent: 'center',
+    // marginTop: '5%',
+    // justifyContent: 'center',
+    // backgroundColor: 'red'
+
   },
   txtTitle: {
     fontSize: 40,

@@ -14,12 +14,12 @@ const ReviewMed = ({ navigation, route }) => {
     const onUpdate = (medication) => {
         route.params.updateMedication(medication);
         setModalOpen(false);
-        navigation.navigate('MedicationTracker');
+        navigation.navigate('Medication Tracker');
     }
 
     const onDelete = (id) => {
         route.params.deleteMedication(id);
-        navigation.navigate('MedicationTracker');
+        navigation.navigate('Medication Tracker');
     }
 
     return (
@@ -58,10 +58,8 @@ const ReviewMed = ({ navigation, route }) => {
                 <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
                     <View style={styles.modalContent}>
                         <Icon
-                            name="x"
-                            style={styles.close}
-                            size={25}
-                            color="#77A8AB"
+                            name="x" style={styles.close}
+                            size={25} color="#77A8AB"
                             onPress={() => setModalOpen(false)}
                         />
                         <MedicationEditForm item={route.params.item}

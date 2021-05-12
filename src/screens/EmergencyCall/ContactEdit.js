@@ -18,7 +18,7 @@ const ContactSchema = yup.object({
             { message: 'Invalid Phone Number.', }),
 });
 
-const MedicationEditForm = (props) => {
+const ContactEditForm = (props) => {
     return (
         <ScrollView>
             <Text style={styles.heading}>Edit Contact</Text>
@@ -35,7 +35,8 @@ const MedicationEditForm = (props) => {
                 }}>
                 {(props) => (
                     <View>
-                        <Text style={styles.label}>Name</Text>
+                        <Text style={styles.label}>
+                            Name</Text>
                         <TextInput
                             style={styles.inputBox}
                             placeholder={props.initialValues.name}
@@ -46,7 +47,8 @@ const MedicationEditForm = (props) => {
                             {props.touched.name && props.errors.name}
                         </Text>
 
-                        <Text style={styles.label}>Number</Text>
+                        <Text style={styles.label}>
+                            Number</Text>
                         <TextInput
                             style={styles.inputBox}
                             placeholder={props.initialValues.phoneNum}
@@ -70,7 +72,7 @@ const MedicationEditForm = (props) => {
     );
 };
 
-export default MedicationEditForm;
+export default ContactEditForm;
 
 const styles = StyleSheet.create({
     container: {
