@@ -26,7 +26,8 @@ const ReviewAppt = ({ navigation, route }) => {
             <View style={styles.container}>
                 <Card style={styles.itemCard}>
                     <Card.Content>
-                        <Title>{route.params.item.title}</Title>
+                        <Title>
+                            {route.params.item.title}</Title>
                         <Subheading>
                             {route.params.item.description}
                             {'\n'}
@@ -38,17 +39,14 @@ const ReviewAppt = ({ navigation, route }) => {
                             style={styles.btn}
                             onPress={() => setModalOpen(true)}>
                             <Text style={styles.btnTxt}>
-                                Edit
-                            </Text>
+                                Edit </Text>
                         </TouchableOpacity>
                         <TouchableOpacity
                             style={styles.btn}
                             // onPress={() => console.log('DELETE CLICKED')}
-                            onPress={() => onDelete(route.params.item.id)}
-                        >
+                            onPress={() => onDelete(route.params.item.id)} >
                             <Text style={styles.btnTxt}>
-                                Delete
-                            </Text>
+                                Delete </Text>
                         </TouchableOpacity>
                     </Card.Actions>
                 </Card>
@@ -91,7 +89,6 @@ const styles = StyleSheet.create({
     header: {
         flexDirection: 'row',
         justifyContent: 'flex-end',
-        // justifyContent: 'space-between',
         marginTop: 25,
         marginHorizontal: 16,
         // backgroundColor: 'purple',
@@ -100,15 +97,16 @@ const styles = StyleSheet.create({
     itemCard: {
         marginTop: 20,
         paddingHorizontal: '10%',
-        // height: '30%',
         maxHeight: 200,
-        // width: 400,
         // backgroundColor: 'blue'
     },
+
     cardBtn: {
         alignItems: 'center',
-        justifyContent: 'space-evenly'
+        justifyContent: 'space-evenly',
+        // backgroundColor: 'purple',
     },
+
     btn: {
         margin: '10%',
         marginTop: '5%',
@@ -116,8 +114,6 @@ const styles = StyleSheet.create({
         paddingVertical: 10,
         paddingHorizontal: 12,
         backgroundColor: '#77A8AB',
-        // width: 250,
-        // height: 45,
         shadowColor: "#000",
         shadowOffset: {
             width: 0,
@@ -127,6 +123,7 @@ const styles = StyleSheet.create({
         shadowRadius: 3.84,
         elevation: 5,
     },
+
     btnTxt: {
         fontSize: 18,
         fontWeight: 'bold',
@@ -137,16 +134,10 @@ const styles = StyleSheet.create({
     modalContent: {
         paddingVertical: '5%'
     },
+
     close: {
         alignSelf: 'flex-end',
-        // // padding: '5%'
         paddingHorizontal: '5%',
-
         flexDirection: 'row',
-        // justifyContent: 'flex-end',
-        // justifyContent: 'space-between',
-        // marginTop: 25,
-        // marginHorizontal: 16,
-        // backgroundColor: 'purple',
     },
 });

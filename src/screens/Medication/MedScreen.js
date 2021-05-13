@@ -1,15 +1,17 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import {
     Text, View, StyleSheet, TouchableOpacity,
     Modal, TouchableWithoutFeedback, Keyboard, FlatList,
     SafeAreaView, Alert
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
-import { Card, Title, Paragraph, Subheading } from 'react-native-paper';
+import { Card, Title, Subheading } from 'react-native-paper';
 import MedForm from './MedForm';
 
 const MedicationTracker = ({ navigation }) => {
     const [modalOpen, setModalOpen] = useState(false);
+    const date = new Date();
+    const [lastOpened, setLastOpened] = useState(12);
     const [medication, setMedication] = useState([
         {
             id: 0,
@@ -88,12 +90,18 @@ const MedicationTracker = ({ navigation }) => {
         [reset]
     );
 
+    useEffect(() => {
+        console.log('testing 1 2');
+        checkDate(lastOpened, date.getDate());
+    }, [checkDate, lastOpened, date]);
+
     function Medication({ id, name, instructions, time, dosage, taken }) {
         return (
             <View style={styles.cardList}>
                 <Card style={taken ? styles.itemCardMuted : styles.itemCard}>
                     <Card.Content>
-                        <Title>{name}</Title>
+                        <Title>
+                            {name}</Title>
                         <Subheading>
                             {instructions}
                             {'\n'}
@@ -101,17 +109,18 @@ const MedicationTracker = ({ navigation }) => {
                             {'\n'}
                             {!taken ? (
                                 <View style={styles.sideBySide}>
-                                    <Text>Mark Taken</Text>
+                                    <Text>
+                                        Mark Taken</Text>
                                     <TouchableOpacity
                                         style={styles.takeButton}
                                         onPress={() => medicationTaken(id)}>
                                         <Text style={styles.checkmark}>
-                                            &#10003;
-                        </Text>
+                                            &#10003; </Text>
                                     </TouchableOpacity>
                                 </View>
                             ) : (
-                                <Text style={styles.italic}>Medication Taken Today</Text>
+                                <Text style={styles.italic}>
+                                    Medication Taken Today</Text>
                             )}
                         </Subheading>
                     </Card.Content>
@@ -181,37 +190,29 @@ export default MedicationTracker;
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        // alignItems: 'center'
     },
 
     modalContent: {
         paddingVertical: '5%'
     },
+
     header: {
-        // flexDirection: 'row',
-        // justifyContent: 'flex-end',
-        // justifyContent: 'space-between',
-        // justifyContent: 'center',
         marginTop: '5%',
         marginBottom: '3%',
         marginHorizontal: 16,
-        // backgroundColor: 'purple',
         alignItems: 'center',
+        // backgroundColor: 'purple',
     },
+
     mainTxt: {
         alignItems: 'center',
         marginTop: 20,
         // backgroundColor: 'purple',
     },
+
     txt: {
         color: 'black',
         fontWeight: 'bold',
-    },
-    btnTxt: {
-        fontSize: 18,
-        fontWeight: 'bold',
-        color: 'black',
-        alignSelf: 'center',
     },
 
     btn: {
@@ -221,8 +222,6 @@ const styles = StyleSheet.create({
         paddingVertical: 10,
         paddingHorizontal: 12,
         backgroundColor: '#77A8AB',
-        // width: 250,
-        // height: 45,
         shadowColor: "#000",
         shadowOffset: {
             width: 0,
@@ -233,16 +232,17 @@ const styles = StyleSheet.create({
         elevation: 5,
     },
 
+    btnTxt: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        color: 'black',
+        alignSelf: 'center',
+    },
+
     close: {
         alignSelf: 'flex-end',
-        // // padding: '5%'
         paddingHorizontal: '5%',
-
         flexDirection: 'row',
-        // justifyContent: 'flex-end',
-        // justifyContent: 'space-between',
-        // marginTop: 25,
-        // marginHorizontal: 16,
         // backgroundColor: 'purple',
     },
 
@@ -253,19 +253,18 @@ const styles = StyleSheet.create({
     itemCard: {
         paddingHorizontal: '10%',
     },
-    itemCard: {
-        paddingHorizontal: '10%',
-    },
 
     itemCardMuted: {
         paddingHorizontal: '10%',
         backgroundColor: '#e2e2e2',
     },
+
     sideBySide: {
         marginTop: 3,
         paddingTop: 5,
         flexDirection: 'row',
     },
+
     takeButton: {
         borderRadius: 5,
         padding: 5,
@@ -288,6 +287,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         textAlign: 'center',
     },
+
     italic: {
         fontStyle: 'italic',
     },

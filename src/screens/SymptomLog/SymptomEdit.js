@@ -60,8 +60,7 @@ const SymptomEdit = (props) => {
                             value={props.values.title}
                             onBlur={props.handleBlur('title')} />
                         <Text style={styles.errorText}>
-                            {props.touched.title && props.errors.title}
-                        </Text>
+                            {props.touched.title && props.errors.title} </Text>
 
                         <Text style={styles.label}>
                             Description</Text>
@@ -72,8 +71,7 @@ const SymptomEdit = (props) => {
                             value={props.values.description}
                             onBlur={props.handleBlur('description')} />
                         <Text style={styles.errorText}>
-                            {props.touched.description && props.errors.description}
-                        </Text>
+                            {props.touched.description && props.errors.description} </Text>
 
                         <Text style={styles.label}>
                             Date</Text>
@@ -105,8 +103,7 @@ const SymptomEdit = (props) => {
                             value={props.values.painScale}
                             onBlur={props.handleBlur('painScale')} />
                         <Text style={styles.errorText}>
-                            {props.touched.painScale && props.errors.painScale}
-                        </Text>
+                            {props.touched.painScale && props.errors.painScale} </Text>
 
                         <View style={{ alignItems: 'center' }} >
                             <TouchableOpacity style={styles.btn}
@@ -115,7 +112,6 @@ const SymptomEdit = (props) => {
                                     Save</Text>
                             </TouchableOpacity>
                         </View>
-
                     </View>
                 )}
             </Formik>
@@ -128,7 +124,8 @@ export default SymptomEdit;
 const styles = StyleSheet.create({
     container: {
         marginHorizontal: '7%',
-        marginVertical: '5%'
+        marginVertical: '3%',
+        // backgroundColor: 'red',
     },
 
     heading: {
@@ -146,7 +143,7 @@ const styles = StyleSheet.create({
     inputBox: {
         borderWidth: 1,
         borderRadius: 7,
-        padding: '2%',
+        padding: '1%',
         margin: '2%',
         fontSize: 18,
     },
@@ -190,6 +187,7 @@ const styles = StyleSheet.create({
         color: 'red',
         fontWeight: 'bold',
         marginLeft: '4%',
-        marginBottom: '2%'
+        marginBottom: '2%',
+        // backgroundColor: 'red',
     }
 })

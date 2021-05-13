@@ -13,27 +13,27 @@ const SymptomScreen = ({ navigation }) => {
 
     const [symptom, setSymptom] = useState([
         {
-            id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-            date: '05/05/2021',
-            time: '12:32 PM',
+            id: 0,
             title: 'Back Pain',
             description: 'Dull pain in lumbars.',
+            date: '06/05/2020',
+            time: '12:32 PM',
             painScale: '3',
         },
         {
-            id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
-            date: '05/04/2021',
-            time: '4:23 PM',
+            id: 1,
             title: 'Nausea',
             description: 'Sudden bout of nausea and dizziness.',
+            date: '05/04/2020',
+            time: '2:23 PM',
             painScale: '0',
         },
         {
-            id: '58694a0f-3da1-471f-bd96-145571e29d72',
-            date: '08/10/2021',
-            time: '10:42 AM',
+            id: 2,
             title: 'Headache',
             description: 'Sharp headache in the temporal area of the head.',
+            date: '08/10/2020',
+            time: '10:42 AM',
             painScale: '5',
         },
     ]);
@@ -58,17 +58,18 @@ const SymptomScreen = ({ navigation }) => {
         }
     };
 
-    const Item = ({ title, description, date, time, painScale }) => (
+    const Symptom = ({ title, description, date, time, painScale }) => (
         <View style={styles.cardList}>
             <Card style={styles.itemCard}>
                 <Card.Content>
-                    <Title>{title}</Title>
+                    <Title>
+                        {title}</Title>
                     <Subheading>
                         {description}
                         {'\n'}
                         {date} at {time}
                         {'\n'}
-            Pain Level: {painScale}
+                        Pain Level: {painScale}
                     </Subheading>
                 </Card.Content>
             </Card>
@@ -85,7 +86,7 @@ const SymptomScreen = ({ navigation }) => {
                         deleteSymptom: deleteSymptom,
                     });
             }}>
-            <Item
+            <Symptom
                 id={item.id}
                 title={item.title}
                 description={item.description}
@@ -100,8 +101,7 @@ const SymptomScreen = ({ navigation }) => {
         <SafeAreaView style={{ flex: 1 }} >
             <View style={styles.header}>
                 <Text style={[styles.txt, { fontSize: 30 }]} >
-                    Symptom Log
-                    </Text>
+                    Symptom Log </Text>
             </View>
 
             <FlatList
@@ -110,10 +110,10 @@ const SymptomScreen = ({ navigation }) => {
                 keyExtractor={(item) => item.id}
             />
 
-            <TouchableOpacity style={styles.btn} onPress={() => setModalOpen(true)}>
+            <TouchableOpacity style={styles.btn}
+                onPress={() => setModalOpen(true)}>
                 <Text style={styles.btnTxt}>
-                    Add New Symptom
-                </Text>
+                    Add New Symptom </Text>
             </TouchableOpacity>
 
             <Modal visible={modalOpen} animationType="slide">
@@ -123,7 +123,8 @@ const SymptomScreen = ({ navigation }) => {
                             name="x" style={styles.close}
                             size={25} color="#77A8AB"
                             onPress={() => setModalOpen(false)} />
-                        <SympForm addSymptom={addSymptom}></SympForm>
+                        <SympForm addSymptom={addSymptom}
+                            id={symptom.length} />
                     </View>
                 </TouchableWithoutFeedback>
             </Modal>
@@ -136,37 +137,29 @@ export default SymptomScreen;
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        // alignItems: 'center'
     },
 
     modalContent: {
         paddingVertical: '5%'
     },
+
     header: {
-        // flexDirection: 'row',
-        // justifyContent: 'flex-end',
-        // justifyContent: 'space-between',
-        // justifyContent: 'center',
         marginTop: '5%',
         marginBottom: '3%',
         marginHorizontal: 16,
-        // backgroundColor: 'purple',
         alignItems: 'center',
+        // backgroundColor: 'purple',
     },
+
     mainTxt: {
         alignItems: 'center',
         marginTop: 20,
         // backgroundColor: 'purple',
     },
+
     txt: {
         color: 'black',
         fontWeight: 'bold',
-    },
-    btnTxt: {
-        fontSize: 18,
-        fontWeight: 'bold',
-        color: 'black',
-        alignSelf: 'center',
     },
 
     btn: {
@@ -176,8 +169,6 @@ const styles = StyleSheet.create({
         paddingVertical: 10,
         paddingHorizontal: 12,
         backgroundColor: '#77A8AB',
-        // width: 250,
-        // height: 45,
         shadowColor: "#000",
         shadowOffset: {
             width: 0,
@@ -188,16 +179,17 @@ const styles = StyleSheet.create({
         elevation: 5,
     },
 
+    btnTxt: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        color: 'black',
+        alignSelf: 'center',
+    },
+
     close: {
         alignSelf: 'flex-end',
-        // // padding: '5%'
         paddingHorizontal: '5%',
-
         flexDirection: 'row',
-        // justifyContent: 'flex-end',
-        // justifyContent: 'space-between',
-        // marginTop: 25,
-        // marginHorizontal: 16,
         // backgroundColor: 'purple',
     },
 

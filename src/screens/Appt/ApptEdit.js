@@ -25,7 +25,7 @@ const EditAppt = (props) => {
     return (
         <ScrollView>
             <Text style={styles.heading}>
-                Edit Appointment</Text>
+                Edit Appointment </Text>
             <Formik
                 initialValues={{
                     id: props.item.id,
@@ -38,13 +38,11 @@ const EditAppt = (props) => {
                 onSubmit={(values, actions) => {
                     actions.resetForm();
                     props.updateAppt(values);
-                }}
-            >
+                }} >
                 {(props) => (
                     <View style={styles.container}>
                         <Text style={styles.label}>
-                            Title
-                        </Text>
+                            Title </Text>
                         <TextInput
                             style={styles.inputBox}
                             placeholder={props.initialValues.title}
@@ -52,10 +50,10 @@ const EditAppt = (props) => {
                             value={props.values.title}
                             onBlur={props.handleBlur('title')} />
                         <Text style={styles.errorText}>
-                            {props.touched.title && props.errors.title}
-                        </Text>
+                            {props.touched.title && props.errors.title} </Text>
 
-                        <Text style={styles.label}>Description</Text>
+                        <Text style={styles.label}>
+                            Description </Text>
                         <TextInput
                             style={styles.descriptionBox}
                             placeholder={props.initialValues.description}
@@ -63,31 +61,35 @@ const EditAppt = (props) => {
                             value={props.values.description}
                             onBlur={props.handleBlur('description')} />
                         <Text style={styles.errorText}>
-                            {props.touched.description && props.errors.description}
-                        </Text>
+                            {props.touched.description && props.errors.description} </Text>
 
-                        <Text style={styles.label}>Date</Text>
+                        <Text style={styles.label}>
+                            Date </Text>
                         <TextInput
                             style={styles.inputBox}
                             placeholder={props.initialValues.date}
                             onChangeText={props.handleChange('date')}
                             value={props.values.date}
                             onBlur={props.handleBlur('date')} />
-                        <Text style={styles.errorText}>{props.touched.date && props.errors.date}</Text>
+                        <Text style={styles.errorText}>
+                            {props.touched.date && props.errors.date} </Text>
 
-                        <Text style={styles.label}>Time</Text>
+                        <Text style={styles.label}>
+                            Time </Text>
                         <TextInput
                             style={styles.inputBox}
                             placeholder={props.initialValues.time}
                             onChangeText={props.handleChange('time')}
                             value={props.values.time}
                             onBlur={props.handleBlur('time')} />
-                        <Text style={styles.errorText}>{props.touched.time && props.errors.time}</Text>
+                        <Text style={styles.errorText}>
+                            {props.touched.time && props.errors.time} </Text>
 
                         <View style={{ alignItems: 'center' }} >
                             <TouchableOpacity style={styles.btn}
                                 onPress={props.handleSubmit}>
-                                <Text style={styles.btnTxt}>Save</Text>
+                                <Text style={styles.btnTxt}>
+                                    Save </Text>
                             </TouchableOpacity>
                         </View>
                     </View>
@@ -102,13 +104,13 @@ export default EditAppt;
 const styles = StyleSheet.create({
     container: {
         marginHorizontal: '7%',
-        marginVertical: '5%'
+        marginVertical: '3%',
     },
 
     heading: {
         fontSize: 21,
         alignSelf: 'center',
-        paddingVertical: '3%',
+        paddingVertical: '1%',
         fontWeight: 'bold',
         color: 'black',
     },
@@ -120,7 +122,7 @@ const styles = StyleSheet.create({
     inputBox: {
         borderWidth: 1,
         borderRadius: 7,
-        padding: '2%',
+        padding: '1%',
         margin: '2%',
         fontSize: 18,
     },

@@ -14,14 +14,15 @@ const ContactSchema = yup.object({
     phoneNum: yup
         .string()
         .required('Phone Number is required.')
-        .matches(/^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/,
+        .matches(/^[0-9][0-9][0-9]-[0-9][0-9][0-9]-[0-9][0-9][0-9][0-9]$/,
             { message: 'Invalid Phone Number.', }),
 });
 
 const ContactEditForm = (props) => {
     return (
         <ScrollView>
-            <Text style={styles.heading}>Edit Contact</Text>
+            <Text style={styles.heading}>
+                Edit Contact</Text>
             <Formik
                 initialValues={{
                     id: props.item.id,
@@ -34,7 +35,7 @@ const ContactEditForm = (props) => {
                     props.updateContact(values);
                 }}>
                 {(props) => (
-                    <View>
+                    <View style={styles.container}>
                         <Text style={styles.label}>
                             Name</Text>
                         <TextInput
@@ -44,8 +45,7 @@ const ContactEditForm = (props) => {
                             value={props.values.name}
                             onBlur={props.handleBlur('name')} />
                         <Text style={styles.errorText}>
-                            {props.touched.name && props.errors.name}
-                        </Text>
+                            {props.touched.name && props.errors.name} </Text>
 
                         <Text style={styles.label}>
                             Number</Text>
@@ -56,13 +56,13 @@ const ContactEditForm = (props) => {
                             value={props.values.phoneNum}
                             onBlur={props.handleBlur('phoneNum')} />
                         <Text style={styles.errorText}>
-                            {props.touched.phoneNum && props.errors.phoneNum}
-                        </Text>
+                            {props.touched.phoneNum && props.errors.phoneNum} </Text>
 
                         <View style={{ alignItems: 'center' }} >
                             <TouchableOpacity style={styles.btn}
                                 onPress={props.handleSubmit}>
-                                <Text style={styles.btnTxt}>Save</Text>
+                                <Text style={styles.btnTxt}>
+                                    Save</Text>
                             </TouchableOpacity>
                         </View>
                     </View>
@@ -77,13 +77,13 @@ export default ContactEditForm;
 const styles = StyleSheet.create({
     container: {
         marginHorizontal: '7%',
-        marginVertical: '5%'
+        marginVertical: '3%'
     },
 
     heading: {
-        fontSize: 25,
+        fontSize: 21,
         alignSelf: 'center',
-        paddingVertical: '3%',
+        paddingVertical: '1%',
         fontWeight: 'bold',
         color: 'black',
         // backgroundColor: 'red'
@@ -95,28 +95,20 @@ const styles = StyleSheet.create({
 
     inputBox: {
         borderWidth: 1,
-        borderRadius: 25,
-        padding: '2%',
+        borderRadius: 7,
+        padding: '1%',
         margin: '2%',
         fontSize: 18,
     },
 
-    btnTxt: {
-        fontSize: 20,
-        fontWeight: 'bold',
-        color: 'black',
-        alignSelf: 'center',
-    },
-
     btn: {
-        margin: '10%',
-        marginTop: '5%',
+        margin: '5%',
         borderRadius: 20,
         paddingVertical: 10,
         paddingHorizontal: 12,
         backgroundColor: '#77A8AB',
-        // width: 250,
-        // height: 45,
+        width: 250,
+        height: 45,
         shadowColor: "#000",
         shadowOffset: {
             width: 0,
@@ -127,13 +119,18 @@ const styles = StyleSheet.create({
         elevation: 5,
     },
 
+    btnTxt: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        color: 'black',
+        alignSelf: 'center',
+    },
+
     errorText: {
         color: 'red',
         fontWeight: 'bold',
-        textAlign: 'center',
-        fontSize: 20,
-        // marginLeft: '4%',
-        // marginBottom: '2%'
+        marginLeft: '4%',
+        marginBottom: '2%',
         // backgroundColor: 'blue',
     }
 })

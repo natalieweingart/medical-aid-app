@@ -47,7 +47,8 @@ const MedForm = ({ id, addMedication, navigation }) => {
                 }}>
                 {(props) => (
                     <View style={styles.container}>
-                        <Text style={styles.label}>Name</Text>
+                        <Text style={styles.label}>
+                            Name</Text>
                         <TextInput
                             style={styles.inputBox}
                             placeholder=""
@@ -55,10 +56,10 @@ const MedForm = ({ id, addMedication, navigation }) => {
                             value={props.values.name}
                             onBlur={props.handleBlur('name')} />
                         <Text style={styles.errorText}>
-                            {props.touched.name && props.errors.name}
-                        </Text>
+                            {props.touched.name && props.errors.name} </Text>
 
-                        <Text style={styles.label}>Instructions</Text>
+                        <Text style={styles.label}>
+                            Instructions</Text>
                         <TextInput
                             multiline
                             style={styles.descriptionBox}
@@ -67,10 +68,10 @@ const MedForm = ({ id, addMedication, navigation }) => {
                             value={props.values.instructions}
                             onBlur={props.handleBlur('instructions')} />
                         <Text style={styles.errorText}>
-                            {props.touched.instructions && props.errors.instructions}
-                        </Text>
+                            {props.touched.instructions && props.errors.instructions} </Text>
 
-                        <Text style={styles.label}>Time</Text>
+                        <Text style={styles.label}>
+                            Time</Text>
                         <TextInput
                             style={styles.inputBox}
                             placeholder="HH:MM AM/PM"
@@ -78,10 +79,10 @@ const MedForm = ({ id, addMedication, navigation }) => {
                             value={props.values.time}
                             onBlur={props.handleBlur('time')} />
                         <Text style={styles.errorText}>
-                            {props.touched.time && props.errors.time}
-                        </Text>
+                            {props.touched.time && props.errors.time} </Text>
 
-                        <Text style={styles.label}>Dosage</Text>
+                        <Text style={styles.label}>
+                            Dosage</Text>
                         <TextInput
                             style={styles.inputBox}
                             placeholder="## mg"
@@ -89,14 +90,14 @@ const MedForm = ({ id, addMedication, navigation }) => {
                             value={props.values.dosage}
                             onBlur={props.handleBlur('dosage')} />
                         <Text style={styles.errorText}>
-                            {props.touched.dosage && props.errors.dosage}
-                        </Text>
+                            {props.touched.dosage && props.errors.dosage} </Text>
 
                         <View style={{ alignItems: 'center' }} >
                             <TouchableOpacity
                                 style={styles.btn}
                                 onPress={props.handleSubmit}>
-                                <Text style={styles.btnTxt}>Save</Text>
+                                <Text style={styles.btnTxt}>
+                                    Save</Text>
                             </TouchableOpacity>
                         </View>
                     </View>
@@ -112,7 +113,7 @@ export default MedForm;
 const styles = StyleSheet.create({
     container: {
         marginHorizontal: '7%',
-        marginVertical: '5%'
+        marginVertical: '3%'
     },
 
     heading: {
@@ -130,15 +131,15 @@ const styles = StyleSheet.create({
 
     inputBox: {
         borderWidth: 1,
-        borderRadius: 25,
-        padding: '2%',
+        borderRadius: 7,
+        padding: '1%',
         margin: '2%',
         fontSize: 18,
     },
 
     descriptionBox: {
         borderWidth: 1,
-        borderRadius: 25,
+        borderRadius: 10,
         paddingHorizontal: '2%',
         paddingTop: '2%',
         paddingBottom: '10%',
@@ -163,17 +164,18 @@ const styles = StyleSheet.create({
         shadowRadius: 3.84,
         elevation: 5,
     },
+
     btnTxt: {
         fontSize: 18,
         fontWeight: 'bold',
         color: 'black',
         alignSelf: 'center',
     },
+
     errorText: {
         color: 'red',
         fontWeight: 'bold',
-        textAlign: 'center',
-        // marginLeft: '4%',
-        // marginBottom: '2%'
+        marginLeft: '4%',
+        marginBottom: '2%',
     }
 })

@@ -29,13 +29,14 @@ const SympSchema = yup.object({
     painScale: yup.string().required('Pain Level is required.'),
 });
 
-const SympForm = ({ addSymptom, navigation }) => {
+const SympForm = ({ id, addSymptom, navigation }) => {
     return (
         <ScrollView>
             <Text style={styles.heading}>
                 Log Symptom</Text>
             <Formik
                 initialValues={{
+                    id: id,
                     title: '',
                     description: '',
                     date: '',
@@ -58,8 +59,7 @@ const SympForm = ({ addSymptom, navigation }) => {
                             value={props.values.name}
                             onBlur={props.handleBlur('title')} />
                         <Text style={styles.errorText}>
-                            {props.touched.title && props.errors.title}
-                        </Text>
+                            {props.touched.title && props.errors.title} </Text>
 
                         <Text style={styles.label}>
                             Description</Text>
@@ -71,8 +71,7 @@ const SympForm = ({ addSymptom, navigation }) => {
                             value={props.values.instructions}
                             onBlur={props.handleBlur('description')} />
                         <Text style={styles.errorText}>
-                            {props.touched.description && props.errors.description}
-                        </Text>
+                            {props.touched.description && props.errors.description} </Text>
 
                         <Text style={styles.label}>
                             Date</Text>
@@ -83,8 +82,7 @@ const SympForm = ({ addSymptom, navigation }) => {
                             value={props.values.date}
                             onBlur={props.handleBlur('date')} />
                         <Text style={styles.errorText}>
-                            {props.touched.date && props.errors.date}
-                        </Text>
+                            {props.touched.date && props.errors.date} </Text>
 
                         <Text style={styles.label}>
                             Time</Text>
@@ -95,8 +93,7 @@ const SympForm = ({ addSymptom, navigation }) => {
                             value={props.values.time}
                             onBlur={props.handleBlur('time')} />
                         <Text style={styles.errorText}>
-                            {props.touched.time && props.errors.time}
-                        </Text>
+                            {props.touched.time && props.errors.time} </Text>
 
                         <Text style={styles.label}>
                             Pain Scale</Text>
@@ -107,8 +104,7 @@ const SympForm = ({ addSymptom, navigation }) => {
                             value={props.values.painScale}
                             onBlur={props.handleBlur('painScale')} />
                         <Text style={styles.errorText}>
-                            {props.touched.painScale && props.errors.painScale}
-                        </Text>
+                            {props.touched.painScale && props.errors.painScale} </Text>
 
                         <View style={{ alignItems: 'center' }} >
                             <TouchableOpacity
@@ -130,7 +126,7 @@ export default SympForm;
 const styles = StyleSheet.create({
     container: {
         marginHorizontal: '7%',
-        marginVertical: '5%'
+        marginVertical: '3%',
     },
 
     heading: {
@@ -148,15 +144,15 @@ const styles = StyleSheet.create({
 
     inputBox: {
         borderWidth: 1,
-        borderRadius: 25,
-        padding: '2%',
+        borderRadius: 7,
+        padding: '1%',
         margin: '2%',
         fontSize: 18,
     },
 
     descriptionBox: {
         borderWidth: 1,
-        borderRadius: 25,
+        borderRadius: 10,
         paddingHorizontal: '2%',
         paddingTop: '2%',
         paddingBottom: '10%',
@@ -181,18 +177,19 @@ const styles = StyleSheet.create({
         shadowRadius: 3.84,
         elevation: 5,
     },
+    
     btnTxt: {
         fontSize: 18,
         fontWeight: 'bold',
         color: 'black',
         alignSelf: 'center',
     },
+    
     errorText: {
         color: 'red',
         fontWeight: 'bold',
-        textAlign: 'center',
-        // marginLeft: '4%',
-        // marginBottom: '2%'
+        marginLeft: '4%',
+        marginBottom: '2%',
         // backgroundColor: 'blue',
     }
 })

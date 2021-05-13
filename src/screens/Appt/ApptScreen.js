@@ -48,58 +48,13 @@ const Appointment = ({ navigation }) => {
         }
     };
 
-    const [selectedSort, setSort] = useState("Default");
-    useEffect(() => {
-        switch (selectedSort) {
-            case "Default": {
-                console.log(appt);
-                setAppt(appt.sort(
-                    function (a, b) {
-                        return a.id < b.id;
-                    }
-                ))
-                break;
-            }
-            case "A-Z": {
-                console.log(appt);
-                setAppt(appt.sort(
-                    function (a, b) {
-                        return a.name < b.name;
-                    }
-                ))
-                break;
-            }
-            case "Date": {
-                console.log(appt);
-                setAppt(appt.sort(
-                    function (a, b) {
-                        if (a.date == b.date) {
-                            return (a.time < b.time);
-                        } else {
-                            return (a.date < b.date);
-                        }
-                    }
-                ))
-                break;
-            }
-
-            default: {
-                console.log(appt);
-                setAppt(appt.sort(
-                    function (a, b) {
-                        return a.id < b.id;
-                    }
-                ))
-            }
-        }
-    }, [selectedSort, appt]);
-
-    function Appointment({ id, title, description, date, time }) {
+    function Appointment({ title, description, date, time }) {
         return (
             <View style={styles.cardList}>
                 <Card style={styles.itemCard}>
                     <Card.Content>
-                        <Title>{title}</Title>
+                        <Title>
+                            {title}</Title>
                         <Subheading>
                             {description}
                             {'\n'}
@@ -134,34 +89,16 @@ const Appointment = ({ navigation }) => {
         <SafeAreaView style={{ flex: 1 }}>
             <View style={styles.header}>
                 <Text style={[styles.txt, { fontSize: 30 }]} >
-                    Appointments
-                    </Text>
-            </View>
-
-            <View>
-                <Text style={{ marginLeft: '5%' }}>
-                    Sort By</Text>
-                <Picker
-                    mode="dropdown"
-                    selectedValue={selectedSort}
-                    onValueChange={(itemValue) =>
-                        setSort(itemValue)
-                    }>
-                    <Picker.Item label="Default" value="Default" />
-                    <Picker.Item label="Title (A to Z)" value="A-Z" />
-                    <Picker.Item label="Upcoming Date" value="Date" />
-                </Picker>
+                    Appointments </Text>
             </View>
 
             <FlatList
                 data={appt}
                 renderItem={renderItem}
-                keyExtractor={(item) => item.id}
-            />
+                keyExtractor={(item) => item.id} />
             <TouchableOpacity style={styles.btn} onPress={() => setModalOpen(true)}>
                 <Text style={styles.btnTxt}>
-                    Add New Appointment
-                </Text>
+                    Add New Appointment </Text>
             </TouchableOpacity>
 
             <Modal visible={modalOpen} animationType='slide'>
@@ -185,37 +122,30 @@ export default Appointment;
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        // alignItems: 'center'
+        // backgroundColor: 'purple',
     },
 
     modalContent: {
         paddingVertical: '5%'
     },
+
     header: {
-        // flexDirection: 'row',
-        // justifyContent: 'flex-end',
-        // justifyContent: 'space-between',
-        // justifyContent: 'center',
         marginTop: '5%',
         marginBottom: '3%',
         marginHorizontal: 16,
-        // backgroundColor: 'purple',
         alignItems: 'center',
+        // backgroundColor: 'purple',
     },
+
     mainTxt: {
         alignItems: 'center',
         marginTop: 20,
         // backgroundColor: 'purple',
     },
+
     txt: {
         color: 'black',
         fontWeight: 'bold',
-    },
-    btnTxt: {
-        fontSize: 18,
-        fontWeight: 'bold',
-        color: 'black',
-        alignSelf: 'center',
     },
 
     btn: {
@@ -225,8 +155,6 @@ const styles = StyleSheet.create({
         paddingVertical: 10,
         paddingHorizontal: 12,
         backgroundColor: '#77A8AB',
-        // width: 250,
-        // height: 45,
         shadowColor: "#000",
         shadowOffset: {
             width: 0,
@@ -237,16 +165,17 @@ const styles = StyleSheet.create({
         elevation: 5,
     },
 
+    btnTxt: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        color: 'black',
+        alignSelf: 'center',
+    },
+
     close: {
         alignSelf: 'flex-end',
-        // // padding: '5%'
         paddingHorizontal: '5%',
-
         flexDirection: 'row',
-        // justifyContent: 'flex-end',
-        // justifyContent: 'space-between',
-        // marginTop: 25,
-        // marginHorizontal: 16,
         // backgroundColor: 'purple',
     },
 

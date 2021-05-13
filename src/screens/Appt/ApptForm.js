@@ -25,7 +25,9 @@ const ApptForm = ({ id, addAppt }) => {
 
   return (
     <ScrollView>
-      <Text style={styles.heading}>New Appointment</Text>
+      <Text style={styles.heading}>
+        New Appointment
+        </Text>
       <Formik
         initialValues={{
           id: id,
@@ -38,20 +40,22 @@ const ApptForm = ({ id, addAppt }) => {
         onSubmit={(values, actions) => {
           actions.resetForm();
           addAppt(values);
-        }}
-      >
+        }} >
         {(props) => (
           <View style={styles.container}>
-            <Text style={styles.label}>Title</Text>
+            <Text style={styles.label}>
+              Title </Text>
             <TextInput
               style={styles.inputBox}
               placeholder=""
               onChangeText={props.handleChange('title')}
               value={props.values.title}
               onBlur={props.handleBlur('title')} />
-            <Text style={styles.errorText}>{props.touched.title && props.errors.title}</Text>
+            <Text style={styles.errorText}>
+              {props.touched.title && props.errors.title} </Text>
 
-            <Text style={styles.label}>Description</Text>
+            <Text style={styles.label}>
+              Description </Text>
             <TextInput
               multiline
               style={styles.descriptionBox}
@@ -59,31 +63,37 @@ const ApptForm = ({ id, addAppt }) => {
               onChangeText={props.handleChange('description')}
               value={props.values.description}
               onBlur={props.handleBlur('description')} />
-            <Text style={styles.errorText}>{props.touched.description && props.errors.description}</Text>
+            <Text style={styles.errorText}>
+              {props.touched.description && props.errors.description} </Text>
 
-            <Text style={styles.label}>Date</Text>
+            <Text style={styles.label}>
+              Date </Text>
             <TextInput
               style={styles.inputBox}
               placeholder="MM/DD/YYYY"
               onChangeText={props.handleChange('date')}
               value={props.values.date}
               onBlur={props.handleBlur('date')} />
-            <Text style={styles.errorText}>{props.touched.date && props.errors.date}</Text>
+            <Text style={styles.errorText}>
+              {props.touched.date && props.errors.date} </Text>
 
-            <Text style={styles.label}>Time</Text>
+            <Text style={styles.label}>
+              Time </Text>
             <TextInput
               style={styles.inputBox}
               placeholder="HH:MM AM/PM"
               onChangeText={props.handleChange('time')}
               value={props.values.time}
               onBlur={props.handleBlur('time')} />
-            <Text style={styles.errorText}>{props.touched.time && props.errors.time}</Text>
+            <Text style={styles.errorText}>
+              {props.touched.time && props.errors.time}</Text>
 
             <View style={{ alignItems: 'center' }} >
               <TouchableOpacity
                 style={styles.btn}
                 onPress={props.handleSubmit}>
-                <Text style={styles.btnTxt}>Save</Text>
+                <Text style={styles.btnTxt}>
+                  Save</Text>
               </TouchableOpacity>
             </View>
           </View>
@@ -100,13 +110,14 @@ export default ApptForm;
 const styles = StyleSheet.create({
   container: {
     marginHorizontal: '7%',
-    marginVertical: '5%'
+    marginVertical: '3%',
+    // backgroundColor: 'red',
   },
 
   heading: {
     fontSize: 21,
     alignSelf: 'center',
-    paddingVertical: '3%',
+    paddingVertical: '1%',
     fontWeight: 'bold',
     color: 'black',
     // backgroundColor: 'red'
@@ -118,15 +129,15 @@ const styles = StyleSheet.create({
 
   inputBox: {
     borderWidth: 1,
-    borderRadius: 25,
-    padding: '2%',
+    borderRadius: 7,
+    padding: '1%',
     margin: '2%',
     fontSize: 18,
   },
 
   descriptionBox: {
     borderWidth: 1,
-    borderRadius: 25,
+    borderRadius: 10,
     paddingHorizontal: '2%',
     paddingTop: '2%',
     paddingBottom: '10%',
@@ -134,22 +145,14 @@ const styles = StyleSheet.create({
     fontSize: 18,
   },
 
-  btnTxt: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    color: 'black',
-    alignSelf: 'center',
-  },
-
   btn: {
-    margin: '10%',
-    marginTop: '5%',
+    margin: '5%',
     borderRadius: 20,
     paddingVertical: 10,
     paddingHorizontal: 12,
     backgroundColor: '#77A8AB',
-    // width: 250,
-    // height: 45,
+    width: 250,
+    height: 45,
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
@@ -160,12 +163,17 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
 
+  btnTxt: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: 'black',
+    alignSelf: 'center',
+  },
+
   errorText: {
     color: 'red',
     fontWeight: 'bold',
-    textAlign: 'center',
-    // marginLeft: '4%',
-    // marginBottom: '2%'
-    // backgroundColor: 'blue',
+    marginLeft: '4%',
+    marginBottom: '2%',
   }
 })

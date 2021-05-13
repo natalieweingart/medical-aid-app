@@ -26,15 +26,15 @@ const ReviewSymp = ({ navigation, route }) => {
             <View style={styles.container}>
                 <Card style={styles.itemCard}>
                     <Card.Content>
-                        <Title>{route.params.item.title}</Title>
+                        <Title>
+                            {route.params.item.title}</Title>
                         <Subheading>
                             {route.params.item.description}
                             {'\n'}
                             {route.params.item.date} at {route.params.item.time}
                             {'\n'}
                             <Text>
-                                Pain Level: {route.params.item.painScale}
-                            </Text>
+                                Pain Level: {route.params.item.painScale} </Text>
                         </Subheading>
                     </Card.Content>
                     <Card.Actions style={styles.cardBtn}>
@@ -42,17 +42,13 @@ const ReviewSymp = ({ navigation, route }) => {
                             style={styles.btn}
                             onPress={() => setModalOpen(true)}>
                             <Text style={styles.btnTxt}>
-                                Edit
-                            </Text>
+                                Edit </Text>
                         </TouchableOpacity>
-                        {/* <Button title='Edit'></Button> */}
-                        {/* <Button title='Delete'></Button> */}
                         <TouchableOpacity
                             style={styles.btn}
                             onPress={() => onDelete(route.params.item.id)}>
                             <Text style={styles.btnTxt}>
-                                Delete
-                            </Text>
+                                Delete </Text>
                         </TouchableOpacity>
                     </Card.Actions>
                 </Card>
@@ -61,8 +57,9 @@ const ReviewSymp = ({ navigation, route }) => {
             <Modal visible={modalOpen} animationType='slide'>
                 <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
                     <View style={styles.modalContent}>
-                        <Icon name="x" style={styles.close} size={25}
-                            color="#77A8AB"
+                        <Icon
+                            name="x" style={styles.close}
+                            size={25} color="#77A8AB"
                             onPress={() => setModalOpen(false)} />
                         <SymptomEdit item={route.params.item}
                             updateSymptom={onUpdate} />
@@ -74,8 +71,7 @@ const ReviewSymp = ({ navigation, route }) => {
                 style={styles.btn}
                 onPress={() => navigation.goBack()}>
                 <Text style={styles.btnTxt}>
-                    Go Back
-                </Text>
+                    Go Back </Text>
             </TouchableOpacity>
         </SafeAreaView>
     );
@@ -95,7 +91,6 @@ const styles = StyleSheet.create({
     header: {
         flexDirection: 'row',
         justifyContent: 'flex-end',
-        // justifyContent: 'space-between',
         marginTop: 25,
         marginHorizontal: 16,
         // backgroundColor: 'purple',
@@ -104,15 +99,15 @@ const styles = StyleSheet.create({
     itemCard: {
         marginTop: 20,
         paddingHorizontal: '10%',
-        // height: '30%',
-        maxHeight: 250,
-        // width: 400,
+        maxHeight: 230,
         // backgroundColor: 'blue'
     },
+
     cardBtn: {
         alignItems: 'center',
         justifyContent: 'space-evenly'
     },
+
     btn: {
         margin: '10%',
         marginTop: '5%',
@@ -120,8 +115,6 @@ const styles = StyleSheet.create({
         paddingVertical: 10,
         paddingHorizontal: 12,
         backgroundColor: '#77A8AB',
-        // width: 250,
-        // height: 45,
         shadowColor: "#000",
         shadowOffset: {
             width: 0,
@@ -131,6 +124,7 @@ const styles = StyleSheet.create({
         shadowRadius: 3.84,
         elevation: 5,
     },
+
     btnTxt: {
         fontSize: 18,
         fontWeight: 'bold',
@@ -141,16 +135,11 @@ const styles = StyleSheet.create({
     modalContent: {
         paddingVertical: '5%'
     },
+
     close: {
         alignSelf: 'flex-end',
-        // // padding: '5%'
         paddingHorizontal: '5%',
-
         flexDirection: 'row',
-        // justifyContent: 'flex-end',
-        // justifyContent: 'space-between',
-        // marginTop: 25,
-        // marginHorizontal: 16,
         // backgroundColor: 'purple',
     },
 

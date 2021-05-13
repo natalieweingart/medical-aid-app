@@ -31,7 +31,7 @@ const MedicationEditForm = (props) => {
     return (
         <ScrollView>
             <Text style={styles.heading}>
-                Edit Medication</Text>
+                Edit Medication </Text>
             <Formik
                 initialValues={{
                     id: props.item.id,
@@ -56,8 +56,7 @@ const MedicationEditForm = (props) => {
                             value={props.values.name}
                             onBlur={props.handleBlur('name')} />
                         <Text style={styles.errorText}>
-                            {props.touched.name && props.errors.name}
-                        </Text>
+                            {props.touched.name && props.errors.name} </Text>
 
                         <Text style={styles.label}>
                             Instructions</Text>
@@ -69,8 +68,7 @@ const MedicationEditForm = (props) => {
                             value={props.values.instructions}
                             onBlur={props.handleBlur('instructions')} />
                         <Text style={styles.errorText}>
-                            {props.touched.instructions && props.errors.instructions}
-                        </Text>
+                            {props.touched.instructions && props.errors.instructions} </Text>
 
                         <Text style={styles.label}>
                             Time</Text>
@@ -81,8 +79,7 @@ const MedicationEditForm = (props) => {
                             value={props.values.time}
                             onBlur={props.handleBlur('time')} />
                         <Text style={styles.errorText}>
-                            {props.touched.time && props.errors.time}
-                        </Text>
+                            {props.touched.time && props.errors.time} </Text>
 
                         <Text style={styles.label}>
                             Dosage</Text>
@@ -93,8 +90,7 @@ const MedicationEditForm = (props) => {
                             value={props.values.dosage}
                             onBlur={props.handleBlur('dosage')} />
                         <Text style={styles.errorText}>
-                            {props.touched.dosage && props.errors.dosage}
-                        </Text>
+                            {props.touched.dosage && props.errors.dosage} </Text>
 
                         <View style={{ alignItems: 'center' }} >
                             <TouchableOpacity style={styles.btn}
@@ -115,7 +111,7 @@ export default MedicationEditForm;
 const styles = StyleSheet.create({
     container: {
         marginHorizontal: '7%',
-        marginVertical: '5%'
+        marginVertical: '3%'
     },
 
     heading: {
@@ -133,7 +129,7 @@ const styles = StyleSheet.create({
     inputBox: {
         borderWidth: 1,
         borderRadius: 7,
-        padding: '2%',
+        padding: '1%',
         margin: '2%',
         fontSize: 18,
     },
