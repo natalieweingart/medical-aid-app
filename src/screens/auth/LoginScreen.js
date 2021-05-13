@@ -103,23 +103,26 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     marginTop: '20%',
-    // justifyContent: 'center',
     // backgroundColor: 'red'
   },
+
   txtTitle: {
     fontSize: 40,
     textAlign: 'center',
     color: 'black',
     fontWeight: 'bold',
   },
+
   txtNewUser: {
     fontSize: 15,
     color: 'black',
   },
+
   txtCreate: {
     fontSize: 15,
     color: '#77A8AB',
   },
+
   viewInput: {
     fontSize: 18,
     backgroundColor: 'white',
@@ -130,14 +133,11 @@ const styles = StyleSheet.create({
     marginTop: 15,
     justifyContent: 'center',
   },
+
   txtInput: {
     height: 50,
   },
-  txtForgot: {
-    fontSize: 15,
-    color: '#77A8AB',
-    marginTop: '5%',
-  },
+
   btnLogin: {
     marginTop: '5%',
     borderRadius: 20,
@@ -155,6 +155,7 @@ const styles = StyleSheet.create({
     shadowRadius: 3.84,
     elevation: 5,
   },
+
   btnTxt: {
     fontSize: 18,
     fontWeight: 'bold',

@@ -103,7 +103,7 @@ const SignUpScreen = ({ navigation }) => {
         <Text style={{ color: 'red', marginLeft: 10, fontSize: 10 }}>
           {SignUpErrors ? SignUpErrors.password : null}
         </Text>
-        <TouchableOpacity style={styles.btnLogin}
+        <TouchableOpacity style={styles.btn}
           onPress={() => handleSignUp()}>
           <Text style={styles.btnTxt}>
             Sign Up
@@ -120,11 +120,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    // marginTop: '5%',
-    // justifyContent: 'center',
     // backgroundColor: 'red'
-
   },
+
   txtTitle: {
     fontSize: 40,
     textAlign: 'center',
@@ -132,19 +130,17 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginTop: '25%',
   },
+
   txtAlready: {
     fontSize: 15,
     color: 'black',
   },
+
   txtSign: {
     fontSize: 15,
     color: '#77A8AB',
   },
-  txtCreate: {
-    fontSize: 15,
-    color: '#77A8AB',
-    letterSpacing: -1,
-  },
+
   viewInput: {
     fontSize: 18,
     backgroundColor: 'white',
@@ -155,15 +151,12 @@ const styles = StyleSheet.create({
     marginTop: 15,
     justifyContent: 'center',
   },
+
   txtInput: {
     height: 50,
   },
-  txtForgot: {
-    fontSize: 15,
-    color: '#77A8AB',
-    marginTop: '5%',
-  },
-  btnLogin: {
+
+  btn: {
     marginTop: '5%',
     borderRadius: 20,
     paddingVertical: 10,
@@ -180,6 +173,7 @@ const styles = StyleSheet.create({
     shadowRadius: 3.84,
     elevation: 5,
   },
+
   btnTxt: {
     fontSize: 18,
     fontWeight: 'bold',

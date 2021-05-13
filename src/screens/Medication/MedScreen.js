@@ -43,7 +43,7 @@ const MedicationTracker = ({ navigation }) => {
 
     const addMedication = (medication) => {
         setMedication((currentMedication) => {
-            return [medication, ...currentMedication];
+            return [...currentMedication, medication];
         });
         setModalOpen(false);
     };
@@ -59,6 +59,7 @@ const MedicationTracker = ({ navigation }) => {
 
     const deleteMedication = (index) => {
         setMedication(medication.filter((data) => data.id !== index));
+
         for (var id = index; id < medication.length; id++) {
             medication[id].id = medication[id].id - 1;
         }
@@ -75,7 +76,7 @@ const MedicationTracker = ({ navigation }) => {
             medication[id].taken = false;
             updateMedication(medication[id]);
         }
-        Alert.alert('medication reset');
+        console.log('medication reset');
     }, [updateMedication, medication]);
 
     const checkDate = useCallback(

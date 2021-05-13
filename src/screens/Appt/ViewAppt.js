@@ -86,12 +86,8 @@ const styles = StyleSheet.create({
         // backgroundColor: 'red'
     },
 
-    header: {
-        flexDirection: 'row',
-        justifyContent: 'flex-end',
-        marginTop: 25,
-        marginHorizontal: 16,
-        // backgroundColor: 'purple',
+    modalContent: {
+        paddingVertical: '5%'
     },
 
     itemCard: {
@@ -129,10 +125,6 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         color: 'black',
         alignSelf: 'center',
-    },
-
-    modalContent: {
-        paddingVertical: '5%'
     },
 
     close: {

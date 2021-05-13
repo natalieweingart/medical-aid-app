@@ -120,11 +120,6 @@ const Appointment = ({ navigation }) => {
 export default Appointment;
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        // backgroundColor: 'purple',
-    },
-
     modalContent: {
         paddingVertical: '5%'
     },
@@ -134,12 +129,6 @@ const styles = StyleSheet.create({
         marginBottom: '3%',
         marginHorizontal: 16,
         alignItems: 'center',
-        // backgroundColor: 'purple',
-    },
-
-    mainTxt: {
-        alignItems: 'center',
-        marginTop: 20,
         // backgroundColor: 'purple',
     },
 
