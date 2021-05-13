@@ -36,10 +36,6 @@ const EditProfile = ({ newProfile }) => {
             </View>
             <Formik
                 initialValues={{
-                    // fname: props.fname,
-                    // lname: props.lname,
-                    // email: props.email,
-                    // phoneNum: props.phoneNum,
                     fname: '',
                     lname: '',
                     email: '',
@@ -58,7 +54,6 @@ const EditProfile = ({ newProfile }) => {
                             style={styles.inputBox}
                             label={'fname'}
                             placeholder=''
-                            // placeholder={props.initialValues.fname}
                             onSubmitEditing={Keyboard.dismiss}
                             autoCapitalize='words'
                             onChangeText={props.handleChange('fname')} />
@@ -71,7 +66,6 @@ const EditProfile = ({ newProfile }) => {
                             style={styles.inputBox}
                             label={'lname'}
                             placeholder=''
-                            // placeholder={props.initialValues.lname}
                             onSubmitEditing={Keyboard.dismiss}
                             autoCapitalize='words'
                             onChangeText={props.handleChange('lname')} />
@@ -84,7 +78,6 @@ const EditProfile = ({ newProfile }) => {
                             style={styles.inputBox}
                             label={'email'}
                             placeholder=''
-                            // placeholder={props.initialValues.email}
                             onSubmitEditing={Keyboard.dismiss}
                             onChangeText={props.handleChange('email')} />
                         <Text style={styles.errorText}>
@@ -96,7 +89,6 @@ const EditProfile = ({ newProfile }) => {
                             style={styles.inputBox}
                             label={'phoneNum'}
                             placeholder='###-###-####'
-                            // placeholder={props.initialValues.phoneNum}
                             onChangeText={props.handleChange('phoneNum')}
                             onSubmitEditing={Keyboard.dismiss} />
                         <Text style={styles.errorText}>
