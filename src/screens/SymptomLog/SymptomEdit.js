@@ -47,8 +47,7 @@ const SymptomEdit = (props) => {
                 onSubmit={(values, actions) => {
                     actions.resetForm();
                     props.updateSymptom(values);
-                }}
-            >
+                }} >
                 {(props) => (
                     <View style={styles.container}>
                         <Text style={styles.label}>
