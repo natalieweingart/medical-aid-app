@@ -151,12 +151,6 @@ const styles = StyleSheet.create({
         // backgroundColor: 'purple',
     },
 
-    mainTxt: {
-        alignItems: 'center',
-        marginTop: 20,
-        // backgroundColor: 'purple',
-    },
-
     txt: {
         color: 'black',
         fontWeight: 'bold',

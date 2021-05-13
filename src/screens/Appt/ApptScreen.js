@@ -13,14 +13,14 @@ const Appointment = ({ navigation }) => {
     const [modalOpen, setModalOpen] = useState(false);
     const [appt, setAppt] = useState([
         {
-            id: '0',
+            id: 0,
             title: "Doctor's Appointment",
             description: "Physical Check Up",
             date: '05/16/2021',
             time: '10:00 AM'
         },
         {
-            id: '1',
+            id: 1,
             title: "Dentist's Appointment",
             description: "Cleaning",
             date: '07/09/2021',

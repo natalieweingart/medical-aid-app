@@ -13,12 +13,12 @@ const ContactList = ({ navigation }) => {
     const [modalOpen, setModalOpen] = useState(false);
     const [contact, setContact] = useState([
         {
-            id: '0',
+            id: 0,
             name: 'Mom',
             phoneNum: '818-456-7890',
         },
         {
-            id: '1',
+            id: 1,
             name: 'Brother',
             phoneNum: '818-987-2413',
         }
