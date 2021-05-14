@@ -1,9 +1,9 @@
 # medical-aid-app
 
+<<<<<<< HEAD
 run with
 
 $ npx react-native run-android
-
-OR
-
-$ npm run android
+=======
+run with "npx react-native run-android"
+>>>>>>> main
