@@ -8,13 +8,13 @@
   <h3 align="center">Virtual Assist</h3>
 
   <p align="center">
-    Virtual Assist will help the individual manage their medication, symptoms, medical appointments, and have a list of emergency contacts.
+    Virtual Assist will help the individual manage their medical history.
   </p>
 </p>
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-Originally created with the idea of having a caretaker and patient relation. 
+Originally created with the idea of having a caretaker and patient relation. Currently the user is able to add and edit as well as delete their symptoms, appointments, medications, and calls. 
 
 ### Built With
 * [Visual Studio Code](https://code.visualstudio.com/download)
