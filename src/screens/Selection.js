@@ -9,7 +9,7 @@ const StartSelection = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.txtTitle}>
-        Welcome to the Medical Aid App</Text>
+        Welcome to the Virtual Assist</Text>
       <Image
         style={styles.imgMain}
         source={require('../image/Logo.png')} />
