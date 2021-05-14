@@ -2,7 +2,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/natalieweingart/medical-aid-app/blob/main/src/image/Logo.png">
-    <img src="src/image/Logo.png" alt="Logo" width="400" height="400">
+    <img src="src/image/Logo.png" alt="Logo" width="350" height="350">
   </a>
 
   <h3 align="center">Virtual Assist</h3>
